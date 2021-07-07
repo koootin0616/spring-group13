@@ -30,22 +30,17 @@ body {
 }
 
 h1 {
-	font-family: monospace;
+	font-family: 'Potta One', cursive;
+	font-size:80px;
+	left: 50%;
+	padding: 5vmin;
+	position: fixed;
+	text-align: center;
+	top: 70%;
+	transform: translate(-50%, -50%);
 }
 
-@keyframes slide { 0% {
-	transform: translateX(-25%);
-}
-
-100%
-{
-transform
-:
-translateX(
-25%
-);
-}
-}
+@keyframes slide { 0% {transform: translateX(-25%);}100%{transform:translateX(25%);}}
 #top1 {
 	left: 50%;
 	padding: 5vmin;
