@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+</head>
+<body>
+	ユーザID
+	<br>
+	<input type="text" name="id">
+	<br> パスワード
+	<br>
+	<input id="password" type="password" name="password">
+	<input type="checkbox" id="password-check"> パスワードを表示する
+	<script>
+		const pwd = document.getElementById('password');
+		const pwdCheck = document.getElementById('password-check');
+		pwdCheck.addEventListener('change', function() {
+			if (pwdCheck.checked) {
+				pwd.setAttribute('type', 'text');
+			} else {
+				pwd.setAttribute('type', 'password');
+			}
+		}, false);
+	</script>
+	<br>
+	<br>
+	<input type="submit" value="登録">
+</body>
+</html>
