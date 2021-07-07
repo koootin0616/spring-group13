@@ -4,14 +4,20 @@
 <meta charset="UTF-8">
 <title>ログイン</title>
 </head>
+<link href="login.css" rel="stylesheet">
 <body>
-	ユーザID
-	<br>
-	<input type="text" name="id">
-	<br> パスワード
-	<br>
-	<input id="password" type="password" name="password">
-	<input type="checkbox" id="password-check"> パスワードを表示する
+	<p id="id">ユーザID</p>
+	<div id="idtxt">
+		<input type="text" name="id">
+	</div>
+	<p id="pass">パスワード</p>
+	<div id="passtxt">
+		<input id="password" type="password" name="password">
+	</div>
+	<div id="passdisp">
+		<input type="checkbox" id="password-check">パスワードを表示する
+	</div>
+
 	<script>
 		const pwd = document.getElementById('password');
 		const pwdCheck = document.getElementById('password-check');
@@ -25,6 +31,6 @@
 	</script>
 	<br>
 	<br>
-	<input type="submit" value="ログイン">
+	<div id="login"><input type="submit" value="ログイン"></div>
 </body>
 </html>
