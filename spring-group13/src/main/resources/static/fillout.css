@@ -1,0 +1,72 @@
+@charset "UTF-8";
+#fillout1  {
+	position: absolute;
+	top: 22%;
+	left: 32%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout2  {
+	position: absolute;
+	top: 22%;
+	left: 36%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout3  {
+	position: absolute;
+	top: 22%;
+	left: 40%;
+	font-size:20px;
+
+	font-weight:  bold;
+}
+#fillout4  {
+	position: absolute;
+	top: 22%;
+	left: 46%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout5  {
+	position: absolute;
+	top: 32%;
+	left: 32%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout6  {
+	position: absolute;
+	top: 56%;
+	left:18%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout7 {
+	position: absolute;
+	top: 32%;
+	left: 32%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout8{
+	position: absolute;
+	top: 56%;
+	left: 56%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout9{
+	position: absolute;
+	top: 56%;
+	left: 56%;
+	font-size:20px;
+	font-weight:  bold;
+}
+#fillout10{
+	position: absolute;
+	top: 22%;
+	left: 58%;
+	font-size:20px;
+	font-weight:  bold;
+}

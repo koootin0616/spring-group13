@@ -14,7 +14,24 @@ public class CategoryContoroller {
 	private CategoryRepository categoryRepository;
 
 	@PostMapping("/addplan")
-	public ModelAndView addUser(
+	public ModelAndView addplan(
+			@RequestParam("name") String name,
+			ModelAndView mv) {
+
+		Category category = new Category(name);
+
+
+		categoryRepository.saveAndFlush(category);
+
+		List<Category>list= categoryRepository.findAll();
+
+		mv.addObject("list",list);
+		 mv.setViewName("");
+
+		   return mv;
+	}
+	@PostMapping("/update")
+	public ModelAndView update(
 			@RequestParam("name") String name,
 			ModelAndView mv) {
 

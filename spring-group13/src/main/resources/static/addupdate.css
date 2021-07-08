@@ -1,23 +1,30 @@
 @charset "UTF-8";
 #add1  {
 	position: absolute;
-	top: 28%;
-	left: 25%;
+	top: 32%;
+	left: 32%;
 	font-size:20px;
+	color:white;
+	font-weight:  bold;
+
 
 }
 #add2  {
 	position: absolute;
-	top: 28%;
-	left: 47%;
+	top: 32%;
+	left: 52%;
 	font-size:20px;
+	color:white;
+	 font-weight:  bold;
 
 }
 #add3  {
 	position: absolute;
-	top: 35%;
-	left: 25%;
+	top: 41%;
+	left: 32%;
 	font-size:20px;
+	color:white;
+	 font-weight:  bold;
 
 }
 #add4  {
@@ -25,19 +32,23 @@
 	top: 77%;
 	left: 72%;
 	font-size:20px;
+	color:white;
+	 font-weight:  bold;
 
 }
 #add5{
 	position: absolute;
-	top: 40%;
-	left: 30%;
+	top: 48%;
+	left: 32%;
 	font-size:32px;
+	color:white;
+	 font-weight:  bold;
 
 }
 div {
 	position: absolute;
 	top: 55%;
-	left: 30%;
+	left: 32%;
 	font-size:20px;
 
 }
@@ -122,4 +133,23 @@ body {
   /*align-items: center;*/
   justify-content: center;
   background-color: #3498db;
+}
+.button {
+	display: inline-block;
+	border-radius: 22%; /* 角丸       */
+	font-size: 22pt; /* 文字サイズ */
+	text-align: center; /* 文字位置   */
+	cursor: pointer; /* カーソル   */
+	padding: 5px 5px; /* 余白       */
+	background: #3498db; /* 背景色     */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	box-shadow: 6px 6px 12px #666666; /* 影の設定 */
+	border: 2px solid #ffffff; /* 枠の指定 */
+}
+
+.button:hover {
+	color: #3498db; /* 背景色     */
+	background: #ffffff; /* 文字色     */
 }
