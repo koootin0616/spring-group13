@@ -6,20 +6,23 @@
 <link href="addupdate.css" rel="stylesheet">
 </head>
 <body>
-<a>期限:<input type="date" name="calendar" max="9999-12-31"></a>
-カテゴリー:
+<a id="add1">期限:<input type="date" name="calendar" max="9999-12-31"></a>
+<a id="add2">カテゴリー:
 <select>
 <option></option>
 </select>
+</a>
 <br>
-<a>重要度：
+<a id="add3">重要度：
 <input type="radio" name="importance" value="高">高
 <input type="radio" name="importance" value="中">中
 <input type="radio" name="importance" value="低">低<br>
 </a>
-詳細内容：<br>
+<p>詳細内容</p>
+<div>
 <textarea name="contents" cols="60" rows="15"></textarea>
+</div>
 <br>
-<input type="submit" value="追加">
+<a id="add4"><input type="submit" value="追加"></a>
 </body>
 </html>
