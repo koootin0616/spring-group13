@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ログイン</title>
@@ -7,17 +7,28 @@
 <link href="login.css" rel="stylesheet">
 <body>
 	<div class="bgground dish"></div>
-	<p id="id">ユーザID</p>
-	<div id="idtxt">
-		<input type="text" name="id">
-	</div>
-	<p id="pass">パスワード</p>
-	<div id="passtxt">
-		<input id="password" type="password" name="password">
-	</div>
-	<div id="passdisp">
-		<input type="checkbox" id="password-check">パスワードを表示する
-	</div>
+
+	<form action="/loggedin">
+		<p id="id">ユーザID</p>
+		<div id="idtxt">
+			<input type="text" name="id">
+		</div>
+		<p id="pass">パスワード</p>
+		<div id="passtxt">
+			<input id="password" type="password" name="password">
+		</div>
+		<div id="passdisp">
+			<input type="checkbox" id="password-check">パスワードを表示する
+		</div>
+		<p id="message" th:text="${message}"></p>
+		<div id="submit">
+			<input id="submitstyle" type="submit" value="ログイン">
+		</div>
+	</form>
+
+
+	<div class="bgground drop"></div>
+	<div class="bgground wave"></div>
 
 	<script>
 		const pwd = document.getElementById('password');
@@ -30,13 +41,6 @@
 			}
 		}, false);
 	</script>
-	<br>
-	<br>
-	<div id="submit">
-		<input id="submitstyle" type="submit" value="ログイン">
-	</div>
-	<div class="bgground drop"></div>
-	<div class="bgground wave"></div>
 
 </body>
 </html>

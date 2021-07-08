@@ -47,6 +47,15 @@
 	color:white;
 }
 
+#message{
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-weight:bold;
+	color:red;
+}
+
 #submit {
 	display: inline-block;
 	_display: inline;
