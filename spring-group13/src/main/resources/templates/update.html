@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>todoリスト</title>
 <link href="addupdate.css" rel="stylesheet">
 </head>
 <body>
-期限:<input type="date" name="calendar" max="9999-12-31">
-カテゴリー:
+<a id="add1">期限:<input type="date" name="calendar" max="9999-12-31"></a>
+<a id="add2">カテゴリー:
 <select>
-<option></option>
+<option th:each="category : ${list}"th:value="${list.name}" ></option>
 </select>
+</a>
 <br>
-重要度：
+<a id="add3">重要度：
 <input type="radio" name="importance" value="高">高
 <input type="radio" name="importance" value="中">中
 <input type="radio" name="importance" value="低">低<br>
+</a>
 
-詳細内容<br>
+<a id="add5">詳細内容</a>
+<div>
 <textarea name="contents" cols="60" rows="15"></textarea>
+</div>
 <br>
-<input type="submit" value="変更">
+<a id="add4"><input type="submit" value="変更"></a>
+<p aria-label="CodePen">
+  <span data-text="U">U</span>
+  <span data-text="p">p</span>
+  <span data-text="D">D</span>
+  <span data-text="a">a</span>
+  <span data-text="t">t</span>
+  <span data-text="e">e</span><br>
+</p>
 </body>
 </html>

@@ -39,6 +39,14 @@ public class TopController {
 
 		return mv;
 	}
+	@RequestMapping("/update")
+	public ModelAndView update(ModelAndView mv) {
+
+		mv.setViewName("update");
+
+		return mv;
+	}
+
 
 
 }
