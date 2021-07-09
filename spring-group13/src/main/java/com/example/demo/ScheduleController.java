@@ -44,15 +44,42 @@ public class ScheduleController {
 
 		mv.addObject("list",list);
 
-		mv.setViewName("fillout");
+		mv.setViewName("main");
 
 		return mv;
 	}
 
-	@RequestMapping("/ev")
-	public ModelAndView evaluation(ModelAndView mv) {
-		mv.setViewName("evaluation");
 
-		return mv;
-	}
+//	@RequestMapping("/addschedule")
+//	public ModelAndView addschedule(ModelAndView mv) {
+//
+//		List<Schedule>list = scheduleRepository.findAll();
+//
+//
+//		mv.addObject("list",list);
+//
+//		mv.setViewName("addschedule");
+//
+//		return mv;
+//	}
+//	@PostMapping("/addschedule")
+//	public ModelAndView update(
+//			@RequestParam("name") String name,
+//			@RequestParam("jikan") Time jikan,
+//			@RequestParam("importance") String importance,
+//			@RequestParam("contents") String contents,
+//			ModelAndView mv) {
+//		//登録するエンティティのインスタンスを生成
+//		Schedule addschedule = new Schedule(name,jikan,importance,contents);
+//
+//		//ItemエンティティをItemテーブルに登録
+//		scheduleRepository.saveAndFlush(addschedule);
+//
+//		List<Schedule>list= scheduleRepository.findAll();
+//
+//		mv.addObject("list",list);
+//		 mv.setViewName("main");
+//
+//		   return mv;
+//	}
 }

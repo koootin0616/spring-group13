@@ -13,7 +13,7 @@ public class CategoryContoroller {
 	private CategoryRepository categoryRepository;
 
 	@PostMapping("/addschedule")
-	public ModelAndView addplan(	ModelAndView mv) {
+	public ModelAndView addplan(ModelAndView mv) {
 
 		List<Category> category=categoryRepository.findAll();
 
@@ -21,6 +21,7 @@ public class CategoryContoroller {
 		mv.addObject("list",category);
 		return mv;
 	}
+
 
 	@PostMapping("/update")
 	public ModelAndView update(
