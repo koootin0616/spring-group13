@@ -18,11 +18,6 @@ public class ScheduleController {
 	@RequestMapping("/fill")
 	public ModelAndView fill(ModelAndView mv) {
 
-		//List<Schedule>list = scheduleRepository.findAll();
-
-
-		//mv.addObject("list",list);
-
 		mv.setViewName("fillout");
 
 		return mv;
@@ -36,19 +31,20 @@ public class ScheduleController {
 			@RequestParam("category_code") int category_code,
 			ModelAndView mv) {
 
-//		Schedule schedule = new Schedule(name,jikan,contents,category_code);
-//
-//		scheduleRepository.saveAndFlush(schedule);
-//
-//		List<Schedule>list= scheduleRepository.findAll();
-//
-//		mv.addObject("list",list);
-
 		mv.setViewName("main");
 
 		return mv;
 	}
 
+
+
+	@RequestMapping("/ev")
+	public ModelAndView evaluation(ModelAndView mv) {
+
+		mv.setViewName("evaluation");
+
+		return mv;
+	}
 
 	@RequestMapping("/addsche")
 	public ModelAndView addschedule(ModelAndView mv) {
@@ -58,7 +54,7 @@ public class ScheduleController {
 
 		mv.addObject("list",list);
 
-		mv.setViewName("addSchedule");
+		mv.setViewName("addschedule");
 
 		return mv;
 	}
@@ -82,4 +78,5 @@ public class ScheduleController {
 
 		   return mv;
 	}
+
 }

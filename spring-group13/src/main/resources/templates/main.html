@@ -28,7 +28,7 @@
 		<a>〇〇がログイン中</a>
 	</div>
 	<div id="logout">
-		<a href="" class="hr">ログアウト</a>
+		<a href="/logout" class="hr">ログアウト</a>
 	</div>
 	<div id="week">
 		<a href="" class="hr">1週間の予定</a>
@@ -36,8 +36,9 @@
 	<div id="headline">
 		<h1>本日の予定</h1>
 	</div>
-		<form action="/addschedule" method="post"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
-		<form action="/ev" method="get"><input id="button2" class="buttons1" type="submit" value="自己評価ページ"></form>
+		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
+		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
+		<form action="/ev" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div id="table">
 		<table border="1">
 			<tr>
