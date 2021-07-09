@@ -78,4 +78,12 @@ public class UserController {
 		mv.setViewName("main");
 		return mv;
 	}
+
+	@RequestMapping("/logout")
+	public ModelAndView logout(ModelAndView mv) {
+		session.invalidate();
+
+		mv.setViewName("top");
+		return mv;
+	}
 }

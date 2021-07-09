@@ -43,17 +43,23 @@ th{
 	width:150px;
 }
 
-#buttons{
+#button1{
 	position: absolute;
 	top: 150px;
 	left: 852px;
 }
 
-.button1{
+#button2{
+	position: absolute;
+	top: 150px;
+	left: 1035px;
+}
+
+.buttons1{
 	height:50px;
 	width:180px;
 }
 
-.button2{
+.buttons2{
 	width:150px;
 }

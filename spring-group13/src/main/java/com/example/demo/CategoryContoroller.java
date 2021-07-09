@@ -1,12 +1,8 @@
 package com.example.demo;
 
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -14,38 +10,38 @@ public class CategoryContoroller {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@PostMapping("/addplan")
+	@PostMapping("/addschedule")
 	public ModelAndView addplan(
-			@RequestParam("name") String name,
+			//@RequestParam("name") String name,
 			ModelAndView mv) {
 
-		Category category = new Category(name);
+		//		Category category = new Category(name);
+		//
+		//
+		//		categoryRepository.saveAndFlush(category);
+		//
+		//		List<Category>list= categoryRepository.findAll();
+		//
+		//		mv.addObject("list",list);
+		mv.setViewName("addSchedule");
 
-
-		categoryRepository.saveAndFlush(category);
-
-		List<Category>list= categoryRepository.findAll();
-
-		mv.addObject("list",list);
-		 mv.setViewName("");
-
-		   return mv;
+		return mv;
 	}
+
 	@PostMapping("/update")
 	public ModelAndView update(
-			@RequestParam("name") String name,
+			//@RequestParam("name") String name,
 			ModelAndView mv) {
 
-		Category category = new Category(name);
+//		Category category = new Category(name);
+//
+//		categoryRepository.saveAndFlush(category);
+//
+//		List<Category> list = categoryRepository.findAll();
+//
+//		mv.addObject("list", list);
+		mv.setViewName("update");
 
-
-		categoryRepository.saveAndFlush(category);
-
-		List<Category>list= categoryRepository.findAll();
-
-		mv.addObject("list",list);
-		 mv.setViewName("");
-
-		   return mv;
+		return mv;
 	}
 }
