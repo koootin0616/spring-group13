@@ -15,6 +15,9 @@ public class ScheduleController {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
+	@Autowired
+	private CategoryRepository categoryRepository;
+
 	@RequestMapping("/fill")
 	public ModelAndView fill(ModelAndView mv) {
 
@@ -50,10 +53,13 @@ public class ScheduleController {
 	@RequestMapping("/addsche")
 	public ModelAndView addschedule(ModelAndView mv) {
 
-		List<Schedule>list = scheduleRepository.findAll();
+		List<Schedule> schedule = scheduleRepository.findAll();
+		List<Category> category = categoryRepository.findAll();
 
+		mv.setViewName("addSchedule");
+		mv.addObject("list_category",category);
 
-		mv.addObject("list",list);
+		mv.addObject("list_schedule",schedule);
 
 		mv.setViewName("addschedule");
 

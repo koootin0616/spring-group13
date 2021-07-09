@@ -15,7 +15,7 @@ public class CategoryContoroller {
 	@PostMapping("/addschedule")
 	public ModelAndView addplan(ModelAndView mv) {
 
-		List<Category> category=categoryRepository.findAll();
+		List<Category> category = categoryRepository.findAll();
 
 		mv.setViewName("addSchedule");
 		mv.addObject("list",category);
@@ -24,9 +24,7 @@ public class CategoryContoroller {
 
 
 	@PostMapping("/update")
-	public ModelAndView update(
-
-			ModelAndView mv) {
+	public ModelAndView update(ModelAndView mv) {
 
 		List<Category> category=categoryRepository.findAll();
 
