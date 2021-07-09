@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,10 @@ public class ScheduleController {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
-	@RequestMapping("/fillout")
-	public ModelAndView items(
+	@RequestMapping("/fill")
+	public ModelAndView schedule(
 			@RequestParam("name") String name,
-			@RequestParam("jikan") int jikan,
+			@RequestParam("jikan") Time jikan,
 			@RequestParam("contents") String contents,
 			@RequestParam("category_code") int category_code,
 			ModelAndView mv) {
