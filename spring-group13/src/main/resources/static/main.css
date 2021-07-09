@@ -69,10 +69,16 @@ th{
 #button1{
 	position: absolute;
 	top: 150px;
-	left: 852px;
+	left: 669px;
 }
 
 #button2{
+	position: absolute;
+	top: 150px;
+	left: 852px;
+}
+
+#button3{
 	position: absolute;
 	top: 150px;
 	left: 1035px;
