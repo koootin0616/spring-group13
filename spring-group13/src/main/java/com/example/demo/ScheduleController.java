@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,19 @@ public class ScheduleController {
 	private ScheduleRepository scheduleRepository;
 
 	@RequestMapping("/fill")
+	public ModelAndView fill(ModelAndView mv) {
+
+		List<Schedule>list = scheduleRepository.findAll();
+
+
+		mv.addObject("list",list);
+
+		mv.setViewName("fillout");
+
+		return mv;
+	}
+
+	@PostMapping("/fill")
 	public ModelAndView schedule(
 			@RequestParam("name") String name,
 			@RequestParam("jikan") Time jikan,
