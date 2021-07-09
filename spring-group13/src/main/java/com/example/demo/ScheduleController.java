@@ -48,4 +48,11 @@ public class ScheduleController {
 
 		return mv;
 	}
+
+	@RequestMapping("/ev")
+	public ModelAndView evaluation(ModelAndView mv) {
+		mv.setViewName("evaluation");
+
+		return mv;
+	}
 }
