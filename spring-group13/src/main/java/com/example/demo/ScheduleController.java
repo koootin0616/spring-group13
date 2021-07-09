@@ -18,10 +18,10 @@ public class ScheduleController {
 	@RequestMapping("/fill")
 	public ModelAndView fill(ModelAndView mv) {
 
-		List<Schedule>list = scheduleRepository.findAll();
+		//List<Schedule>list = scheduleRepository.findAll();
 
 
-		mv.addObject("list",list);
+		//mv.addObject("list",list);
 
 		mv.setViewName("fillout");
 
@@ -36,13 +36,13 @@ public class ScheduleController {
 			@RequestParam("category_code") int category_code,
 			ModelAndView mv) {
 
-		Schedule schedule = new Schedule(name,jikan,contents,category_code);
-
-		scheduleRepository.saveAndFlush(schedule);
-
-		List<Schedule>list= scheduleRepository.findAll();
-
-		mv.addObject("list",list);
+//		Schedule schedule = new Schedule(name,jikan,contents,category_code);
+//
+//		scheduleRepository.saveAndFlush(schedule);
+//
+//		List<Schedule>list= scheduleRepository.findAll();
+//
+//		mv.addObject("list",list);
 
 		mv.setViewName("main");
 
@@ -50,36 +50,36 @@ public class ScheduleController {
 	}
 
 
-//	@RequestMapping("/addschedule")
-//	public ModelAndView addschedule(ModelAndView mv) {
-//
-//		List<Schedule>list = scheduleRepository.findAll();
-//
-//
-//		mv.addObject("list",list);
-//
-//		mv.setViewName("addschedule");
-//
-//		return mv;
-//	}
-//	@PostMapping("/addschedule")
-//	public ModelAndView update(
-//			@RequestParam("name") String name,
-//			@RequestParam("jikan") Time jikan,
-//			@RequestParam("importance") String importance,
-//			@RequestParam("contents") String contents,
-//			ModelAndView mv) {
-//		//登録するエンティティのインスタンスを生成
-//		Schedule addschedule = new Schedule(name,jikan,importance,contents);
-//
-//		//ItemエンティティをItemテーブルに登録
-//		scheduleRepository.saveAndFlush(addschedule);
-//
-//		List<Schedule>list= scheduleRepository.findAll();
-//
-//		mv.addObject("list",list);
-//		 mv.setViewName("main");
-//
-//		   return mv;
-//	}
+	@RequestMapping("/addsche")
+	public ModelAndView addschedule(ModelAndView mv) {
+
+		List<Schedule>list = scheduleRepository.findAll();
+
+
+		mv.addObject("list",list);
+
+		mv.setViewName("addSchedule");
+
+		return mv;
+	}
+	@PostMapping("/addsche")
+	public ModelAndView update(
+			@RequestParam("name") String name,
+			@RequestParam("jikan") Time jikan,
+			@RequestParam("importance") String importance,
+			@RequestParam("contents") String contents,
+			ModelAndView mv) {
+		//登録するエンティティのインスタンスを生成
+		Schedule addschedule = new Schedule(name,jikan,importance,contents);
+
+		//ItemエンティティをItemテーブルに登録
+		scheduleRepository.saveAndFlush(addschedule);
+
+		List<Schedule>list= scheduleRepository.findAll();
+
+		mv.addObject("list",list);
+		 mv.setViewName("main");
+
+		   return mv;
+	}
 }
