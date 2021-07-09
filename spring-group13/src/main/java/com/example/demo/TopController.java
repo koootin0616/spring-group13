@@ -46,6 +46,13 @@ public class TopController {
 
 		return mv;
 	}
+	@RequestMapping("/fillout")
+	public ModelAndView fillout(ModelAndView mv) {
+
+		mv.setViewName("fillout");
+
+		return mv;
+	}
 
 
 
