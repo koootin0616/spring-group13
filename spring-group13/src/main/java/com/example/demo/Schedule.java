@@ -31,6 +31,15 @@ public class Schedule {
 		this.category_code = category_code;
 	}
 
+
+
+	public Schedule(String name, Time jikan, String importance, String contents) {
+		this.name = name;
+		this.jikan = jikan;
+		this.importance = importance;
+		this.contents = contents;
+	}
+
 	public int getUser_code() {
 		return user_code;
 	}
