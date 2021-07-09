@@ -17,14 +17,14 @@ public class ScheduleController {
 	public ModelAndView items(
 			@RequestParam("name") String name,
 			@RequestParam("jikan") int jikan,
-			@RequestParam("contents") int contents,
+			@RequestParam("contents") String contents,
 			@RequestParam("category_code") int category_code,
 			ModelAndView mv) {
-		
+
 		Schedule schedule = new Schedule(name,jikan,contents,category_code);
-		
+
 		scheduleRepository.saveAndFlush(schedule);
-		
+
 		List<Schedule>list= scheduleRepository.findAll();
 
 		mv.addObject("list",list);
