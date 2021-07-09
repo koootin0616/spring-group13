@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>todoリスト</title>
 </head>
 <link href="main.css" rel="stylesheet">
 <body>
+
+  		<div class="rains">
+    		<span></span><span></span><span></span><span></span><span></span>
+    		<span></span><span></span><span></span><span></span><span></span>
+    		<span></span><span></span><span></span><span></span><span></span>
+    		<span></span><span></span><span></span><span></span><span></span>
+   		</div>
+
 	<div id="category">
 		<a>カテゴリー検索</a>
-		<input type="submit" value="仕事">
-		<input type="submit" value="趣味">
-		<input type="submit" value="家庭">
-		<a href="">カテゴリーの追加</a>
+		<div th:each="category:${category}" class="category_button">
+			<input type="submit" th:value="${category.name}">
+		</div>
+		<a href="" class="hr">カテゴリーの追加</a>
 	</div>
 	<div id="login">
 		<a>〇〇がログイン中</a>
 	</div>
 	<div id="logout">
-		<a href="">ログアウト</a>
+		<a href="" class="hr">ログアウト</a>
 	</div>
 	<div id="week">
-		<a href="">1週間の予定</a>
+		<a href="" class="hr">1週間の予定</a>
 	</div>
 	<div id="headline">
 		<h1>本日の予定</h1>
 	</div>
 		<form action="/addschedule" method="post"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
-		<form action="/update" method="post"><input id="button2" class="buttons1" type="submit" value="自己評価ページ"></form>
+		<form action="/fill" method="post"><input id="button2" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div id="table">
 		<table border="1">
 			<tr>
 				<th>予定</th>
 				<th>時間</th>
-				<th>カテゴリー</th>
+				<th>重要度</th>
 				<th>詳細</th>
 				<th>変更</th>
 				<th>削除</th>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr th:each="schedule:${schedule}">
+				<td th:text="${schedule.name}"></td>
+				<td th:text="${schedule.jikan}"></td>
+				<td th:text="${schedule.importance}"></td>
+				<td th:text="${schedule.contents}"></td>
 				<td><input class="buttons2" type="submit" value="変更"></td>
 				<td><input class="buttons2" type="submit" value="削除"></td>
 			</tr>

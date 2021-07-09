@@ -85,11 +85,11 @@ body {
 .dish{
 	border-radius: 50%;
 	width:650px;
-	height:400px;
+	height:450px;
 	background:#00FFFF;
 	margin:auto;
 	position: absolute;
-	top:20%;
+	top:16%;
 	left:29%;
 }
 

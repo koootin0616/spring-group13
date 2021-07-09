@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,13 @@ public class UserController {
 	HttpSession session;
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
+
+	@Autowired
+	private ScheduleRepository scheduleRepository;
 
 	@RequestMapping("/loggedin")
 	public ModelAndView login(
@@ -25,6 +32,9 @@ public class UserController {
 			ModelAndView mv) {
 		User user = null;
 		Optional<User> detail = userRepository.findById(id);
+
+		List<Category> category_detail=categoryRepository.findAll();
+		List<Schedule> schedule_detail=scheduleRepository.findAll();
 
 		if (id.equals("") || password.equals("")) {
 			mv.addObject("message", "IDとパスワードを入力してください");
@@ -45,7 +55,8 @@ public class UserController {
 			mv.setViewName("login");
 		} else {
 			session.setAttribute("userInfo", user);
-
+			mv.addObject("category",category_detail);
+			mv.addObject("schedule",schedule_detail);
 			mv.setViewName("main");
 		}
 

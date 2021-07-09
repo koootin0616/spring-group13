@@ -16,7 +16,7 @@ public class Schedule {
 	private String name;
 	private Date ymd;
 	private Time jikan;
-	private int importance;
+	private String importance;
 	private String contents;
 
 
@@ -25,7 +25,6 @@ public class Schedule {
 	}
 
 	public Schedule(String name, Time jikan, String contents, int category_code) {
-		super();
 		this.name = name;
 		this.jikan = jikan;
 		this.contents = contents;
@@ -72,11 +71,11 @@ public class Schedule {
 		this.jikan = jikan;
 	}
 
-	public int getImportance() {
+	public String getImportance() {
 		return importance;
 	}
 
-	public void setImportance(int importance) {
+	public void setImportance(String importance) {
 		this.importance = importance;
 	}
 
