@@ -12,13 +12,20 @@ public class Category {
 	private int code;
 	private String name;
 
-	Category(){
+	Category() {
 
 	}
 
 	public Category(String name) {
-		super();
 		this.name = name;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	public String getName() {
@@ -29,4 +36,4 @@ public class Category {
 		this.name = name;
 	}
 
-	}
+}

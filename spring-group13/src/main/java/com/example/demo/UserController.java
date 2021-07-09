@@ -46,7 +46,7 @@ public class UserController {
 		} else {
 			session.setAttribute("userInfo", user);
 
-			mv.setViewName("top");
+			mv.setViewName("main");
 		}
 
 		return mv;
@@ -75,7 +75,7 @@ public class UserController {
 		userRepository.saveAndFlush(user);
 
 		mv.addObject("message","登録が完了しました");
-		mv.setViewName("login");
+		mv.setViewName("main");
 		return mv;
 	}
 }
