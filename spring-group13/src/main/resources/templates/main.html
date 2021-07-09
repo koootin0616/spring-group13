@@ -7,18 +7,21 @@
 <link href="main.css" rel="stylesheet">
 <body>
 
-  		<div class="rains">
-    		<span></span><span></span><span></span><span></span><span></span>
-    		<span></span><span></span><span></span><span></span><span></span>
-    		<span></span><span></span><span></span><span></span><span></span>
-    		<span></span><span></span><span></span><span></span><span></span>
-   		</div>
+  	<div class="rains">
+    	<span></span><span></span><span></span><span></span><span></span>
+    	<span></span><span></span><span></span><span></span><span></span>
+    	<span></span><span></span><span></span><span></span><span></span>
+    	<span></span><span></span><span></span><span></span><span></span>
+   	</div>
 
 	<div id="category">
 		<a>カテゴリー検索</a>
 		<div th:each="category:${category}" class="category_button">
 			<input type="submit" th:value="${category.name}">
 		</div>
+	</div>
+	<div id="addCategory">
+		<input type="text" name="addCategory" placeholder="カテゴリーを入力してください">
 		<a href="" class="hr">カテゴリーの追加</a>
 	</div>
 	<div id="login">
@@ -34,7 +37,7 @@
 		<h1>本日の予定</h1>
 	</div>
 		<form action="/addschedule" method="post"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
-		<form action="/fill" method="post"><input id="button2" class="buttons1" type="submit" value="自己評価ページ"></form>
+		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div id="table">
 		<table border="1">
 			<tr>

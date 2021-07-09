@@ -28,7 +28,7 @@
 <a id="fillout10"><input type="submit" value="表示"></a>
 <table border="1" id="fillout11">
 <tr>
-<th>予定</th><th>時間</th><th>詳細</th><th>カテゴリー</th><th>達成度</th>
+<th>予定</th><th>時間</th><th>詳細</th><th>カテゴリー</th><th>達成/未達成</th>
 </tr>
 <tr th:each="fill:${list}">
 	<td th:text="${fill.name}"></td>
@@ -36,8 +36,8 @@
 	<td th:text="${fill.contents}"></td>
 	<td th:text="${fill.category_code}"></td>
 	<td>
-	<input type="radio" name="importance" value="YES">YES
-	<input type="radio" name="importance" value="NO">NO
+	<input type="radio" name="importance" value="YES">達成
+	<input type="radio" name="importance" value="NO">未達成
 	</td>
 </table>
 <a id="fillout5">反省点</a>

@@ -13,6 +13,14 @@
 	_display: inline;
 }
 
+#addCategory{
+	display: inline-block;
+	_display: inline;
+	position: absolute;
+	top:35px;
+	left:300px
+}
+
 #login{
 	position: absolute;
 	left: 1102px;
@@ -26,7 +34,7 @@
 
 #week{
 	position: absolute;
-	top: 35px;
+	top: 70px;
 	left: 300px;
 }
 
