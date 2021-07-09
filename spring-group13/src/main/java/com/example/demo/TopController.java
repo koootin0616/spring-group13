@@ -53,6 +53,13 @@ public class TopController {
 
 		return mv;
 	}
+	@RequestMapping("/evaluation")
+	public ModelAndView evaluation(ModelAndView mv) {
+
+		mv.setViewName("evaluation");
+
+		return mv;
+	}
 
 
 
