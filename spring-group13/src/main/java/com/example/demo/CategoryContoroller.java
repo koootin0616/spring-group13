@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,35 +13,24 @@ public class CategoryContoroller {
 	private CategoryRepository categoryRepository;
 
 	@PostMapping("/addschedule")
-	public ModelAndView addplan(
-			//@RequestParam("name") String name,
-			ModelAndView mv) {
+	public ModelAndView addplan(	ModelAndView mv) {
 
-		//		Category category = new Category(name);
-		//
-		//
-		//		categoryRepository.saveAndFlush(category);
-		//
-		//		List<Category>list= categoryRepository.findAll();
-		//
-		//		mv.addObject("list",list);
+		List<Category> category=categoryRepository.findAll();
+
 		mv.setViewName("addSchedule");
-
+		mv.addObject("list",category);
 		return mv;
 	}
 
 	@PostMapping("/update")
 	public ModelAndView update(
-			//@RequestParam("name") String name,
+
 			ModelAndView mv) {
 
-//		Category category = new Category(name);
-//
-//		categoryRepository.saveAndFlush(category);
-//
-//		List<Category> list = categoryRepository.findAll();
-//
-//		mv.addObject("list", list);
+		List<Category> category=categoryRepository.findAll();
+
+
+		mv.addObject("list", category);
 		mv.setViewName("update");
 
 		return mv;

@@ -46,13 +46,7 @@ public class TopController {
 
 		return mv;
 	}
-	@RequestMapping("/fillout")
-	public ModelAndView fillout(ModelAndView mv) {
 
-		mv.setViewName("fillout");
-
-		return mv;
-	}
 	@RequestMapping("/evaluation")
 	public ModelAndView evaluation(ModelAndView mv) {
 
