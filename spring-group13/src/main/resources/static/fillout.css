@@ -1,72 +1,85 @@
 @charset "UTF-8";
 #fillout1  {
 	position: absolute;
-	top: 22%;
-	left: 32%;
-	font-size:20px;
+	top: 12%;
+	left: 30%;
+	font-size:26px;
 	font-weight:  bold;
 }
 #fillout2  {
 	position: absolute;
-	top: 22%;
-	left: 36%;
-	font-size:20px;
+	top: 12%;
+	left: 35%;
+	font-size:26px;
 	font-weight:  bold;
 }
 #fillout3  {
 	position: absolute;
-	top: 22%;
+	top: 12%;
 	left: 40%;
-	font-size:20px;
+	font-size:26px;
 
 	font-weight:  bold;
 }
 #fillout4  {
 	position: absolute;
-	top: 22%;
+	top: 12%;
 	left: 46%;
-	font-size:20px;
+	font-size:26px;
 	font-weight:  bold;
 }
 #fillout5  {
 	position: absolute;
-	top: 32%;
-	left: 32%;
-	font-size:20px;
+	top: 62%;
+	left: 30%;
+	font-size:24px;
 	font-weight:  bold;
 }
 #fillout6  {
 	position: absolute;
-	top: 56%;
+	top: 66%;
 	left:18%;
 	font-size:20px;
 	font-weight:  bold;
 }
 #fillout7 {
 	position: absolute;
-	top: 32%;
-	left: 32%;
-	font-size:20px;
+	top: 62%;
+	left: 62%;
+	font-size:24px;
 	font-weight:  bold;
 }
 #fillout8{
 	position: absolute;
-	top: 56%;
-	left: 56%;
+	top: 66%;
+	left: 50%;
 	font-size:20px;
 	font-weight:  bold;
 }
 #fillout9{
 	position: absolute;
-	top: 56%;
-	left: 56%;
+	top: 86%;
+	left: 84%;
 	font-size:20px;
 	font-weight:  bold;
 }
-#fillout10{
+#fillout10 {
+	position: absolute;
+	top: 12%;
+	left: 56%;
+	font-size:26px;
+
+	font-weight:  bold;
+}
+#fillout11{
 	position: absolute;
 	top: 22%;
-	left: 58%;
+	left: 25%;
 	font-size:20px;
 	font-weight:  bold;
+}
+table {
+width: 650px;
+height: 40px;
+border: 2px #2b2b2b solid;
 }

@@ -36,19 +36,46 @@ public class UserController {
 			mv.addObject("message", "入力されたIDは登録されていません");
 			mv.setViewName("login");
 			return mv;
-		}else {
-			user=detail.get();
+		} else {
+			user = detail.get();
 		}
 
-		if(!(password.equals(user.getPassword()))) {
+		if (!(password.equals(user.getPassword()))) {
 			mv.addObject("message", "入力されたパスワードは間違えています");
 			mv.setViewName("login");
-		}else {
+		} else {
 			session.setAttribute("userInfo", user);
 
 			mv.setViewName("top");
 		}
 
+		return mv;
+	}
+
+	@RequestMapping("/signedup")
+	public ModelAndView signup(
+			@RequestParam(name = "id", defaultValue = "") String id,
+			@RequestParam(name = "password", defaultValue = "") String password,
+			ModelAndView mv) {
+		Optional<User> detail = userRepository.findById(id);
+
+		if (id.equals("") || password.equals("")) {
+			mv.addObject("message", "IDとパスワードを入力してください");
+			mv.setViewName("signup");
+			return mv;
+		}
+
+		if (!(detail.isEmpty())) {
+			mv.addObject("message", "入力されたIDは登録されています");
+			mv.setViewName("signup");
+			return mv;
+		}
+
+		User user = new User(id, password);
+		userRepository.saveAndFlush(user);
+
+		mv.addObject("message","登録が完了しました");
+		mv.setViewName("login");
 		return mv;
 	}
 }

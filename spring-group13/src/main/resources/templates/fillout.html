@@ -26,6 +26,20 @@
 </a>
 <a id="fillout4">の自己評価</a>
 <a id="fillout10"><input type="submit" value="表示"></a>
+<table border="1" id="fillout11">
+<tr>
+<th>予定</th><th>時間</th><th>詳細</th><th>カテゴリー</th><th>達成度</th>
+</tr>
+<tr th:each="fillout:${list}">
+	<td th:text="${fillout.name}"></td>
+	<td th:text="${fillout.jikan}"></td>
+	<td th:text="${fillout.contents}"></td>
+	<td th:text="${fillout.category_code}"></td>
+	<td>
+	<input type="radio" name="importance" value="YES">YES
+	<input type="radio" name="importance" value="NO">NO
+	</td>
+</table>
 <a id="fillout5">反省点</a>
 <div id="fillout6">
 <textarea name="contents" cols="60" rows="15"></textarea>
