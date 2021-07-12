@@ -30,7 +30,7 @@
 	<input  type="submit" value="カテゴリーの削除">
 	</div>
 	<div id="login">
-		<a>〇〇がログイン中</a>
+		<a th:text="'（'+${session.userInfo.id}+' さんがログイン中）'"></a>
 	</div>
 	<div id="logout">
 		<a href="/logout" class="hr">ログアウト</a>
@@ -41,7 +41,7 @@
 	<div id="headline">
 		<h1>本日の予定</h1>
 	</div>
-		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
+		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"><input type="hidden" name="user_code" th:value="${session.userInfo.code}"></form>
 		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
 		<form action="/ev" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div id="table">
@@ -63,6 +63,7 @@
 					<form action="update" method="post">
 						<input class="buttons2" type="submit" value="変更">
 						<input type="hidden" name="code" th:value="${schedule.code}">
+
 					</form>
 				</td>
 				<td class=button2>

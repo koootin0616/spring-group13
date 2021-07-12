@@ -6,12 +6,12 @@
 <link href="addupdate.css" rel="stylesheet">
 </head>
 <body>
-<form action="/fill" method="post">
-<a id="add1">期限:<input type="date" name="calendar" max="9999-12-31"></a>
+<form action="/addsche" method="post">
+<a id="add1">期限:<input type="date" name="ymd" max="9999-12-31"></a>
 <a id="add7">時間：<input type="time" name="jikan" min="00:00" max="24:00" required></a>
 <a id="add2">カテゴリー:
-<select>
-<option th:each="category : ${session.category}" th:text="${category.name}" ></option>
+<select name="category">
+<option th:each="category : ${category}" th:text="${category.name}"></option>
 </select>
 </a>
 <br>
@@ -32,8 +32,7 @@
 </div>
 <br>
 <a id="add4"><input type="submit" class="button"  value="追加"></a>
-<input type="hidden" name="user_code" th:value="${session.userInfo.code}">
-<input type="hidden" name="">
+<input type="hidden" name="user_code" th:value="${user_code}">
 </form>
 <p aria-label="CodePen">
   <span data-text="A">A</span>

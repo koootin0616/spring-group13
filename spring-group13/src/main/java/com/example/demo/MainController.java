@@ -27,14 +27,18 @@ public class MainController {
 	}
 
 	@RequestMapping("/addsche")
-	public ModelAndView addschedule(ModelAndView mv) {
+	public ModelAndView addschedule(
+			@RequestParam("user_code")int user_code,
+			ModelAndView mv) {
 
-		List<Schedule> schedule = scheduleRepository.findAll();
+		List<Category> category=categoryRepository.findAll();
 
-
-		mv.addObject("list_schedule",schedule);
+		mv.addObject("user_code", user_code);
+		mv.addObject("category", category);
 
 		mv.setViewName("addSchedule");
+
+
 
 		return mv;
 	}
@@ -51,7 +55,7 @@ public class MainController {
 	public ModelAndView update(
 			@RequestParam(name="code") int code,
 			ModelAndView mv) {
-		Schedule schedule=null;
+		Schedule schedule = null;
 
 		Optional<Schedule> detail = scheduleRepository.findById(code);
 		List<Category> category=categoryRepository.findAll();
