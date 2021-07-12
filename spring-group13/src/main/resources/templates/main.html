@@ -27,10 +27,12 @@
 		</form>
 	</div>
 	<div id="deleteCategory">
+	<form action="/deleteSchedule">
 	<input  type="submit" value="カテゴリーの削除">
+	</form>
 	</div>
 	<div id="login">
-		<a>〇〇がログイン中</a>
+		<a th:text="'（'+${session.userInfo.id}+' さんがログイン中）'"></a>
 	</div>
 	<div id="logout">
 		<a href="/logout" class="hr">ログアウト</a>

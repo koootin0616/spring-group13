@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,28 @@ public class CategoryContoroller {
 		mv.addObject("schedule",schedule);
 		mv.addObject("category", list);
 		mv.setViewName("main");
+
+		return mv;
+	}
+	@RequestMapping("/deleteSchedule")
+	public ModelAndView delete(
+			@RequestParam("name") String name,
+			@RequestParam("jikan") Time jikan,
+			@RequestParam("importance") String importance,
+			@RequestParam("contents") String contents,
+			ModelAndView mv) {
+
+		Schedule deleteSchedule = new Schedule(name,jikan,importance,contents);
+
+		scheduleRepository.saveAndFlush(deleteSchedule);
+
+		List<Schedule>list= scheduleRepository.findAll();
+
+			//List<Category> category=categoryRepository.findAll();
+
+
+		mv.addObject("list", list);
+		mv.setViewName("delete");
 
 		return mv;
 	}
