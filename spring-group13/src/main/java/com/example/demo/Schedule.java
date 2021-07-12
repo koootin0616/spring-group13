@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,8 @@ import javax.persistence.Table;
 @Table(name="schedule")
 public class Schedule {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer code;
 	private int user_code;
 	private int category_code;
 	private String name;
@@ -38,6 +42,14 @@ public class Schedule {
 		this.jikan = jikan;
 		this.importance = importance;
 		this.contents = contents;
+	}
+
+	public Integer getCode() {
+		return code;
+	}
+
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 
 	public int getUser_code() {

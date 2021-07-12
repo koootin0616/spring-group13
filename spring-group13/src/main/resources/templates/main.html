@@ -54,8 +54,18 @@
 				<td th:text="${schedule.jikan}"></td>
 				<td th:text="${schedule.importance}"></td>
 				<td th:text="${schedule.contents}"></td>
-				<td><input class="buttons2" type="submit" value="変更"></td>
-				<td><input class="buttons2" type="submit" value="削除"></td>
+				<td>
+					<form action="update" method="post">
+						<input class="buttons2" type="submit" value="変更">
+						<input type="hidden" name="code" th:value="${schedule.code}">
+					</form>
+				</td>
+				<td>
+					<form action="delete" method="post">
+						<input class="buttons2" type="submit" value="削除">
+						<input type="hidden" name="code" th:value="${schedule.code}">
+					</form>
+				</td>
 			</tr>
 		</table>
 	</div>

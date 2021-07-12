@@ -8,6 +8,7 @@
 <body>
 <form action="/fill" method="post">
 <a id="add1">期限:<input type="date" name="calendar" max="9999-12-31"></a>
+<a id="add7">時間：<input type="time" name="jikan" min="00:00" max="24:00" required></a>
 <a id="add2">カテゴリー:
 <select>
 <option th:each="category : ${list_category}" th:text="${category.name}" ></option>
@@ -19,12 +20,18 @@
 <input type="radio" name="importance" value="中">中
 <input type="radio" name="importance" value="低">低<br>
 </a>
+
+<a id=add6>予定：</a>
+<div id="text">
+<input type="text" name="name">
+</div>
+
 <a id="add5">詳細内容</a>
-<div>
+<div id="textarea">
 <textarea name="contents" cols="60" rows="15"></textarea>
 </div>
 <br>
-<a id="add4"><input type="submit" value="追加"></a>
+<a id="add4"><input type="submit" class="button"  value="追加"></a>
 </form>
 <p aria-label="CodePen">
   <span data-text="A">A</span>

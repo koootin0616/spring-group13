@@ -15,58 +15,21 @@ public class ScheduleController {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
-	@Autowired
-	private CategoryRepository categoryRepository;
-
-	@RequestMapping("/fill")
-	public ModelAndView fill(ModelAndView mv) {
-
-		mv.setViewName("fillout");
-
-		return mv;
-	}
-
-	@PostMapping("/fill")
-	public ModelAndView schedule(
-			@RequestParam("name") String name,
-			@RequestParam("jikan") Time jikan,
-			@RequestParam("contents") String contents,
-			@RequestParam("category_code") int category_code,
+	@PostMapping("/delete")
+	public ModelAndView delete(
+			@RequestParam(name="code") int code,
 			ModelAndView mv) {
-
-
-
-		mv.setViewName("main");
-
-		return mv;
-	}
-
-
-	@RequestMapping("/ev")
-	public ModelAndView evaluation(ModelAndView mv) {
-
-		mv.setViewName("evaluation");
-
-		return mv;
-	}
-
-	@RequestMapping("/addsche")
-	public ModelAndView addschedule(ModelAndView mv) {
+		scheduleRepository.deleteById(code);
 
 		List<Schedule> schedule = scheduleRepository.findAll();
-		List<Category> category = categoryRepository.findAll();
 
-		mv.setViewName("addSchedule");
-		mv.addObject("list_category",category);
-
-		mv.addObject("list_schedule",schedule);
-
-		mv.setViewName("addschedule");
-
+		mv.addObject("schedule",schedule);
+		mv.setViewName("main");
 		return mv;
 	}
+
 	@PostMapping("/addsche")
-	public ModelAndView update(
+	public ModelAndView add(
 			@RequestParam("name") String name,
 			@RequestParam("jikan") Time jikan,
 			@RequestParam("importance") String importance,
@@ -85,5 +48,13 @@ public class ScheduleController {
 
 		   return mv;
 	}
+
+	@RequestMapping("/updateSchedule")
+	public ModelAndView update(
+			ModelAndView mv) {
+		return mv;
+	}
+
+
 
 }

@@ -11,25 +11,24 @@
 }
 #add2  {
 	position: absolute;
-	top: 32%;
-	left: 52%;
+	top: 41%;
+	left: 32%;
 	font-size:20px;
 	color:white;
-	 font-weight:  bold;
+	font-weight:  bold;
 
 }
 #add3  {
 	position: absolute;
 	top: 41%;
-	left: 32%;
+	left: 50%;
 	font-size:20px;
 	color:white;
-	 font-weight:  bold;
-
+	font-weight:  bold;
 }
 #add4  {
 	position: absolute;
-	top: 77%;
+	top: 79%;
 	left: 72%;
 	font-size:20px;
 	color:white;
@@ -38,16 +37,41 @@
 }
 #add5{
 	position: absolute;
-	top: 48%;
+	top: 55%;
 	left: 32%;
 	font-size:32px;
 	color:white;
 	 font-weight:  bold;
 
 }
-div {
+#add6{
 	position: absolute;
-	top: 55%;
+	top: 48%;
+	left: 32%;
+	font-size:32px;
+	color:white;
+	font-weight:  bold;
+}
+#add7{
+	position: absolute;
+	top: 32%;
+	left: 57%;
+	font-size:20px;
+	color:white;
+	 font-weight:  bold;
+}
+
+#text {
+	position: absolute;
+	top: 48.7%;
+	left: 40%;
+	font-size:20px;
+
+}
+
+#textarea {
+	position: absolute;
+	top: 60%;
 	left: 32%;
 	font-size:20px;
 
