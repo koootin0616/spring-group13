@@ -50,4 +50,19 @@ public class CategoryContoroller {
 
 		return mv;
 	}
+	@RequestMapping("/deleteSchedule")
+	public ModelAndView delete(
+			@RequestParam("code") Integer code,
+						ModelAndView mv) {
+
+
+
+			List<Category> category=categoryRepository.findAll();
+
+
+
+		mv.setViewName("delete");
+
+		return mv;
+	}
 }

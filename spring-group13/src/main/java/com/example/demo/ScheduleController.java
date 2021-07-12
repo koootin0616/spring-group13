@@ -40,7 +40,9 @@ public class ScheduleController {
 		Optional<Category> categoryDetail=categoryRepository.findByName(category_name);
 		category=categoryDetail.get();
 		//登録するエンティティのインスタンスを生成
+
 		Schedule schedule = new Schedule(user_code, category.getCode(), name, ymd, time, importance, contents);
+
 
 		//ItemエンティティをItemテーブルに登録
 		scheduleRepository.saveAndFlush(schedule);
