@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import java.sql.Time;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -46,22 +45,15 @@ public class CategoryContoroller {
 	}
 	@RequestMapping("/deleteSchedule")
 	public ModelAndView delete(
-			@RequestParam("name") String name,
-			@RequestParam("jikan") Time jikan,
-			@RequestParam("importance") String importance,
-			@RequestParam("contents") String contents,
-			ModelAndView mv) {
-
-		Schedule deleteSchedule = new Schedule(name,jikan,importance,contents);
-
-		scheduleRepository.saveAndFlush(deleteSchedule);
-
-		List<Schedule>list= scheduleRepository.findAll();
-
-			//List<Category> category=categoryRepository.findAll();
+			@RequestParam("code") Integer code,
+						ModelAndView mv) {
 
 
-		mv.addObject("list", list);
+
+			List<Category> category=categoryRepository.findAll();
+
+
+
 		mv.setViewName("delete");
 
 		return mv;
