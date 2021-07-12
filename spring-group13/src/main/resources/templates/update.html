@@ -10,8 +10,8 @@
 <a id="add1">期限：<input type="date" name="ymd" max="9999-12-31" th:value="${schedule.ymd}"></a>
 <a id="add7">時間：<input type="time" name="jikan" min="00:00" max="24:00" required th:value="${schedule.jikan}"></a>
 <a id="add2">カテゴリー:
-<select>
-<option th:each="category:${category}" th:text="${category.name}"></option>
+<select name="category">
+<option th:each="category:${session.category}" th:text="${category.name}"></option>
 </select>
 </a>
 <br>
@@ -32,6 +32,9 @@
 </div>
 <br>
 <a id="add4"><input type="submit" class="button" value="変更"></a>
+<input type="hidden" name="code" th:value="${schedule.code}">
+<input type="hidden" name="user_code" th:value="${schedule.user_code}">
+<input type="hidden" name="category_code" th:value="${schedule.category_code}">
 </form>
 <p aria-label="CodePen">
   <span data-text="U">U</span>

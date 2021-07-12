@@ -66,11 +66,22 @@
 	top: 30%;
 	left: 50%;
 	transform: translate(-50%, 0%);
-	width:900px;
+	width:1000px;
 }
 
-th{
-	width:150px;
+.th1{
+	height:50px;
+	width:200px;
+}
+
+.th2{
+	height:50px;
+	width:100px;
+}
+
+.th3{
+	height:50px;
+	width:300px;
 }
 
 #button1{
@@ -97,7 +108,7 @@ th{
 }
 
 .buttons2{
-	width:150px;
+	width:100px;
 }
 
 body{

@@ -2,6 +2,8 @@ package com.example.demo;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +18,9 @@ public class CategoryContoroller {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
+	@Autowired
+	HttpSession session;
 
-	@RequestMapping("/updateCategory")
-	public ModelAndView update(ModelAndView mv) {
-
-		List<Category> category=categoryRepository.findAll();
-
-
-		mv.addObject("list", category);
-		mv.setViewName("update");
-
-		return mv;
-	}
 	@RequestMapping("/addCategory")
 	public ModelAndView addCategory(
 			@RequestParam(name="addCategory") String name,
@@ -43,8 +36,9 @@ public class CategoryContoroller {
 		List<Schedule> schedule=scheduleRepository.findAll();
 		List<Category> list = categoryRepository.findAll();
 
+		session.setAttribute("category", list);
+
 		mv.addObject("schedule",schedule);
-		mv.addObject("category", list);
 		mv.setViewName("main");
 
 		return mv;

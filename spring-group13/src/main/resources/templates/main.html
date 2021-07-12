@@ -16,7 +16,7 @@
 
 	<div id="category">
 		<a>カテゴリー検索</a>
-		<div th:each="category:${category}" class="category_button">
+		<div th:each="category:${session.category}" class="category_button">
 			<input type="submit" th:value="${category.name}">
 		</div>
 	</div>
@@ -47,25 +47,25 @@
 	<div id="table">
 		<table border="1">
 			<tr>
-				<th>予定</th>
-				<th>時間</th>
-				<th>重要度</th>
-				<th>詳細</th>
-				<th>変更</th>
-				<th>削除</th>
+				<th class="th1">予定</th>
+				<th class="th1">時間</th>
+				<th class="th2">重要度</th>
+				<th class="th3">詳細</th>
+				<th class="th2">変更</th>
+				<th class="th2">削除</th>
 			</tr>
 			<tr th:each="schedule:${schedule}">
 				<td th:text="${schedule.name}"></td>
 				<td th:text="${schedule.jikan}"></td>
 				<td th:text="${schedule.importance}"></td>
 				<td th:text="${schedule.contents}"></td>
-				<td>
+				<td class=button2>
 					<form action="update" method="post">
 						<input class="buttons2" type="submit" value="変更">
 						<input type="hidden" name="code" th:value="${schedule.code}">
 					</form>
 				</td>
-				<td>
+				<td class=button2>
 					<form action="delete" method="post">
 						<input class="buttons2" type="submit" value="削除">
 						<input type="hidden" name="code" th:value="${schedule.code}">

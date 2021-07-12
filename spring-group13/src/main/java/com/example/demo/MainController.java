@@ -30,9 +30,7 @@ public class MainController {
 	public ModelAndView addschedule(ModelAndView mv) {
 
 		List<Schedule> schedule = scheduleRepository.findAll();
-		List<Category> category = categoryRepository.findAll();
 
-		mv.addObject("list_category",category);
 
 		mv.addObject("list_schedule",schedule);
 
