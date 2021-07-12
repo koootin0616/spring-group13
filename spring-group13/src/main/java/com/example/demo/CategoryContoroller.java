@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,18 +13,11 @@ public class CategoryContoroller {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@PostMapping("/addschedule")
-	public ModelAndView addplan(ModelAndView mv) {
-
-		List<Category> category = categoryRepository.findAll();
-
-		mv.setViewName("addSchedule");
-		mv.addObject("list",category);
-		return mv;
-	}
+	@Autowired
+	private ScheduleRepository scheduleRepository;
 
 
-	@PostMapping("/update")
+	@RequestMapping("/updateCategory")
 	public ModelAndView update(ModelAndView mv) {
 
 		List<Category> category=categoryRepository.findAll();
@@ -38,16 +30,20 @@ public class CategoryContoroller {
 	}
 	@RequestMapping("/addCategory")
 	public ModelAndView addCategory(
-			@RequestParam("addCategory") String name,
+			@RequestParam(name="addCategory") String name,
 			ModelAndView mv) {
 
-		Category category = new Category(name);
+		if(name.equals("")) {
 
-		categoryRepository.saveAndFlush(category);
+		}else {
+			Category category = new Category(name);
+			categoryRepository.saveAndFlush(category);
+		}
 
+		List<Schedule> schedule=scheduleRepository.findAll();
 		List<Category> list = categoryRepository.findAll();
 
-
+		mv.addObject("schedule",schedule);
 		mv.addObject("category", list);
 		mv.setViewName("main");
 
