@@ -15,19 +15,6 @@ public class ScheduleController {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
-	@PostMapping("/delete")
-	public ModelAndView delete(
-			@RequestParam(name="code") int code,
-			ModelAndView mv) {
-		scheduleRepository.deleteById(code);
-
-		List<Schedule> schedule = scheduleRepository.findAll();
-
-		mv.addObject("schedule",schedule);
-		mv.setViewName("main");
-		return mv;
-	}
-
 	@PostMapping("/addsche")
 	public ModelAndView add(
 			@RequestParam("name") String name,

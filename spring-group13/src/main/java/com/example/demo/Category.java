@@ -14,6 +14,12 @@ public class Category {
 	private int code;
 	private String name;
 
+
+	public Category(int code, String name) {
+		this.code = code;
+		this.name = name;
+	}
+
 	Category() {
 
 	}
