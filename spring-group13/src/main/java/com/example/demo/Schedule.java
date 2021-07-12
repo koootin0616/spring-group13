@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name="schedule")
 public class Schedule {
 	@Id
+	private Integer code;
 	private int user_code;
 	private int category_code;
 	private String name;
