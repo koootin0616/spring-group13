@@ -55,7 +55,7 @@ public class UserController {
 			mv.setViewName("login");
 		} else {
 			session.setAttribute("userInfo", user);
-			mv.addObject("category",category_detail);
+			session.setAttribute("category",category_detail);
 			mv.addObject("schedule",schedule_detail);
 			mv.setViewName("main");
 		}

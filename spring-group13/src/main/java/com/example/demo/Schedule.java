@@ -28,6 +28,22 @@ public class Schedule {
 
 	}
 
+
+
+	public Schedule(Integer code, int user_code, int category_code, String name, Date ymd, Time jikan,
+			String importance, String contents) {
+		this.code = code;
+		this.user_code = user_code;
+		this.category_code = category_code;
+		this.name = name;
+		this.ymd = ymd;
+		this.jikan = jikan;
+		this.importance = importance;
+		this.contents = contents;
+	}
+
+
+
 	public Schedule(String name, Time jikan, String contents, int category_code) {
 		this.name = name;
 		this.jikan = jikan;
