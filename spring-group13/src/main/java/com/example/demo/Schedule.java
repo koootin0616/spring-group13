@@ -15,8 +15,8 @@ public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer code;
-	private int user_code;
-	private int category_code;
+	private int usercode;
+	private int categorycode;
 	private String name;
 	private Date ymd;
 	private Time jikan;
@@ -30,11 +30,11 @@ public class Schedule {
 
 
 
-	public Schedule(Integer code, int user_code, int category_code, String name, Date ymd, Time jikan,
+	public Schedule(Integer code, int usercode, int categorycode, String name, Date ymd, Time jikan,
 			String importance, String contents) {
 		this.code = code;
-		this.user_code = user_code;
-		this.category_code = category_code;
+		this.usercode = usercode;
+		this.categorycode = categorycode;
 		this.name = name;
 		this.ymd = ymd;
 		this.jikan = jikan;
@@ -44,11 +44,11 @@ public class Schedule {
 
 
 
-	public Schedule(int user_code, int category_code, String name, Date ymd, Time jikan, String importance,
+	public Schedule(int usercode, int categorycode, String name, Date ymd, Time jikan, String importance,
 			String contents) {
 		super();
-		this.user_code = user_code;
-		this.category_code = category_code;
+		this.usercode = usercode;
+		this.categorycode = categorycode;
 		this.name = name;
 		this.ymd = ymd;
 		this.jikan = jikan;
@@ -66,20 +66,20 @@ public class Schedule {
 		this.code = code;
 	}
 
-	public int getUser_code() {
-		return user_code;
+	public int getUsercode() {
+		return usercode;
 	}
 
-	public void setUser_code(int user_code) {
-		this.user_code = user_code;
+	public void setUsercode(int usercode) {
+		this.usercode = usercode;
 	}
 
-	public int getCategory_code() {
-		return category_code;
+	public int getCategorycode() {
+		return categorycode;
 	}
 
-	public void setCategory_code(int category_code) {
-		this.category_code = category_code;
+	public void setCategorycode(int categorycode) {
+		this.categorycode = categorycode;
 	}
 
 	public String getName() {

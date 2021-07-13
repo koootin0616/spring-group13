@@ -5,7 +5,7 @@
 	_display: inline;
 	margin:auto;
 	position: absolute;
-	left: 300px;
+	left: 150px;
 }
 
 .category_button{
@@ -18,31 +18,31 @@
 	_display: inline;
 	position: absolute;
 	top:40px;
-	left:300px
+	left:150px
 }
 #deleteCategory{
 	display: inline-block;
 	_display: inline;
 	position: absolute;
 	top:40px;
-	left:600px
+	left:450px
 }
 
 #login{
 	position: absolute;
-	left: 1035px;
+	left: 1185px;
 }
 
 #logout{
 	position: absolute;
 	top:35px;
-	left:1150px;
+	left:1300px;
 }
 
 #week{
 	position: absolute;
 	top: 70px;
-	left: 300px;
+	left: 150px;
 }
 #reset{
 	position: absolute;
@@ -53,7 +53,7 @@
 #headline{
 	position: absolute;
 	top:140px;
-	left: 320px;
+	left: 180px;
 }
 
 .hr{
@@ -71,7 +71,7 @@
 	top: 30%;
 	left: 50%;
 	transform: translate(-50%, 0%);
-	width:1000px;
+	width:1200px;
 }
 
 .th1{
@@ -92,19 +92,19 @@
 #button1{
 	position: absolute;
 	top: 150px;
-	left: 669px;
+	left: 769px;
 }
 
 #button2{
 	position: absolute;
 	top: 150px;
-	left: 852px;
+	left: 952px;
 }
 
 #button3{
 	position: absolute;
 	top: 150px;
-	left: 1035px;
+	left: 1135px;
 }
 
 .buttons1{

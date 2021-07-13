@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,17 +32,15 @@ public class MainController {
 
 	@RequestMapping("/addsche")
 	public ModelAndView addschedule(
-			@RequestParam("user_code")int user_code,
+			@RequestParam("usercode") int usercode,
 			ModelAndView mv) {
 
-		List<Category> category=categoryRepository.findAll();
+		List<Category> category = categoryRepository.findAll();
 
-		mv.addObject("user_code", user_code);
+		mv.addObject("usercode", usercode);
 		mv.addObject("category", category);
 
 		mv.setViewName("addSchedule");
-
-
 
 		return mv;
 	}
@@ -53,12 +55,12 @@ public class MainController {
 
 	@PostMapping("/update")
 	public ModelAndView update(
-			@RequestParam(name="code") int code,
+			@RequestParam(name = "code") int code,
 			ModelAndView mv) {
 		Schedule schedule = null;
 
 		Optional<Schedule> detail = scheduleRepository.findById(code);
-		List<Category> category=categoryRepository.findAll();
+		List<Category> category = categoryRepository.findAll();
 
 		if (detail.isEmpty() == false) { //レコードがあれば
 			schedule = detail.get(); //レコードを取得する
@@ -83,6 +85,76 @@ public class MainController {
 		mv.setViewName("main");
 
 
+
+		return mv;
+	}
+
+	@RequestMapping("/search")
+	public ModelAndView search(
+			@RequestParam(name = "categoryname") String name,
+			ModelAndView mv) {
+		Category category = null;
+		Optional<Category> detail = categoryRepository.findByName(name);
+		if (detail.isEmpty() == false) { //レコードがあれば
+			category = detail.get(); //レコードを取得する
+		}
+		List<Schedule> schedule = scheduleRepository.findByCategorycode(category.getCode());
+
+		mv.addObject("schedule", schedule);
+
+		mv.setViewName("main");
+
+		return mv;
+	}
+
+	@RequestMapping("/weekschedule")
+	public ModelAndView week(ModelAndView mv) {
+		List<Schedule> schedule = scheduleRepository.findAll();
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date date = null;
+		long datetime_now = now.getTime();
+		long datetime_date = 0;
+		long one_date_time = 1000 * 60 * 60 * 24;
+
+		List<Schedule> list = new ArrayList<>();
+
+		for (Schedule sche : schedule) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - datetime_now) / one_date_time < 7
+					&& (datetime_date - datetime_now) / one_date_time >= 0) {
+				list.add(sche);
+			}
+		}
+		mv.addObject("schedule", list);
+		mv.setViewName("main");
+
+		return mv;
+	}
+
+	@RequestMapping("/todayschedule")
+	public ModelAndView today(ModelAndView mv) {
+
+		List<Schedule> schedule = scheduleRepository.findAll();
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date date = null;
+		long datetime_now = now.getTime();
+		long datetime_date = 0;
+		List<Schedule> list = new ArrayList<>();
+
+
+		for (Schedule sche : schedule) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - datetime_now) == 0) {
+				list.add(sche);
+			}
+		}
+
+		mv.addObject("schedule",list);
+		mv.setViewName("main");
 
 		return mv;
 	}

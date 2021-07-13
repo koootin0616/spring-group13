@@ -13,13 +13,14 @@
     	<span></span><span></span><span></span><span></span><span></span>
     	<span></span><span></span><span></span><span></span><span></span>
    	</div>
-
-	<div id="category">
-		<a>カテゴリー検索</a>
-		<div th:each="category:${session.category}" class="category_button">
-			<input type="submit" th:value="${category.name}">
+	<form action="/search" method="get">
+		<div id="category">
+			<a>カテゴリー検索</a>
+			<div th:each="category:${session.category}" class="category_button">
+				<input type="submit" th:value="${category.name}" name="categoryname">
+			</div>
 		</div>
-	</div>
+	</form>
 	<div id="addCategory">
 		<form action="/addCategory" method="get">
 		<input type="text" name="addCategory" placeholder="カテゴリーを入力してください">
@@ -38,18 +39,20 @@
 		<a href="/logout" class="hr">ログアウト</a>
 	</div>
 	<div id="week">
-		<a href="" class="hr">1週間の予定</a>
+		<a href="/todayschedule" class="hr">本日の予定</a><br>
+		<a href="/weekschedule" class="hr">1週間の予定</a>
 	</div>
 	<div id="headline">
-		<h1>本日の予定</h1>
+		<h1>予定表</h1>
 	</div>
-		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"><input type="hidden" name="user_code" th:value="${session.userInfo.code}"></form>
+		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"><input type="hidden" name="usercode" th:value="${session.userInfo.code}"></form>
 		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
 		<form action="/ev" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div id="table">
 		<table border="1">
 			<tr>
 				<th class="th1">予定</th>
+				<th class="th1">年月日</th>
 				<th class="th1">時間</th>
 				<th class="th2">重要度</th>
 				<th class="th3">詳細</th>
@@ -58,6 +61,7 @@
 			</tr>
 			<tr th:each="schedule:${schedule}">
 				<td th:text="${schedule.name}"></td>
+				<td th:text="${schedule.ymd}"></td>
 				<td th:text="${schedule.jikan}"></td>
 				<td th:text="${schedule.importance}"></td>
 				<td th:text="${schedule.contents}"></td>
@@ -65,7 +69,6 @@
 					<form action="update" method="post">
 						<input class="buttons2" type="submit" value="変更">
 						<input type="hidden" name="code" th:value="${schedule.code}">
-
 					</form>
 				</td>
 				<td class=button2>

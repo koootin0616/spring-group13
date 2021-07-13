@@ -20,7 +20,7 @@
 	<td th:text="${schedule.name}"></td>
 	<td th:text="${schedule.jikan}"></td>
 	<td th:text="${schedule.contents}"></td>
-	<td th:text="${schedule.category_code}"></td>
+	<td th:text="${schedule.categorycode}"></td>
 	<td>
 	<input type="radio" name="importance" value="達成" th:checked="${evaluation.per}=='達成'">達成
 	<input type="radio" name="importance" value="未達成" th:checked="${evaluation.per}=='未達成'">未達成
@@ -36,8 +36,8 @@
 </div>
 <a id="fillout9"><input type="submit" value="登録"></a>
 <input type="hidden" name="code" th:value="${schedule.code}">
-<input type="hidden" name="user_code" th:value="${schedule.user_code}">
-<input type="hidden" name="category_code" th:value="${schedule.category_code}">
+<input type="hidden" name="user_code" th:value="${schedule.usercode}">
+<input type="hidden" name="category_code" th:value="${schedule.categorycode}">
 </form>
 </body>
 </html>
