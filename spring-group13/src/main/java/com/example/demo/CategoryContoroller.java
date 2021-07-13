@@ -62,5 +62,32 @@ public class CategoryContoroller {
 
 		return mv;
 	}
+	//削除一覧から削除
+	@RequestMapping("/deleteCatego")
+	public ModelAndView deleteCategory(
+			@RequestParam("code")int code,
+			ModelAndView mv) {
+
+		categoryRepository.deleteById(code);
+
+		List<Category> list = categoryRepository.findAll();
+
+		mv.addObject("list",list);
+		mv.setViewName("deleteCategory");
+
+		return mv;
+	}
+	//削除一覧からメインページに戻る
+	@RequestMapping("/mainreturn")
+	public ModelAndView mainreturn(
+			ModelAndView mv) {
+
+		List<Schedule> list = scheduleRepository.findAll();
+
+		mv.addObject("schedule",list);
+		mv.setViewName("main");
+
+		return mv;
+	}
 
 }

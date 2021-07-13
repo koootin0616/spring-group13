@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>todoリスト</title>
+<link href="deleteCategory.css" rel="stylesheet">
 </head>
 <body>
-<h1>削除一覧項目</h1>
+
 
 <table border="1">
 			<tr>
@@ -16,9 +17,31 @@
 			<tr th:each="category:${list}">
 			<td th:text="${category.code}"></td>
 			<td th:text="${category.name}"></td>
-				<td><input class="button" type="submit" value="削除"></td>
+				<td>
+				<form action="deleteCatego" method="post">
+				<input class="button" type="submit" value="削除">
+				<input type="hidden" name="code" th:value="${category.code}">
+				</form>
+				</td>
 			</tr>
 		</table>
+		<a id="main" href="mainreturn">メインページへ</a>
+		<p aria-label="CodePen">
+  <span data-text="D">D</span>
+  <span data-text="e">e</span>
+  <span data-text="l">l</span>
+  <span data-text="e">e</span>
+  <span data-text="t">t</span>
+  <span data-text="e">e</span>
+  <span data-text="C">C</span>
+  <span data-text="a">a</span>
+  <span data-text="t">t</span>
+  <span data-text="e">e</span>
+  <span data-text="g">g</span>
+  <span data-text="o">o</span>
+  <span data-text="r">r</span>
+  <span data-text="y">y</span>
+</p>
 
 </body>
 </html>

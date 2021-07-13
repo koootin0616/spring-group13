@@ -25,7 +25,7 @@ public class MainController {
 	@RequestMapping("/fill")
 	public ModelAndView fill(ModelAndView mv) {
 
-		mv.setViewName("fillout");
+		mv.setViewName("fillout1st");
 
 		return mv;
 	}
@@ -48,7 +48,7 @@ public class MainController {
 	@RequestMapping("/ev")
 	public ModelAndView evaluation(ModelAndView mv) {
 
-		mv.setViewName("evaluation");
+		mv.setViewName("evaluation1st");
 
 		return mv;
 	}
@@ -73,21 +73,7 @@ public class MainController {
 
 		return mv;
 	}
-	@RequestMapping("/reset")
-	public ModelAndView reset(
-			ModelAndView mv) {
 
-		List<Schedule> schedule=scheduleRepository.findAll();
-
-
-		mv.addObject("schedule",schedule);
-
-		mv.setViewName("main");
-
-
-
-		return mv;
-	}
 
 	@RequestMapping("/search")
 	public ModelAndView search(

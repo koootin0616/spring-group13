@@ -1,0 +1,119 @@
+@charset "UTF-8";
+table{
+	background-color:white;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	width:200px;
+	text-align: center;
+	border-color:white;
+	font-family:'arial black';
+}
+#main{
+	position: absolute;
+	top:430px;
+	left:880px;
+	color:white;
+}
+p {
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+
+}
+
+p span {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  -webkit-font-smoothing: antialiased;
+}
+
+p span::before,
+p span::after {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: -1px;
+  transform-origin: left top;
+  transition: all ease-out .3s;
+  content: attr(data-text);
+}
+
+p span::before {
+  z-index: 1;
+  color: rgba(0,0,0,0.2);
+  transform: scale(1.1,1) skew(0deg,20deg);
+
+}
+
+p span::after {
+  z-index: 2;
+  color: #3498db;
+  text-shadow: -1px 0 1px #3498db,
+                1px 0 1px #fff;
+  transform: rotateY(-40deg);
+}
+
+p span:hover::before { transform: scale(1.1,1) skew(0deg,5deg); }
+
+p span:hover::after { transform: rotateY(-10deg); }
+
+p span + span { margin-left: .3em; }
+
+@media (min-width: 20em) {
+  p { font-size: 2em; }
+
+  p span::before,
+  p span::after {
+    display: block;
+  }
+}
+
+@media (min-width: 30em) {
+  p { font-size: 3em; }
+}
+
+@media (min-width: 40em) {
+  p { font-size: 5em; }
+}
+
+@media (min-width: 100em) {
+  p { font-size: 8em; }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+
+  display: flex;
+  /*align-items: center;*/
+  justify-content: center;
+  background-color: #3498db;
+}
+.button {
+	display: inline-block;
+	border-radius: 7%; /* 角丸       */
+	font-size: 14pt; /* 文字サイズ */
+	text-align: center; /* 文字位置   */
+	cursor: pointer; /* カーソル   */
+	padding: 5px 5px; /* 余白       */
+	background: #3498db; /* 背景色     */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+
+	border: 2px solid #ffffff; /* 枠の指定 */
+}
+
+.button:hover {
+	color: #3498db; /* 背景色     */
+	background: #ffffff; /* 文字色     */
+}
