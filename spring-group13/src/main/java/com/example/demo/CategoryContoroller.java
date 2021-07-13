@@ -23,43 +23,39 @@ public class CategoryContoroller {
 
 	@RequestMapping("/addCategory")
 	public ModelAndView addCategory(
-			@RequestParam(name="addCategory") String name,
+			@RequestParam(name = "addCategory") String name,
 			ModelAndView mv) {
 		List<Category> list = categoryRepository.findAll();
 
-		if(name.equals("")) {
+		if (name.equals("")) {
 
-		}else {
-			for(Category categoryList:list) {
-				if(name.equals(categoryList.getName())) {
+		} else {
+			for (Category categoryList : list) {
+				if (name.equals(categoryList.getName())) {
 
-				}else {
+				} else {
 					Category category = new Category(name);
 					categoryRepository.saveAndFlush(category);
 				}
 			}
 		}
 
-		List<Schedule> schedule=scheduleRepository.findAll();
-
+		List<Schedule> schedule = scheduleRepository.findAll();
 
 		session.setAttribute("category", list);
 
-		mv.addObject("schedule",schedule);
+		mv.addObject("schedule", schedule);
 		mv.setViewName("main");
 
 		return mv;
 	}
+
 	@RequestMapping("/deleteSchedule")
 	public ModelAndView delete(
 			@RequestParam("code") Integer code,
-						ModelAndView mv) {
+			ModelAndView mv) {
 
-
-
-			List<Category> category=categoryRepository.findAll();
-
-
+		List<Category> category = categoryRepository.findAll();
 
 		mv.setViewName("delete");
 

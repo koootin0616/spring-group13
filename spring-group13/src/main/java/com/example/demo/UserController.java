@@ -33,8 +33,8 @@ public class UserController {
 		User user = null;
 		Optional<User> detail = userRepository.findById(id);
 
+		List<Schedule> schedule_detail=scheduleRepository.findAll();
 		List<Category> category_detail = categoryRepository.findAll();
-		List<Schedule> schedule_detail = scheduleRepository.findAll();
 
 		if (id.equals("") || password.equals("")) {
 			mv.addObject("message", "IDとパスワードを入力してください");

@@ -27,8 +27,8 @@ public class ScheduleController {
 
 	@PostMapping("/addsche")
 	public ModelAndView add(
-			@RequestParam("user_code")int user_code,
-			@RequestParam("category") String category_name,
+			@RequestParam("usercode")int usercode,
+			@RequestParam("category") String categoryname,
 			@RequestParam("name") String name,
 			@RequestParam("ymd") Date ymd,
 			@RequestParam("jikan") String jikan,
@@ -37,11 +37,11 @@ public class ScheduleController {
 			ModelAndView mv) {
 		Time time = Time.valueOf(jikan+":00");
 		Category category = null;
-		Optional<Category> categoryDetail=categoryRepository.findByName(category_name);
+		Optional<Category> categoryDetail=categoryRepository.findByName(categoryname);
 		category=categoryDetail.get();
 		//登録するエンティティのインスタンスを生成
 
-		Schedule schedule = new Schedule(user_code, category.getCode(), name, ymd, time, importance, contents);
+		Schedule schedule = new Schedule(usercode, category.getCode(), name, ymd, time, importance, contents);
 
 
 		//ItemエンティティをItemテーブルに登録
@@ -58,8 +58,8 @@ public class ScheduleController {
 	@RequestMapping("/updateSchedule")
 	public ModelAndView update(
 			@RequestParam("code") int code,
-			@RequestParam("user_code") int user_code,
-			@RequestParam("category_code") int category_code,
+			@RequestParam("usercode") int usercode,
+			@RequestParam("categorycode") int categorycode,
 			@RequestParam("name") String name,
 			@RequestParam("ymd") Date ymd,
 			@RequestParam("jikan") String jikan,
@@ -67,7 +67,7 @@ public class ScheduleController {
 			@RequestParam("contents") String contents,
 			ModelAndView mv) {
 		Time time = Time.valueOf(jikan+":00");
-		Schedule schedule = new Schedule(code, user_code, category_code, name, ymd, time, importance, contents);
+		Schedule schedule = new Schedule(code, usercode, categorycode, name, ymd, time, importance, contents);
 
 		scheduleRepository.saveAndFlush(schedule);
 
@@ -79,6 +79,19 @@ public class ScheduleController {
 		return mv;
 	}
 
+	@RequestMapping("/delete")
+	public ModelAndView delete(
+			@RequestParam("code")int code,
+			ModelAndView mv) {
 
+		scheduleRepository.deleteById(code);
+
+		List<Schedule> schedule = scheduleRepository.findAll();
+
+		mv.addObject("schedule",schedule);
+		mv.setViewName("main");
+
+		return mv;
+	}
 
 }
