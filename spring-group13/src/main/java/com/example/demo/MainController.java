@@ -71,6 +71,21 @@ public class MainController {
 
 		return mv;
 	}
+	@RequestMapping("/reset")
+	public ModelAndView reset(
+			ModelAndView mv) {
+
+		List<Schedule> schedule=scheduleRepository.findAll();
+
+
+		mv.addObject("schedule",schedule);
+
+		mv.setViewName("main");
+
+
+
+		return mv;
+	}
 
 
 

@@ -55,7 +55,7 @@ public class Schedule {
 		this.importance = importance;
 		this.contents = contents;
 	}
-
+	
 
 
 	public Integer getCode() {

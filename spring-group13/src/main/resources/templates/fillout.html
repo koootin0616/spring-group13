@@ -6,23 +6,9 @@
 <link href="fillout.css" rel="stylesheet">
 </head>
 <body>
+<form action="filloutSchedule">
 <a id="fillout1">
-<select>
-<option></option>
-</select>
-年
-</a>
-<a id="fillout2">
-<select >
-<option></option>
-</select>
-月
-</a>
-<a id="fillout3">
-<select >
-<option></option>
-</select>
-日
+<input type="date" name="ymd" max="9999-12-31" th:value="${schedule.ymd}">
 </a>
 <a id="fillout4">の自己評価</a>
 <a id="fillout10"><input type="submit" value="表示"></a>
@@ -30,24 +16,28 @@
 <tr>
 <th>予定</th><th>時間</th><th>詳細</th><th>カテゴリー</th><th>達成/未達成</th>
 </tr>
-<tr th:each="fill:${list}">
-	<td th:text="${fill.name}"></td>
-	<td th:text="${fill.jikan}"></td>
-	<td th:text="${fill.contents}"></td>
-	<td th:text="${fill.category_code}"></td>
+<tr th:each="schedule:${schedule}">
+	<td th:text="${schedule.name}"></td>
+	<td th:text="${schedule.jikan}"></td>
+	<td th:text="${schedule.contents}"></td>
+	<td th:text="${schedule.category_code}"></td>
 	<td>
-	<input type="radio" name="importance" value="YES">達成
-	<input type="radio" name="importance" value="NO">未達成
+	<input type="radio" name="importance" value="達成" th:checked="${evaluation.per}=='達成'">達成
+	<input type="radio" name="importance" value="未達成" th:checked="${evaluation.per}=='未達成'">未達成
 	</td>
 </table>
 <a id="fillout5">反省点</a>
 <div id="fillout6">
-<textarea name="contents" cols="60" rows="15"></textarea>
+<textarea name="reflection" cols="60" rows="15" th:value="${evaluation.reflection}"></textarea>
 </div>
 <a id="fillout7">改善点</a>
 <div id="fillout8">
-<textarea name="contents" cols="60" rows="15"></textarea>
+<textarea name="improvement" cols="60" rows="15" th:value="${evaluation.improvement}"></textarea>
 </div>
 <a id="fillout9"><input type="submit" value="登録"></a>
+<input type="hidden" name="code" th:value="${schedule.code}">
+<input type="hidden" name="user_code" th:value="${schedule.user_code}">
+<input type="hidden" name="category_code" th:value="${schedule.category_code}">
+</form>
 </body>
 </html>

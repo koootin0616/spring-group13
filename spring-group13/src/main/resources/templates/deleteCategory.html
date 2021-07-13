@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>削除一覧項目</h1>
+
 <table border="1">
 			<tr>
 				<th>予定</th>
@@ -14,13 +15,14 @@
 				<th>詳細</th>
 				<th>削除</th>
 			</tr>
-			<tr th:each="schedule:${session.schedule}">
-				<td th:text="${session.schedule.name}"></td>
-				<td th:text="${session.schedule.jikan}"></td>
-				<td th:text="${session.schedule.importance}"></td>
-				<td th:text="${session.schedule.contents}"></td>
+			<tr th:each="schedule:${schedule}">
+				<td th:text="${schedule.name}"></td>
+				<td th:text="${schedule.jikan}"></td>
+				<td th:text="${schedule.imortance}"></td>
+				<td th:text="${schedule.contents}"></td>
 				<td><input class="button" type="submit" value="削除"></td>
 			</tr>
 		</table>
+
 </body>
 </html>

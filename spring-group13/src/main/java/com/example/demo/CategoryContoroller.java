@@ -25,23 +25,16 @@ public class CategoryContoroller {
 	public ModelAndView addCategory(
 			@RequestParam(name="addCategory") String name,
 			ModelAndView mv) {
-		List<Category> list = categoryRepository.findAll();
 
 		if(name.equals("")) {
 
 		}else {
-			for(Category categoryList:list) {
-				if(name.equals(categoryList.getName())) {
-
-				}else {
-					Category category = new Category(name);
-					categoryRepository.saveAndFlush(category);
-				}
-			}
+			Category category = new Category(name);
+			categoryRepository.saveAndFlush(category);
 		}
 
 		List<Schedule> schedule=scheduleRepository.findAll();
-
+		List<Category> list = categoryRepository.findAll();
 
 		session.setAttribute("category", list);
 
@@ -50,19 +43,19 @@ public class CategoryContoroller {
 
 		return mv;
 	}
-	@RequestMapping("/deleteSchedule")
+	//削除一覧
+	@RequestMapping("/deleteCate")
 	public ModelAndView delete(
-			@RequestParam("code") Integer code,
+			@RequestParam(name="categorycode") int categorycode,
 						ModelAndView mv) {
 
+			List<Category> category = categoryRepository.findAll();
 
 
-			List<Category> category=categoryRepository.findAll();
-
-
-
-		mv.setViewName("delete");
+			mv.addObject("list",category);
+		    mv.setViewName("deleteCategory");
 
 		return mv;
 	}
+
 }
