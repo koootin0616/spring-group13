@@ -25,21 +25,14 @@ public class CategoryContoroller {
 	public ModelAndView addCategory(
 			@RequestParam(name = "addCategory") String name,
 			ModelAndView mv) {
-
-		List<Category> list = categoryRepository.findAll();
-
 		if (name.equals("")) {
 
 		} else {
-			for (Category categoryList : list) {
-				if (name.equals(categoryList.getName())) {
-
-				} else {
-					Category category = new Category(name);
-					categoryRepository.saveAndFlush(category);
-				}
-			}
+			Category category = new Category(name);
+			categoryRepository.saveAndFlush(category);
 		}
+
+		List<Category> list = categoryRepository.findAll();
 
 		List<Schedule> schedule = scheduleRepository.findAll();
 
