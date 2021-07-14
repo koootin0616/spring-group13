@@ -25,16 +25,29 @@ public class CategoryContoroller {
 	public ModelAndView addCategory(
 			@RequestParam(name = "addCategory") String name,
 			ModelAndView mv) {
+		List<Category> list = categoryRepository.findAll();
+		User user = (User)session.getAttribute("userInfo");
+		int count = 0;
+
 		if (name.equals("")) {
 
 		} else {
-			Category category = new Category(name);
-			categoryRepository.saveAndFlush(category);
+			for(Category cate : list) {
+				if(name.equals(cate.getName())) {
+					count = 1;
+				}else {
+
+				}
+			}
+			if(count==0) {
+				Category category = new Category(name);
+				categoryRepository.saveAndFlush(category);
+			}
 		}
 
-		List<Category> list = categoryRepository.findAll();
+		list = categoryRepository.findAll();
 
-		List<Schedule> schedule = scheduleRepository.findAll();
+		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
 
 		session.setAttribute("category", list);
 
@@ -74,8 +87,9 @@ public class CategoryContoroller {
 	@RequestMapping("/mainreturn")
 	public ModelAndView mainreturn(
 			ModelAndView mv) {
+		User user = (User)session.getAttribute("userInfo");
 
-		List<Schedule> list = scheduleRepository.findAll();
+		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
 
 		mv.addObject("schedule",list);
 		mv.setViewName("main");

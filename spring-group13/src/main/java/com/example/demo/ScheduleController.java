@@ -27,7 +27,6 @@ public class ScheduleController {
 
 	@PostMapping("/addsche")
 	public ModelAndView add(
-			@RequestParam("usercode")int usercode,
 			@RequestParam("category") String categoryname,
 			@RequestParam("name") String name,
 			@RequestParam("ymd") Date ymd,
@@ -35,19 +34,20 @@ public class ScheduleController {
 			@RequestParam("importance") String importance,
 			@RequestParam("contents") String contents,
 			ModelAndView mv) {
+		User user= (User)session.getAttribute("userInfo");
 		Time time = Time.valueOf(jikan+":00");
 		Category category = null;
 		Optional<Category> categoryDetail=categoryRepository.findByName(categoryname);
 		category=categoryDetail.get();
 		//登録するエンティティのインスタンスを生成
 
-		Schedule schedule = new Schedule(usercode, category.getCode(), name, ymd, time, importance, contents);
+		Schedule schedule = new Schedule(user.getCode(), category.getCode(), name, ymd, time, importance, contents);
 
 
 		//ItemエンティティをItemテーブルに登録
 		scheduleRepository.saveAndFlush(schedule);
 
-		List<Schedule>list= scheduleRepository.findAll();
+		List<Schedule>list= scheduleRepository.findByUsercode(user.getCode());
 
 		mv.addObject("schedule",list);
 		mv.setViewName("main");
@@ -58,7 +58,6 @@ public class ScheduleController {
 	@RequestMapping("/updateSchedule")
 	public ModelAndView update(
 			@RequestParam("code") int code,
-			@RequestParam("usercode") int usercode,
 			@RequestParam("categorycode") int categorycode,
 			@RequestParam("name") String name,
 			@RequestParam("ymd") Date ymd,
@@ -66,12 +65,13 @@ public class ScheduleController {
 			@RequestParam("importance") String importance,
 			@RequestParam("contents") String contents,
 			ModelAndView mv) {
+		User user= (User)session.getAttribute("userInfo");
 		Time time = Time.valueOf(jikan+":00");
-		Schedule schedule = new Schedule(code, usercode, categorycode, name, ymd, time, importance, contents);
+		Schedule schedule = new Schedule(code, user.getCode(), categorycode, name, ymd, time, importance, contents);
 
 		scheduleRepository.saveAndFlush(schedule);
 
-		List<Schedule>list= scheduleRepository.findAll();
+		List<Schedule>list= scheduleRepository.findByUsercode(user.getCode());
 
 		mv.addObject("schedule",list);
 		 mv.setViewName("main");
@@ -83,10 +83,10 @@ public class ScheduleController {
 	public ModelAndView delete(
 			@RequestParam("code")int code,
 			ModelAndView mv) {
-
+		User user= (User)session.getAttribute("userInfo");
 		scheduleRepository.deleteById(code);
 
-		List<Schedule> schedule = scheduleRepository.findAll();
+		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
 
 		mv.addObject("schedule",schedule);
 		mv.setViewName("main");

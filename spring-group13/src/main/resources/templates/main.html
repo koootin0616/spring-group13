@@ -41,13 +41,14 @@
 		<a href="/logout" class="hr">ログアウト</a>
 	</div>
 	<div id="week">
-		<a href="/todayschedule" class="hr">本日の予定</a><br>
-		<a href="/weekschedule" class="hr">1週間の予定</a>
+		<a href="/today" class="hr">本日の予定</a><br>
+		<a href="/tomorrow" class="hr">明日の予定</a><br>
+		<a href="/week" class="hr">1週間の予定</a>
 	</div>
 	<div id="headline">
 		<h1>予定表</h1>
 	</div>
-		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"><input type="hidden" name="usercode" th:value="${session.userInfo.code}"></form>
+		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
 		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
 		<form action="/ev" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div id="table">

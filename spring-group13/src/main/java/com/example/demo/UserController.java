@@ -33,7 +33,6 @@ public class UserController {
 		User user = null;
 		Optional<User> detail = userRepository.findById(id);
 
-		List<Schedule> schedule_detail=scheduleRepository.findAll();
 		List<Category> category_detail = categoryRepository.findAll();
 
 		if (id.equals("") || password.equals("")) {
@@ -54,6 +53,7 @@ public class UserController {
 			mv.addObject("message", "入力されたパスワードは間違えています");
 			mv.setViewName("login");
 		} else {
+			List<Schedule> schedule_detail = scheduleRepository.findByUsercode(user.getCode());
 			session.setAttribute("userInfo", user);
 			session.setAttribute("category",category_detail);
 			mv.addObject("schedule",schedule_detail);
@@ -84,6 +84,7 @@ public class UserController {
 
 		User user = new User(id, password);
 		userRepository.saveAndFlush(user);
+		session.setAttribute("userInfo", user);
 
 		mv.addObject("message","登録が完了しました");
 		mv.setViewName("main");

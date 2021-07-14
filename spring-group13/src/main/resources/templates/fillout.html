@@ -22,22 +22,20 @@
 	<td th:text="${schedule.contents}"></td>
 	<td th:text="${schedule.categorycode}"></td>
 	<td>
-	<input type="radio" name="importance" value="達成" th:checked="${evaluation.per}=='達成'">達成
-	<input type="radio" name="importance" value="未達成" th:checked="${evaluation.per}=='未達成'">未達成
+	<input type="radio" name="importance" value="達成">達成
+	<input type="radio" name="importance" value="未達成">未達成
 	</td>
 </table>
 <a id="fillout5">反省点</a>
 <div id="fillout6">
-<textarea name="reflection" cols="60" rows="15" th:value="${evaluation.reflection}"></textarea>
+<textarea name="reflection" cols="60" rows="15"></textarea>
 </div>
 <a id="fillout7">改善点</a>
 <div id="fillout8">
-<textarea name="improvement" cols="60" rows="15" th:value="${evaluation.improvement}"></textarea>
+<textarea name="improvement" cols="60" rows="15"></textarea>
 </div>
 <a id="fillout9"><input type="submit" value="登録"></a>
-<input type="hidden" name="code" th:value="${schedule.code}">
 <input type="hidden" name="user_code" th:value="${schedule.usercode}">
-<input type="hidden" name="category_code" th:value="${schedule.categorycode}">
 </form>
 </body>
 </html>

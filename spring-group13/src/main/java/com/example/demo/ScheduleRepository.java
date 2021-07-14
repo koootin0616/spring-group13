@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ScheduleRepository extends JpaRepository<Schedule,Integer> {
+	List<Schedule> findByUsercode(int usercode);
 	List<Schedule> findByCategorycode(int categorycode);
 }

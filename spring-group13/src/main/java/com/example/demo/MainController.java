@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
+	@Autowired
+	HttpSession session;
+
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
@@ -32,12 +37,10 @@ public class MainController {
 
 	@RequestMapping("/addsche")
 	public ModelAndView addschedule(
-			@RequestParam("usercode") int usercode,
 			ModelAndView mv) {
 
 		List<Category> category = categoryRepository.findAll();
 
-		mv.addObject("usercode", usercode);
 		mv.addObject("category", category);
 
 		mv.setViewName("addSchedule");
@@ -93,9 +96,10 @@ public class MainController {
 		return mv;
 	}
 
-	@RequestMapping("/weekschedule")
+	@RequestMapping("/week")
 	public ModelAndView week(ModelAndView mv) {
-		List<Schedule> schedule = scheduleRepository.findAll();
+		User user= (User)session.getAttribute("userInfo");
+		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
 		LocalDate today = LocalDate.now();
 		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date date = null;
@@ -119,10 +123,10 @@ public class MainController {
 		return mv;
 	}
 
-	@RequestMapping("/todayschedule")
+	@RequestMapping("/today")
 	public ModelAndView today(ModelAndView mv) {
-
-		List<Schedule> schedule = scheduleRepository.findAll();
+		User user= (User)session.getAttribute("userInfo");
+		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
 		LocalDate today = LocalDate.now();
 		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date date = null;
@@ -145,6 +149,30 @@ public class MainController {
 		return mv;
 	}
 
+	@RequestMapping("/tomorrow")
+	public ModelAndView tomorrow(ModelAndView mv) {
+		User user= (User)session.getAttribute("userInfo");
+		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date date = null;
+		long datetime_now = now.getTime();
+		long datetime_date = 0;
+		long one_date_time = 1000 * 60 * 60 * 24;
 
+		List<Schedule> list = new ArrayList<>();
+
+		for (Schedule sche : schedule) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - datetime_now) / one_date_time == 1) {
+				list.add(sche);
+			}
+		}
+		mv.addObject("schedule", list);
+		mv.setViewName("main");
+
+		return mv;
+	}
 
 }
