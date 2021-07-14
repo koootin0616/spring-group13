@@ -93,23 +93,5 @@ public class ScheduleController {
 
 		return mv;
 	}
-	@RequestMapping("/fillmain")
-	public ModelAndView fillmain(
-			@RequestParam("ymd") Date ymd,
-			ModelAndView mv) {
-
-		User user = (User)session.getAttribute("userInfo");
-
-		List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),ymd);
-
-
-
-		mv.addObject("schedule",list);
-
-
-		mv.setViewName("fillout");
-
-		return mv;
-	}
 
 }

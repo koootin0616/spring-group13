@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>todoリスト</title>
-<link href="evaluation1st.css" rel="stylesheet">
+<link href="evaluation.css" rel="stylesheet">
 </head>
 <body>
 	<div id="sunshine"></div>
@@ -29,7 +29,10 @@
 		</svg>
 
 	</div>
+	<form action="evaluationmain">
 	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31"></a>
+	<div id="disp"><input type="submit"value="表示"></div>
+	</form>
 	<a id="fillout4">の自己評価</a>
 	<a id="fillout5">反省点</a>
 	<div id="fillout6">
