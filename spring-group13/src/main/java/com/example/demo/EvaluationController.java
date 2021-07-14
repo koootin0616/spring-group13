@@ -20,17 +20,17 @@ public class EvaluationController {
 	@Autowired
 	private EvaluationRepository evaluationRepository;
 
-	@RequestMapping("/filloutSchedule")
+	@RequestMapping("/fillo")
 	public ModelAndView update(
 			@RequestParam("code") int code,
 			@RequestParam("ymd") Date ymd,
-			@RequestParam("user_code") int user_code,
+			@RequestParam("user_code") int usercode,
 			@RequestParam("per") int per,
 			@RequestParam("reflection") String reflection,
 			@RequestParam("improvement") String improvement,
 			ModelAndView mv) {
 
-		Evaluation evaluation = new Evaluation(code, ymd, user_code, per, reflection,improvement);
+		Evaluation evaluation = new Evaluation(code, ymd, usercode, per, reflection,improvement);
 
 		evaluationRepository.saveAndFlush(evaluation);
 

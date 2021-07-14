@@ -6,9 +6,9 @@
 <link href="fillout.css" rel="stylesheet">
 </head>
 <body>
-<form action="filloutSchedule">
+
 <a id="fillout1">
-<input type="date" name="ymd" max="9999-12-31" th:value="${schedule.ymd}">
+<input type="date" name="ymd" max="9999-12-31" >
 </a>
 <a id="fillout4">の自己評価</a>
 <a id="fillout10"><input type="submit" value="表示"></a>
@@ -35,7 +35,5 @@
 <textarea name="improvement" cols="60" rows="15"></textarea>
 </div>
 <a id="fillout9"><input type="submit" value="登録"></a>
-<input type="hidden" name="user_code" th:value="${schedule.usercode}">
-</form>
 </body>
 </html>
