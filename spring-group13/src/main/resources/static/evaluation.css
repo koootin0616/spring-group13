@@ -149,14 +149,6 @@ body{
 
 }
 
-#fillout4  {
-	position: absolute;
-	top: 12%;
-	left: 25%;
-	font-size:26px;
-	font-weight:  bold;
-
-}
 #fillout5  {
 	position: absolute;
 	top: 62%;
@@ -192,7 +184,7 @@ body{
 #fillout9{
 	position: absolute;
 	top: 15%;
-	left: 76%;
+	left: 80%;
 	font-size:20px;
 	font-weight:  bold;
 
@@ -204,4 +196,10 @@ body{
 	font-size:20px;
 	font-weight:  bold;
 
+}
+
+table{
+	background:white;
+	color:black;
+	width:300px;
 }

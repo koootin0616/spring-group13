@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,10 +33,8 @@ public class EvaluationController {
 
 		evaluationRepository.saveAndFlush(evaluation);
 
-		List<Evaluation>list= evaluationRepository.findAll();
 
-		mv.addObject("schedule",list);
-		mv.setViewName("evaluation");
+		mv.setViewName("main");
 
 		return mv;
 	}

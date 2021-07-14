@@ -15,7 +15,7 @@ public class Evaluation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer code;
 	private Date ymd;
-	private int user_code;
+	private int usercode;
 	private int per;
 	private String reflection;
 	private String improvement;
@@ -26,10 +26,10 @@ public class Evaluation {
 	}
 
 
-	public Evaluation(Integer code, Date ymd, int user_code, int per, String reflection, String improvement) {
+	public Evaluation(Integer code, Date ymd, int usercode, int per, String reflection, String improvement) {
 		this.code = code;
 		this.ymd = ymd;
-		this.user_code = user_code;
+		this.usercode = usercode;
 		this.per = per;
 		this.reflection = reflection;
 		this.improvement = improvement;
@@ -56,13 +56,13 @@ public class Evaluation {
 	}
 
 
-	public int getUser_code() {
-		return user_code;
+	public int getUsercode() {
+		return usercode;
 	}
 
 
-	public void setUser_code(int user_code) {
-		this.user_code = user_code;
+	public void setUser_code(int usercode) {
+		this.usercode = usercode;
 	}
 
 

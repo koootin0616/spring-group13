@@ -11,4 +11,5 @@ public interface ScheduleRepository extends JpaRepository<Schedule,Integer> {
 	List<Schedule> findByUsercode(int usercode);
 	List<Schedule> findByCategorycode(int categorycode);
 	List<Schedule> findByUsercodeAndYmd(int usercode,Date ymd);
+	List<Schedule> findByUsercodeAndCategorycode(int usercode, int categorycode);
 }

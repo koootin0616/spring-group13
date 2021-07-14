@@ -89,7 +89,10 @@ public class CategoryContoroller {
 			ModelAndView mv) {
 		User user = (User)session.getAttribute("userInfo");
 
+		List<Category> category = categoryRepository.findAll();
 		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+
+		session.setAttribute("category", category);
 
 		mv.addObject("schedule",list);
 		mv.setViewName("main");

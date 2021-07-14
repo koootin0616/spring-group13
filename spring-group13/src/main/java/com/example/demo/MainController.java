@@ -82,12 +82,13 @@ public class MainController {
 	public ModelAndView search(
 			@RequestParam(name = "categoryname") String name,
 			ModelAndView mv) {
+		User user= (User)session.getAttribute("userInfo");
 		Category category = null;
 		Optional<Category> detail = categoryRepository.findByName(name);
 		if (detail.isEmpty() == false) { //レコードがあれば
 			category = detail.get(); //レコードを取得する
 		}
-		List<Schedule> schedule = scheduleRepository.findByCategorycode(category.getCode());
+		List<Schedule> schedule = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(), category.getCode());
 
 		mv.addObject("schedule", schedule);
 
