@@ -73,6 +73,14 @@
 	font-weight:  bold;
 	color:white;
 }
+#per{
+	position: absolute;
+	top:17%;
+	left: 78%;
+	font-size:20px;
+	color:white;
+
+}
 table {
 width: 650px;
 height: 40px;

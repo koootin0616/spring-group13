@@ -25,9 +25,7 @@ public class Evaluation {
 
 	}
 
-
-	public Evaluation(Integer code, Date ymd, int usercode, int per, String reflection, String improvement) {
-		this.code = code;
+	public Evaluation(Date ymd, int usercode, int per, String reflection, String improvement) {
 		this.ymd = ymd;
 		this.usercode = usercode;
 		this.per = per;
@@ -60,8 +58,7 @@ public class Evaluation {
 		return usercode;
 	}
 
-
-	public void setUser_code(int usercode) {
+	public void setUsercode(int usercode) {
 		this.usercode = usercode;
 	}
 
