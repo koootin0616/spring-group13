@@ -107,7 +107,7 @@ p span::after {
 p span::before {
   z-index: 1;
   color: rgba(0,0,0,0.2);
-  transform: scale(1.1,1) skew(0deg,20deg);
+  transform: scale(1.1,1) skew(0deg,5deg);
 
 }
 
@@ -119,9 +119,9 @@ p span::after {
   transform: rotateY(-40deg);
 }
 
-p span:hover::before { transform: scale(1.1,1) skew(0deg,5deg); }
+p span:hover::before { transform: scale(1.1,1) skew(0deg,20deg); }
 
-p span:hover::after { transform: rotateY(-10deg); }
+p span:hover::after { transform: rotateY(10deg); }
 
 p span + span { margin-left: .3em; }
 
