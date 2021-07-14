@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -46,15 +47,15 @@ public class EvaluationController {
 			@RequestParam("ymd") Date ymd,
 			ModelAndView mv) {
 
-//		User user = (User)session.getAttribute("userInfo");
-//
-//		List<Evaluation> list = evaluationRepository.findByUsercodeAndYmd(user.getCode(),ymd);
+		User user = (User)session.getAttribute("userInfo");
+
+		Optional<Evaluation>detail = evaluationRepository.findByUsercodeAndYmd(user.getCode(),ymd);
 
 
 
 
 		Evaluation evaluation = null;
-		Optional<Evaluation> detail = evaluationRepository.findByYmd(ymd);
+
 
 		if (detail.isEmpty()) {
 			mv.addObject("message", "入力されたIDは登録されていません");

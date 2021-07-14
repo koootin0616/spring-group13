@@ -36,10 +36,10 @@
 	<a id="fillout4">の自己評価</a>
 	<a id="fillout5">反省点</a>
 	<div id="fillout6">
-		<textarea name="reflection" cols="60" rows="15"></textarea>
+		<textarea name="reflection" cols="60" rows="15" th:text="${list.reflection}"></textarea>
 	</div>
 	<a id="fillout7">改善点</a>
-	<a id="fillout8"> <textarea name="improvement" cols="60" rows="15"></textarea>
+	<a id="fillout8"> <textarea name="improvement" cols="60" rows="15" th:text="${list.improvement}"></textarea>
 	</a>
 	<a id="fillout9">未達成項目</a>
 	<a id="fillout10"> <textarea name="contents" cols="30" rows="20"></textarea>
