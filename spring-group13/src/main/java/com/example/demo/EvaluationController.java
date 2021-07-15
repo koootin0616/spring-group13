@@ -25,7 +25,7 @@ public class EvaluationController {
 
 	@RequestMapping("/fillo")
 	public ModelAndView update(
-			@RequestParam(name = "ymd", defaultValue="") Date ymd,
+			@RequestParam(name ="ymd") Date ymd,
 			@RequestParam("achieved") int achieved,
 			@RequestParam("notachieved") int notachieved,
 			@RequestParam("reflection") String reflection,
@@ -35,7 +35,9 @@ public class EvaluationController {
 		User user = (User)session.getAttribute("userInfo");
 		List<Evaluation> eva_list=evaluationRepository.findAll();
 		for(Evaluation detail:eva_list) {
-			if(ymd.equals("")) {
+
+
+			if(ymd.equals("null")) {
 				mv.addObject("message","日付を選択して下さい");
 			}
 			if(ymd.equals(detail.getYmd())){
@@ -71,6 +73,7 @@ public class EvaluationController {
 			mv.addObject("message", "その日付の自己評価は登録されていません");
 			mv.setViewName("evaluation1st");
 			return mv;
+
 		} else {
 			evaluation = detail.get();
 		}

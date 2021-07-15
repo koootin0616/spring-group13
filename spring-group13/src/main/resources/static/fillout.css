@@ -73,6 +73,14 @@
 	font-weight:  bold;
 	color:white;
 }
+#main{
+	position: absolute;
+	top: 86%;
+	left: 88%;
+	font-size:20px;
+	font-weight:  bold;
+	color:white;
+}
 #per{
 	position: absolute;
 	top:17%;
