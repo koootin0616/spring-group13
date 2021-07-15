@@ -91,7 +91,11 @@ public class MainController {
 		List<Schedule> schedule = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(), category.getCode());
 
 		mv.addObject("schedule", schedule);
-
+		session.setAttribute("categoryCounter", 10);
+		session.setAttribute("todayCounter", 1);
+		session.setAttribute("tomorrowCounter", 1);
+		session.setAttribute("weekCounter", 1);
+		session.setAttribute("categorySortCode",category.getCode());
 		mv.setViewName("main");
 
 		return mv;
@@ -114,10 +118,15 @@ public class MainController {
 			date = sche.getYmd();
 			datetime_date = date.getTime();
 			if ((datetime_date - datetime_now) / one_date_time < 7
-					&& (datetime_date - datetime_now) / one_date_time >= 0) {
+					&& (datetime_date - datetime_now) >= 0) {
 				list.add(sche);
 			}
 		}
+		session.setAttribute("categoryCounter", 1);
+		session.setAttribute("todayCounter", 1);
+		session.setAttribute("tomorrowCounter", 1);
+		session.setAttribute("weekCounter", 10);
+		session.setAttribute("now", datetime_now);
 		mv.addObject("schedule", list);
 		mv.setViewName("main");
 
@@ -143,7 +152,11 @@ public class MainController {
 				list.add(sche);
 			}
 		}
-
+		session.setAttribute("categoryCounter", 1);
+		session.setAttribute("todayCounter", 10);
+		session.setAttribute("tomorrowCounter", 1);
+		session.setAttribute("weekCounter", 1);
+		session.setAttribute("now", datetime_now);
 		mv.addObject("schedule",list);
 		mv.setViewName("main");
 
@@ -170,6 +183,11 @@ public class MainController {
 				list.add(sche);
 			}
 		}
+		session.setAttribute("categoryCounter", 1);
+		session.setAttribute("todayCounter", 1);
+		session.setAttribute("tomorrowCounter", 10);
+		session.setAttribute("weekCounter", 1);
+		session.setAttribute("now", datetime_now);
 		mv.addObject("schedule", list);
 		mv.setViewName("main");
 

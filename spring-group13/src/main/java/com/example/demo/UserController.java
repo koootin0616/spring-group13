@@ -56,6 +56,10 @@ public class UserController {
 			List<Schedule> schedule_detail = scheduleRepository.findByUsercode(user.getCode());
 			session.setAttribute("userInfo", user);
 			session.setAttribute("category",category_detail);
+			session.setAttribute("categoryCounter", 1);
+			session.setAttribute("todayCounter", 1);
+			session.setAttribute("tomorrowCounter", 1);
+			session.setAttribute("weekCounter", 1);
 			mv.addObject("schedule",schedule_detail);
 			mv.setViewName("main");
 		}
@@ -85,7 +89,10 @@ public class UserController {
 		User user = new User(id, password);
 		userRepository.saveAndFlush(user);
 		session.setAttribute("userInfo", user);
-
+		session.setAttribute("categoryCounter", 1);
+		session.setAttribute("todayCounter", 1);
+		session.setAttribute("tomorrowCounter", 1);
+		session.setAttribute("weekCounter", 1);
 		mv.addObject("message","登録が完了しました");
 		mv.setViewName("main");
 		return mv;
