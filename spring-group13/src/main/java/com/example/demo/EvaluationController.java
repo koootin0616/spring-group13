@@ -57,7 +57,7 @@ public class EvaluationController {
 		Evaluation evaluation = null;
 
 		if (detail.isEmpty()) {
-			mv.addObject("message", "入力されたIDは登録されていません");
+			mv.addObject("message", "その日付の自己評価は登録されていません");
 			mv.setViewName("evaluation1st");
 			return mv;
 		} else {

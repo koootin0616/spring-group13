@@ -5,6 +5,34 @@
 <title>todoリスト</title>
 <link href="evaluation.css" rel="stylesheet">
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js" type="text/javascript"></script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+// ▼グラフの中身
+var pieData = [
+   {
+      value: /*[[${list.achieved}]]*/,            // 値
+      color:"#F7464A",       // 色
+      highlight: "#FF5A5E",  // マウスが載った際の色
+      label: "達成"        // ラベル
+   },
+   {
+      value: /*[[${list.notachieved}]]*/,
+      color: "#41C44E",
+      highlight: "#6CD173",
+      label: "未達成"
+   }
+
+];
+
+// ▼上記のグラフを描画するための記述
+window.onload = function(){
+   var ctx = document.getElementById("chart_div").getContext("2d");
+   window.myPie = new Chart(ctx).Pie(pieData);
+};
+/*]]>*/
+</script>
+
 <body>
 	<div id="sunshine"></div>
 	<div class="clouds">
@@ -29,7 +57,9 @@
 		</svg>
 
 	</div>
-	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}">の自己評価</a>
+	<!--  グラフの描画エリア -->
+	<canvas id="chart_div" style="width: 300px; height: 350px"></canvas>
+	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}">　の自己評価</a>
 	<div id="disp"><input type="submit"value="表示"></div>
 	<a id="fillout5">反省点</a>
 	<div id="fillout6">
