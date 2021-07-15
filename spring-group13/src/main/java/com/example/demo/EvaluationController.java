@@ -58,7 +58,7 @@ public class EvaluationController {
 
 		if (detail.isEmpty()) {
 			mv.addObject("message", "入力されたIDは登録されていません");
-			mv.setViewName("login");
+			mv.setViewName("evaluation1st");
 			return mv;
 		} else {
 			evaluation = detail.get();

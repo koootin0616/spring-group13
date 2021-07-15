@@ -29,14 +29,14 @@
 		</svg>
 
 	</div>
-	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}">　の自己評価</a>
+	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}">の自己評価</a>
 	<div id="disp"><input type="submit"value="表示"></div>
 	<a id="fillout5">反省点</a>
 	<div id="fillout6">
 		<textarea name="reflection" cols="60" rows="15" th:text="${list.reflection}"></textarea>
 	</div>
 	<a id="fillout7">改善点</a>
-	<a id="fillout8"> <textarea name="improvement" cols="60" rows="15" th:text="${list.improvement}"></textarea>
+	<a id="fillout8"><textarea name="improvement" cols="60" rows="15" th:text="${list.improvement}"></textarea>
 	</a>
 	<a id="fillout9">予定</a>
 	<div id="fillout10">
@@ -47,7 +47,7 @@
 			</tr>
 			<tr th:each="schedule:${schedule}">
 				<td th:text="${schedule.name}"></td>
-				<td th:text="${schedule.jikan}></td>
+				<td th:text="${schedule.jikan}"></td>
 			</tr>
 		</table>
 	</div>
