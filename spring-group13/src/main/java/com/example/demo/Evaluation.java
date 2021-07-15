@@ -16,6 +16,8 @@ public class Evaluation {
 	private Integer code;
 	private Date ymd;
 	private int usercode;
+	private int achieved;
+	private int notachieved;
 	private int per;
 	private String reflection;
 	private String improvement;
@@ -25,9 +27,13 @@ public class Evaluation {
 
 	}
 
-	public Evaluation(Date ymd, int usercode, int per, String reflection, String improvement) {
+
+	public Evaluation(Date ymd, int usercode, int achieved, int notachieved, int per, String reflection,
+			String improvement) {
 		this.ymd = ymd;
 		this.usercode = usercode;
+		this.achieved = achieved;
+		this.notachieved = notachieved;
 		this.per = per;
 		this.reflection = reflection;
 		this.improvement = improvement;
@@ -58,8 +64,29 @@ public class Evaluation {
 		return usercode;
 	}
 
+
 	public void setUsercode(int usercode) {
 		this.usercode = usercode;
+	}
+
+
+	public int getAchieved() {
+		return achieved;
+	}
+
+
+	public void setAchieved(int achieved) {
+		this.achieved = achieved;
+	}
+
+
+	public int getNotachieved() {
+		return notachieved;
+	}
+
+
+	public void setNotachieved(int notachieved) {
+		this.notachieved = notachieved;
 	}
 
 

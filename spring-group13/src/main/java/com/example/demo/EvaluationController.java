@@ -26,13 +26,15 @@ public class EvaluationController {
 	@RequestMapping("/fillo")
 	public ModelAndView update(
 			@RequestParam("ymd") Date ymd,
-			@RequestParam("per") int per,
+			@RequestParam("achieved") int achieved,
+			@RequestParam("notachieved") int notachieved,
 			@RequestParam("reflection") String reflection,
 			@RequestParam("improvement") String improvement,
 			ModelAndView mv) {
+		int per = achieved / (achieved + notachieved);
 		User user = (User)session.getAttribute("userInfo");
 
-		Evaluation evaluation = new Evaluation( ymd,user.getCode(),per, reflection,improvement);
+		Evaluation evaluation = new Evaluation(ymd, user.getCode(), achieved, notachieved, per, reflection,improvement);
 
 		evaluationRepository.saveAndFlush(evaluation);
 
@@ -51,7 +53,7 @@ public class EvaluationController {
 		User user = (User)session.getAttribute("userInfo");
 
 		Optional<Evaluation>detail = evaluationRepository.findByUsercodeAndYmd(user.getCode(),ymd);
-
+		List<Schedule>list=scheduleRepository.findByUsercodeAndYmd(user.getCode(), ymd);
 		Evaluation evaluation = null;
 
 		if (detail.isEmpty()) {
@@ -63,7 +65,7 @@ public class EvaluationController {
 		}
 
 		mv.addObject("list",evaluation);
-
+		mv.addObject("schedule",list);
 		mv.addObject("ymd",ymd);
 		mv.setViewName("evaluation");
 
