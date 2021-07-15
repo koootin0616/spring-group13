@@ -140,6 +140,12 @@ body{
   }
 }
 
+#chart_div{
+	position: absolute;
+	top: 20%;
+	left: 38%;
+}
+
 #fillout1  {
 	position: absolute;
 	top: 11.5%;
