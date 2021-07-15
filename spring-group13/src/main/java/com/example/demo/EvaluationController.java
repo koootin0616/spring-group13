@@ -25,20 +25,31 @@ public class EvaluationController {
 
 	@RequestMapping("/fillo")
 	public ModelAndView update(
-			@RequestParam("ymd") Date ymd,
+			@RequestParam(name = "ymd", defaultValue="") Date ymd,
 			@RequestParam("achieved") int achieved,
 			@RequestParam("notachieved") int notachieved,
 			@RequestParam("reflection") String reflection,
 			@RequestParam("improvement") String improvement,
 			ModelAndView mv) {
-		int per = achieved / (achieved + notachieved);
+		int per = achieved * 100 / (achieved + notachieved);
 		User user = (User)session.getAttribute("userInfo");
+		List<Evaluation> eva_list=evaluationRepository.findAll();
+		for(Evaluation detail:eva_list) {
+			if(ymd.equals("")) {
+				mv.addObject("message","日付を選択して下さい");
+			}
+			if(ymd.equals(detail.getYmd())){
+				mv.addObject("message","その日付の自己評価は既に登録されています");
+			}else {
+				Evaluation evaluation = new Evaluation(ymd, user.getCode(), achieved, notachieved, per, reflection,improvement);
 
-		Evaluation evaluation = new Evaluation(ymd, user.getCode(), achieved, notachieved, per, reflection,improvement);
+				evaluationRepository.saveAndFlush(evaluation);
+				mv.addObject("message","自己評価を登録しました");
+			}
+		}
+		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
 
-		evaluationRepository.saveAndFlush(evaluation);
-
-
+		mv.addObject("schedule",list);
 		mv.setViewName("main");
 
 

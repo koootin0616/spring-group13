@@ -6,12 +6,13 @@
 <link href="fillout.css" rel="stylesheet">
 </head>
 <body>
-<form action="fillo" method="post">
+<form action="fillmain">
 <a id="fillout1">
 <input type="date" name="ymd" max="9999-12-31"th:value="${ymd}" >
 </a>
 <a id="fillout4">の自己評価</a>
 <a id="fillout10"><input type="submit" value="表示"></a>
+</form>
 <table border="1" id="fillout11">
 <tr>
 <th>予定</th><th>時間</th><th>詳細</th>
@@ -22,6 +23,8 @@
 	<td th:text="${schedule.contents}"></td>
 	</tr>
 </table>
+<form action="fillo" method="post">
+<input type="hidden" name="ymd" th:value="${ymd}">
 <div id="per">
 <a>達成数</a><br>
 <input type="text" name="achieved"><br>

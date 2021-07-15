@@ -154,9 +154,18 @@ body{
 	font-weight:  bold;
 
 }
+
+#message{
+	position: absolute;
+	top: 12.5%;
+	left: 40%;
+	color:red;
+	font-weight:  bold;
+}
+
 #disp  {
 	position: absolute;
-	top: 11.5%;
+	top: 11%;
 	left: 35%;
 	font-size:26px;
 	font-weight:  bold;
@@ -210,6 +219,12 @@ body{
 	font-size:20px;
 	font-weight:  bold;
 
+}
+
+.contents{
+	background:white;
+	width:450px;
+	height:200px;
 }
 
 table{

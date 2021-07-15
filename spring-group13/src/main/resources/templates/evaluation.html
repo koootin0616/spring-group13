@@ -59,8 +59,10 @@ window.onload = function(){
 	</div>
 	<!--  グラフの描画エリア -->
 	<canvas id="chart_div" style="width: 300px; height: 350px"></canvas>
-	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}">　の自己評価</a>
+	<form action="evaluationmain">
+	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}"> の自己評価</a>
 	<div id="disp"><input type="submit"value="表示"></div>
+	</form>
 	<a id="fillout5">反省点</a>
 	<div id="fillout6">
 		<textarea name="reflection" cols="60" rows="15" th:text="${list.reflection}"></textarea>
