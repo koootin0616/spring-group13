@@ -46,7 +46,6 @@ public class Schedule {
 
 	public Schedule(int usercode, int categorycode, String name, Date ymd, Time jikan, String importance,
 			String contents) {
-		super();
 		this.usercode = usercode;
 		this.categorycode = categorycode;
 		this.name = name;

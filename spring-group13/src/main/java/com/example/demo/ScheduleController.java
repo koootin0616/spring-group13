@@ -30,11 +30,20 @@ public class ScheduleController {
 	public ModelAndView add(
 			@RequestParam("category") String categoryname,
 			@RequestParam("name") String name,
-			@RequestParam("ymd") Date ymd,
+			@RequestParam("ymd") String ymd,
 			@RequestParam("jikan") String jikan,
 			@RequestParam("importance") String importance,
 			@RequestParam("contents") String contents,
 			ModelAndView mv) {
+		long miliseconds = System.currentTimeMillis();
+		Date date = new Date(miliseconds);
+		if (categoryname.equals("") || name.equals("") || ymd.equals("") || jikan.equals("") || importance.equals("")
+				|| contents.equals("")) {
+			mv.addObject("message", "未記入項目があります");
+			mv.setViewName("addSchedule");
+			return mv;
+		}
+		date = Date.valueOf(ymd);
 		User user = (User) session.getAttribute("userInfo");
 		Time time = Time.valueOf(jikan + ":00");
 		Category category = null;
@@ -42,7 +51,8 @@ public class ScheduleController {
 		category = categoryDetail.get();
 		//登録するエンティティのインスタンスを生成
 
-		Schedule schedule = new Schedule(user.getCode(), category.getCode(), name, ymd, time, importance, contents);
+		Schedule schedule = new Schedule(user.getCode(), category.getCode(), name, date, time, importance,
+				contents);
 
 		//ItemエンティティをItemテーブルに登録
 		scheduleRepository.saveAndFlush(schedule);
@@ -58,16 +68,28 @@ public class ScheduleController {
 	@RequestMapping("/updateSchedule")
 	public ModelAndView update(
 			@RequestParam("code") int code,
-			@RequestParam("categorycode") int categorycode,
+			@RequestParam(name = "categorycode", defaultValue="0") int categorycode,
 			@RequestParam("name") String name,
-			@RequestParam("ymd") Date ymd,
+			@RequestParam("ymd") String ymd,
 			@RequestParam("jikan") String jikan,
 			@RequestParam("importance") String importance,
 			@RequestParam("contents") String contents,
 			ModelAndView mv) {
+		long miliseconds = System.currentTimeMillis();
+		Date date = new Date(miliseconds);
+		date = Date.valueOf(ymd);
+		Time time = Time.valueOf(jikan);
+		Optional<Schedule> detail= scheduleRepository.findById(code);
+		Schedule schedule = detail.get();
+		if (schedule.getCategorycode()==categorycode&&schedule.getName().equals(name)&&schedule.getYmd().equals(date)&&schedule.getJikan().equals(time)&&schedule.getImportance().equals(importance)&&schedule.getContents().equals(contents)) {
+			mv.addObject("message", "変更事項がありません");
+			mv.addObject("schedule", schedule);
+			mv.setViewName("update");
+			return mv;
+		}
+		time = Time.valueOf(jikan+":00");
 		User user = (User) session.getAttribute("userInfo");
-		Time time = Time.valueOf(jikan + ":00");
-		Schedule schedule = new Schedule(code, user.getCode(), categorycode, name, ymd, time, importance, contents);
+		schedule = new Schedule(code, user.getCode(), categorycode, name, date, time, importance, contents);
 
 		scheduleRepository.saveAndFlush(schedule);
 
@@ -101,8 +123,6 @@ public class ScheduleController {
 		int todayCounter = (Integer) session.getAttribute("todayCounter");
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
-
-
 
 		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdDesc(user.getCode());
 		List<Schedule> schedule = new ArrayList<>();
@@ -161,8 +181,6 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-
-
 		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAsc(user.getCode());
 		List<Schedule> schedule = new ArrayList<>();
 
@@ -219,14 +237,13 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-
-
 		List<Schedule> list = scheduleRepository.findByUsercodeOrderByJikanDesc(user.getCode());
 		List<Schedule> schedule = new ArrayList<>();
 
 		if (categoryCounter == 10) {
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByJikanDesc(user.getCode(), categorySortCode);
+			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByJikanDesc(user.getCode(),
+					categorySortCode);
 		} else if (todayCounter == 10) {
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
@@ -279,14 +296,13 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-
-
 		List<Schedule> list = scheduleRepository.findByUsercodeOrderByJikanAsc(user.getCode());
 		List<Schedule> schedule = new ArrayList<>();
 
 		if (categoryCounter == 10) {
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByJikanAsc(user.getCode(), categorySortCode);
+			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByJikanAsc(user.getCode(),
+					categorySortCode);
 		} else if (todayCounter == 10) {
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
