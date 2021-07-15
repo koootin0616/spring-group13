@@ -35,9 +35,6 @@ public class EvaluationController {
 		User user = (User)session.getAttribute("userInfo");
 		List<Evaluation> eva_list=evaluationRepository.findAll();
 		for(Evaluation detail:eva_list) {
-			if(ymd.equals("")) {
-				mv.addObject("message","日付を選択して下さい");
-			}
 			if(ymd.equals(detail.getYmd())){
 				mv.addObject("message","その日付の自己評価は既に登録されています");
 			}else {

@@ -79,6 +79,10 @@
 	z-index:10000;
 }
 
+.href{
+	text-decoration: none;
+}
+
 .th1{
 	height:50px;
 	width:200px;
@@ -143,25 +147,25 @@ body{
 
 .img1{
 	width: 300px;
-  	height:380px;
+  	height:360px;
 
 }
 
 .img2{
-	width: 330px;
+	width: 310px;
   	height:450px;
 }
 
 #frog{
 	position: absolute;
-	top: 340px;
+	top: 360px;
 	left: -50px;
 	z-index:8000;
 }
 
 #girl{
 	position: absolute;
-	top: 200px;
+	top: 190px;
 	left: 1200px;
 	z-index:8000;
 }
