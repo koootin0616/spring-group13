@@ -96,7 +96,7 @@ p {
 p span {
   display: inline-block;
   position: relative;
-  transform-style: preserve-3d;
+  transform-style: preserve8d;
   perspective: 500px;
   -webkit-font-smoothing: antialiased;
 }
@@ -115,12 +115,12 @@ p span::after {
 p span::before {
   z-index: 1;
   color: rgba(0,0,0,0.2);
-  transform: scale(1.1,1) skew(0deg,5deg);
+  transform: scale(1.1,1) skew(5deg,5deg);
 
 }
 
 p span::after {
-  z-index: 2;
+  z-index:4;
   color: #3498db;
   text-shadow: -1px 0 1px #3498db,
                 1px 0 1px #fff;
@@ -142,7 +142,7 @@ p span + span { margin-left: .3em; }
   }
 }
 
-@media (min-width: 30em) {
+@media (min-width: 10em) {
   p { font-size: 3em; }
 }
 

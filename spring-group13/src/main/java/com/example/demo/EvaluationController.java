@@ -38,7 +38,8 @@ public class EvaluationController {
 
 			if(ymd.equals(detail.getYmd())){
 				mv.addObject("message","その日付の自己評価は既に登録されています");
-			}else {
+
+			}else  {
 				Evaluation evaluation = new Evaluation(ymd, user.getCode(), achieved, notachieved, per, reflection,improvement);
 
 				evaluationRepository.saveAndFlush(evaluation);
