@@ -23,5 +23,7 @@ public interface ScheduleRepository extends JpaRepository<Schedule,Integer> {
 	List<Schedule> findByUsercodeAndCategorycodeOrderByJikanDesc(int usercode, int categorycode);
 	List<Schedule> findByUsercodeAndCategorycodeOrderByYmdAsc(int usercode, int categorycode);
 	List<Schedule> findByUsercodeAndCategorycodeOrderByYmdDesc(int usercode, int categorycode);
+	List<Schedule> findByUsercodeAndCategorycodeOrderByYmdAscJikanAsc(int usercode, int cotegorycode);
+	List<Schedule> findByUsercodeAndCategorycodeOrderByYmdDescJikanDesc(int usercode, int cotegorycode);
 
 }
