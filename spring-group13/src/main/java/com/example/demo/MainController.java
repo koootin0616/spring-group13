@@ -70,6 +70,7 @@ public class MainController {
 			}
 		}
 		if(list.isEmpty()) {
+			mv.addObject("message", "日付を選択してください");
 			mv.setViewName("fillout1st");
 		}else {
 			mv.addObject("schedule",list);
@@ -111,6 +112,7 @@ public class MainController {
 		}
 		List<Schedule>list1 = scheduleRepository.findByUsercodeAndYmd(user.getCode(), (java.sql.Date) date1);
 		if(detail==null) {
+			mv.addObject("message", "日付を選択してください");
 			mv.setViewName("evaluation1st");
 		}else {
 			mv.addObject("schedule",list1);
