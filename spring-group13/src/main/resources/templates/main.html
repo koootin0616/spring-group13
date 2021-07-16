@@ -68,7 +68,8 @@ var st = new SelfTimer(new Date());
 
 
 st.in(true)
- .Days([(nowTime)], function() {
+ .MonthSelects([3, 4, 5])
+ .Days([5, 15, 25], function() {
    //  9 to 23 o'clock
    st.at().HoursBetween(9, 23, function() {
      // callback
