@@ -58,7 +58,7 @@ public class ScheduleController {
 		scheduleRepository.saveAndFlush(schedule);
 
 		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
-
+		mv.addObject("message","予定を追加しました");
 		mv.addObject("schedule", list);
 		mv.setViewName("main");
 

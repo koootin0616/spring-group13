@@ -30,7 +30,7 @@ public class CategoryContoroller {
 		int count = 0;
 
 		if (name.equals("")) {
-
+			mv.addObject("message","カテゴリー名を入力してください");
 		} else {
 			for(Category cate : list) {
 				if(name.equals(cate.getName())) {
@@ -42,6 +42,7 @@ public class CategoryContoroller {
 			if(count==0) {
 				Category category = new Category(name);
 				categoryRepository.saveAndFlush(category);
+				mv.addObject("message","カテゴリーを追加しました");
 			}
 		}
 

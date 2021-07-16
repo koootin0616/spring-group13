@@ -65,6 +65,16 @@
 	font-weight:  bold;
 	color:white;
 }
+#message {
+	position: absolute;
+	top: 12%;
+	left: 58%;
+	font-size:26px;
+
+	font-weight:  bold;
+	color:white;
+}
+
 #fillout11{
 	position: absolute;
 	top: 22%;

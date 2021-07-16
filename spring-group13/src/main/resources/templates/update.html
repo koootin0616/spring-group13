@@ -32,6 +32,7 @@
 <div id="textarea">
 <textarea name="contents" cols="60" rows="15" th:text="${schedule.contents}"></textarea>
 </div>
+<a id="message" th:text="${message}"></a>
 <br>
 <a id="add4"><input type="submit" class="button" value="変更"></a>
 <input type="hidden" name="code" th:value="${schedule.code}">
@@ -39,12 +40,9 @@
 </form>
 <a id="main" href="mainreturn">メインページへ</a>
 <p aria-label="CodePen">
-  <span data-text="U">U</span>
-  <span data-text="p">p</span>
-  <span data-text="D">D</span>
-  <span data-text="a">a</span>
-  <span data-text="t">t</span>
-  <span data-text="e">e</span><br>
+  <span data-text="更">更</span>
+  <span data-text="新">新</span>
+
 </p>
 </body>
 </html>
