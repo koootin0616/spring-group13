@@ -41,6 +41,30 @@
 		<a href="/logout" class="hr">ログアウト</a>
 	</div>
 	<a id="message" th:text="${message}"></a>
+	<p id="RealtimeClockArea2"></p>
+	<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+	function set2fig(num) {
+   // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+   var ret;
+   if( num < 10 ) { ret = "0" + num; }
+   else { ret = num; }
+   return ret;
+}
+function showClock2() {
+   var nowTime = new Date();
+   var nowFullYear = set2fig(nowTime.getFullYear());
+   var nowMonth = set2fig(nowTime.getMonth() + 1);
+   var nowDate = set2fig(nowTime.getDate());
+   var nowHour = set2fig( nowTime.getHours() );
+   var nowMin  = set2fig( nowTime.getMinutes() );
+   var nowSec  = set2fig( nowTime.getSeconds() );
+   var msg = nowFullYear + "年"+ nowMonth + "月" + nowDate + "日" +  nowHour + ":" + nowMin + ":" + nowSec  ;
+   document.getElementById("RealtimeClockArea2").innerHTML = msg;
+}
+setInterval('showClock2()',1000);
+/*]]>*/
+</script>
 	<div id="week">
 		<a href="/today" class="hr">本日の予定</a><br>
 		<a href="/tomorrow" class="hr">明日の予定</a><br>
