@@ -63,6 +63,18 @@ function showClock2() {
    document.getElementById("RealtimeClockArea2").innerHTML = msg;
 }
 setInterval('showClock2()',1000);
+
+var st = new SelfTimer(new Date());
+
+
+st.in(true)
+ .Days([(nowTime)], function() {
+   //  9 to 23 o'clock
+   st.at().HoursBetween(9, 23, function() {
+     // callback
+     alert("何か表示");
+   });
+ });
 /*]]>*/
 </script>
 	<div id="week">
