@@ -101,6 +101,15 @@
 	 font-weight:  bold;
 
 }
+#title1  {
+	position: absolute;
+	top: 11%;
+	left: 43%;
+	font-size:66px;
+	color:white;
+	 font-weight:  bold;
+
+}
 body {
   background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0;
   background-color: skyblue;
