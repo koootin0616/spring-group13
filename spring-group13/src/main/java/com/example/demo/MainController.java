@@ -27,6 +27,22 @@ public class MainController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
+	@RequestMapping("/mainreturn")
+	public ModelAndView mainreturn(
+			ModelAndView mv) {
+		User user = (User)session.getAttribute("userInfo");
+
+		List<Category> category = categoryRepository.findAll();
+		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+
+		session.setAttribute("category", category);
+
+		mv.addObject("schedule",list);
+		mv.setViewName("main");
+
+		return mv;
+	}
+
 	@RequestMapping("/fill")
 	public ModelAndView fill(ModelAndView mv) {
 

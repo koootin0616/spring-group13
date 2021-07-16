@@ -84,21 +84,6 @@ public class CategoryContoroller {
 
 		return mv;
 	}
-	//削除一覧からメインページに戻る
-	@RequestMapping("/mainreturn")
-	public ModelAndView mainreturn(
-			ModelAndView mv) {
-		User user = (User)session.getAttribute("userInfo");
 
-		List<Category> category = categoryRepository.findAll();
-		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
-
-		session.setAttribute("category", category);
-
-		mv.addObject("schedule",list);
-		mv.setViewName("main");
-
-		return mv;
-	}
 
 }

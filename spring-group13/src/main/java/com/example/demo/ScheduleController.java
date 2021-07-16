@@ -352,4 +352,189 @@ public class ScheduleController {
 
 		return mv;
 	}
+	@RequestMapping("/sortAscImportance")
+	public ModelAndView sortAscImportance(ModelAndView mv) {
+		User user = (User) session.getAttribute("userInfo");
+		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
+		int todayCounter = (Integer) session.getAttribute("todayCounter");
+		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
+		int weekCounter = (Integer) session.getAttribute("weekCounter");
+
+		List<Schedule> list1 = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> list2 = new ArrayList<>();
+		List<Schedule> list = new ArrayList<>();
+		List<Schedule> schedule = new ArrayList<>();
+
+		for(Schedule sche1:list1) {
+			if(sche1.getImportance().equals("低")) {
+				list.add(sche1);
+			}
+		}
+		for(Schedule sche1:list1) {
+			if(sche1.getImportance().equals("中")) {
+				list.add(sche1);
+			}
+		}
+		for(Schedule sche1:list1) {
+			if(sche1.getImportance().equals("高")) {
+				list.add(sche1);
+			}
+		}
+
+		if (categoryCounter == 10) {
+			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
+			list1 = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(),
+					categorySortCode);
+			for(Schedule sche1:list1) {
+				if(sche1.getImportance().equals("低")) {
+					list2.add(sche1);
+				}
+			}
+			for(Schedule sche1:list1) {
+				if(sche1.getImportance().equals("中")) {
+					list2.add(sche1);
+				}
+			}
+			for(Schedule sche1:list1) {
+				if(sche1.getImportance().equals("高")) {
+					list2.add(sche1);
+				}
+			}
+			schedule=list2;
+		} else if (todayCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) == 0) {
+					schedule.add(sche);
+				}
+			}
+		} else if (tomorrowCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
+					schedule.add(sche);
+				}
+			}
+		} else if (weekCounter == 10) {
+			list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
+		} else {
+			schedule = list;
+		}
+
+		mv.addObject("schedule", schedule);
+		mv.setViewName("main");
+
+		return mv;
+	}
+
+	@RequestMapping("/sortDescImportance")
+	public ModelAndView sortDescImportance(ModelAndView mv) {
+		User user = (User) session.getAttribute("userInfo");
+		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
+		int todayCounter = (Integer) session.getAttribute("todayCounter");
+		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
+		int weekCounter = (Integer) session.getAttribute("weekCounter");
+
+		List<Schedule> list1 = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> list2 = new ArrayList<>();
+		List<Schedule> list = new ArrayList<>();
+		List<Schedule> schedule = new ArrayList<>();
+
+		for(Schedule sche1:list1) {
+			if(sche1.getImportance().equals("高")) {
+				list.add(sche1);
+			}
+		}
+		for(Schedule sche1:list1) {
+			if(sche1.getImportance().equals("中")) {
+				list.add(sche1);
+			}
+		}
+		for(Schedule sche1:list1) {
+			if(sche1.getImportance().equals("低")) {
+				list.add(sche1);
+			}
+		}
+
+		if (categoryCounter == 10) {
+			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
+			list1 = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(),
+					categorySortCode);
+			for(Schedule sche1:list1) {
+				if(sche1.getImportance().equals("高")) {
+					list2.add(sche1);
+				}
+			}
+			for(Schedule sche1:list1) {
+				if(sche1.getImportance().equals("中")) {
+					list2.add(sche1);
+				}
+			}
+			for(Schedule sche1:list1) {
+				if(sche1.getImportance().equals("低")) {
+					list2.add(sche1);
+				}
+			}
+			schedule=list2;
+		} else if (todayCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) == 0) {
+					schedule.add(sche);
+				}
+			}
+		} else if (tomorrowCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
+					schedule.add(sche);
+				}
+			}
+		} else if (weekCounter == 10) {
+			list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
+		} else {
+			schedule = list;
+		}
+
+		mv.addObject("schedule", schedule);
+		mv.setViewName("main");
+
+		return mv;
+	}
 }
