@@ -27,6 +27,9 @@ public class MainController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
+	@Autowired
+	private EvaluationRepository evaluationRepository;
+
 	@RequestMapping("/mainreturn")
 	public ModelAndView mainreturn(
 			ModelAndView mv) {
@@ -36,7 +39,11 @@ public class MainController {
 		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
 
 		session.setAttribute("category", category);
-
+		session.setAttribute("userInfo", user);
+		session.setAttribute("categoryCounter", 1);
+		session.setAttribute("todayCounter", 1);
+		session.setAttribute("tomorrowCounter", 1);
+		session.setAttribute("weekCounter", 1);
 		mv.addObject("schedule",list);
 		mv.setViewName("main");
 
@@ -45,8 +52,29 @@ public class MainController {
 
 	@RequestMapping("/fill")
 	public ModelAndView fill(ModelAndView mv) {
+		User user= (User)session.getAttribute("userInfo");
+		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date date = null;
+		long datetime_now = now.getTime();
+		long datetime_date = 0;
+		List<Schedule> list = new ArrayList<>();
 
-		mv.setViewName("fillout1st");
+		for (Schedule sche : schedule) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - datetime_now) == 0) {
+				list.add(sche);
+				mv.addObject("ymd",sche.getYmd());
+			}
+		}
+		if(list.isEmpty()) {
+			mv.setViewName("fillout1st");
+		}else {
+			mv.addObject("schedule",list);
+			mv.setViewName("fillout");
+		}
 
 		return mv;
 	}
@@ -62,8 +90,34 @@ public class MainController {
 
 	@RequestMapping("/ev")
 	public ModelAndView evaluation(ModelAndView mv) {
+		User user= (User)session.getAttribute("userInfo");
+		List<Evaluation> evaluation = evaluationRepository.findByUsercode(user.getCode());
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date date = null;
+		Date date1 = null;
+		long datetime_now = now.getTime();
+		long datetime_date = 0;
+		Evaluation detail = null;
 
-		mv.setViewName("evaluation1st");
+		for (Evaluation eva : evaluation) {
+			date = eva.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - datetime_now) == 0) {
+				detail=eva;
+				mv.addObject("ymd",eva.getYmd());
+				date1 = eva.getYmd();
+			}
+		}
+		List<Schedule>list1 = scheduleRepository.findByUsercodeAndYmd(user.getCode(), (java.sql.Date) date1);
+		if(detail==null) {
+			mv.setViewName("evaluation1st");
+		}else {
+			mv.addObject("schedule",list1);
+			mv.addObject("list",detail);
+			mv.setViewName("evaluation");
+		}
+
 
 		return mv;
 	}

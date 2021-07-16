@@ -285,7 +285,7 @@ public class ScheduleController {
 				}
 			}
 		} else {
-			schedule = scheduleRepository.findByUsercodeOrderByJikanDesc(user.getCode());
+			schedule = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
 		}
 
 		mv.addObject("schedule", schedule);
@@ -344,7 +344,7 @@ public class ScheduleController {
 				}
 			}
 		} else {
-			schedule = scheduleRepository.findByUsercodeOrderByJikanAsc(user.getCode());
+			schedule = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
 		}
 
 		mv.addObject("schedule", schedule);
@@ -360,7 +360,7 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-		List<Schedule> list1 = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> list1 = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
 		List<Schedule> list2 = new ArrayList<>();
 		List<Schedule> list = new ArrayList<>();
 		List<Schedule> schedule = new ArrayList<>();
@@ -383,8 +383,7 @@ public class ScheduleController {
 
 		if (categoryCounter == 10) {
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			list1 = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(),
-					categorySortCode);
+			list1 = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdAscJikanAsc(user.getCode(),categorySortCode);
 			for(Schedule sche1:list1) {
 				if(sche1.getImportance().equals("低")) {
 					list2.add(sche1);
@@ -453,7 +452,7 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-		List<Schedule> list1 = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> list1 = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
 		List<Schedule> list2 = new ArrayList<>();
 		List<Schedule> list = new ArrayList<>();
 		List<Schedule> schedule = new ArrayList<>();
@@ -476,8 +475,7 @@ public class ScheduleController {
 
 		if (categoryCounter == 10) {
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			list1 = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(),
-					categorySortCode);
+			list1 = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdDescJikanDesc(user.getCode(),categorySortCode);
 			for(Schedule sche1:list1) {
 				if(sche1.getImportance().equals("高")) {
 					list2.add(sche1);
@@ -517,7 +515,7 @@ public class ScheduleController {
 				}
 			}
 		} else if (weekCounter == 10) {
-			list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+			list = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;
