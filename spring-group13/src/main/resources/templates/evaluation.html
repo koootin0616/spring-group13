@@ -12,14 +12,14 @@
 var pieData = [
    {
       value: [[${list.achieved}]],            // 値
-      color:"#F7464A",       // 色
-      highlight: "#FF5A5E",  // マウスが載った際の色
+      color:"#FFBF00",       // 色
+      highlight: "#F7D358",  // マウスが載った際の色
       label: "達成"        // ラベル
    },
    {
       value: [[${list.notachieved}]],
-      color: "#41C44E",
-      highlight: "#6CD173",
+      color: "#013ADF",
+      highlight: "#2E64FE",
       label: "未達成"
    }
 
@@ -59,6 +59,9 @@ window.onload = function(){
 	</div>
 	<!--  グラフの描画エリア -->
 	<canvas id="chart_div" style="width: 300px; height: 350px"></canvas>
+	<div id="percent">
+	<a th:text="${list.per}"></a>％
+	</div>
 	<form action="evaluationmain">
 	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}"> の自己評価</a>
 	<div id="disp"><input type="submit"value="表示"></div>

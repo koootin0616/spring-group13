@@ -78,7 +78,13 @@ public class ScheduleController {
 		long miliseconds = System.currentTimeMillis();
 		Date date = new Date(miliseconds);
 		date = Date.valueOf(ymd);
-		Time time = Time.valueOf(jikan);
+		Time time = null;
+		if(jikan.length()==8) {
+			time = Time.valueOf(jikan);
+		}else {
+			time = Time.valueOf(jikan + ":00");
+		}
+
 		Optional<Schedule> detail= scheduleRepository.findById(code);
 		Schedule schedule = detail.get();
 		if (schedule.getCategorycode()==categorycode&&schedule.getName().equals(name)&&schedule.getYmd().equals(date)&&schedule.getJikan().equals(time)&&schedule.getImportance().equals(importance)&&schedule.getContents().equals(contents)) {
@@ -87,7 +93,7 @@ public class ScheduleController {
 			mv.setViewName("update");
 			return mv;
 		}
-		time = Time.valueOf(jikan+":00");
+
 		User user = (User) session.getAttribute("userInfo");
 		schedule = new Schedule(code, user.getCode(), categorycode, name, date, time, importance, contents);
 

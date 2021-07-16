@@ -236,6 +236,15 @@ body{
 	color:white;
 }
 
+#percent{
+	position: absolute;
+	top: 15%;
+	left: 44.5%;
+	font-size:50px;
+	font-weight:  bold;
+	color:white;
+}
+
 table{
 	background:white;
 	color:black;
