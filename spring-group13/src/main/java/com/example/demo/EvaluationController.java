@@ -35,11 +35,6 @@ public class EvaluationController {
 			ModelAndView mv) {
 		long miliseconds = System.currentTimeMillis();
 		Date date = new Date(miliseconds);
-		if (ymd.equals("") || reflection.equals("") || improvement.equals("")) {
-			mv.addObject("message", "未記入項目があります");
-			mv.setViewName("fillout");
-			return mv;
-		}
 		date = Date.valueOf(ymd);
 		int per = achieved * 100 / (achieved + notachieved);
 		User user = (User)session.getAttribute("userInfo");
@@ -50,8 +45,12 @@ public class EvaluationController {
 				mv.addObject("message","その日付の自己評価は既に登録されています");
 				mv.setViewName("fillout1st");
 			}else if(achieved==-1||notachieved==-1||reflection.equals("")||improvement.equals("")){
+				List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
+				mv.addObject("schedule",list);
+				mv.addObject("ymd",ymd);
 				mv.addObject("message","未記入項目があります");
 				mv.setViewName("fillout");
+				return mv;
 			}else {
 				Evaluation evaluation = new Evaluation(date, user.getCode(), achieved, notachieved, per, reflection,improvement);
 

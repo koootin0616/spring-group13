@@ -99,6 +99,14 @@
 	color:white;
 
 }
+#message{
+	position: absolute;
+	top:13%;
+	left: 60%;
+	color:white;
+	font-weight:  bold;
+	font-size:18px;
+}
 table {
 width: 650px;
 height: 40px;
