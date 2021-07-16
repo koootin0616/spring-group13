@@ -74,6 +74,8 @@ public class UserController {
 			ModelAndView mv) {
 		Optional<User> detail = userRepository.findById(id);
 
+		List<Category> category_detail = categoryRepository.findAll();
+
 		if (id.equals("") || password.equals("")) {
 			mv.addObject("message", "IDとパスワードを入力してください");
 			mv.setViewName("signup");
@@ -89,6 +91,7 @@ public class UserController {
 		User user = new User(id, password);
 		userRepository.saveAndFlush(user);
 		session.setAttribute("userInfo", user);
+		session.setAttribute("category",category_detail);
 		session.setAttribute("categoryCounter", 1);
 		session.setAttribute("todayCounter", 1);
 		session.setAttribute("tomorrowCounter", 1);

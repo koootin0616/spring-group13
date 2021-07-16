@@ -112,21 +112,7 @@ div.drop-container:after {
   }
 }
 
-@keyframes dripple {
-  0% {
-    width: 150px;
-    height: 150px;
-  }
-  25% {
-    opacity: 1;
-  }
-  100% {
-    width: 500px;
-    height: 500px;
-    top: -20%;
-    opacity: 0;
-  }
-}
+@keyframes dripple {0% {width: 150px; height: 150px;}25% {opacity: 1;}100% {width: 500px; height: 500px; top: -20%; opacity: 0;}}
 
 @keyframes slide { 0% {transform: translateX(-25%);}100%{transform:translateX(25%);}}
 
