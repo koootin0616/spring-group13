@@ -44,19 +44,22 @@ public class EvaluationController {
 			if(date.equals(detail.getYmd())){
 				mv.addObject("message","その日付の自己評価は既に登録されています");
 				mv.setViewName("fillout1st");
-			}else if(achieved==-1||notachieved==-1||reflection.equals("")||improvement.equals("")){
-				List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
-				mv.addObject("schedule",list);
-				mv.addObject("ymd",ymd);
-				mv.addObject("message","未記入項目があります");
-				mv.setViewName("fillout");
 				return mv;
-			}else {
-				Evaluation evaluation = new Evaluation(date, user.getCode(), achieved, notachieved, per, reflection,improvement);
-
-				evaluationRepository.saveAndFlush(evaluation);
-				mv.addObject("message","自己評価を登録しました");
 			}
+		}
+
+		if(achieved==-1||notachieved==-1||reflection.equals("")||improvement.equals("")){
+			List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
+			mv.addObject("schedule",list);
+			mv.addObject("ymd",ymd);
+			mv.addObject("message","未記入項目があります");
+			mv.setViewName("fillout");
+			return mv;
+		}else {
+			Evaluation evaluation = new Evaluation(date, user.getCode(), achieved, notachieved, per, reflection,improvement);
+
+			evaluationRepository.saveAndFlush(evaluation);
+			mv.addObject("message","自己評価を登録しました");
 		}
 		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
 
