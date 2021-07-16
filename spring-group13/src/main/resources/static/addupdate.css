@@ -77,6 +77,13 @@
 	font-size:20px;
 
 }
+#message{
+	position: absolute;
+	top: 26%;
+	left: 32%;
+	color:white;
+	font-weight:  bold;
+}
 
 #textarea {
 	position: absolute;

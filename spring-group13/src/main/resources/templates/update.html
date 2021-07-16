@@ -32,6 +32,7 @@
 <div id="textarea">
 <textarea name="contents" cols="60" rows="15" th:text="${schedule.contents}"></textarea>
 </div>
+<a id="message" th:text="${message}"></a>
 <br>
 <a id="add4"><input type="submit" class="button" value="変更"></a>
 <input type="hidden" name="code" th:value="${schedule.code}">
