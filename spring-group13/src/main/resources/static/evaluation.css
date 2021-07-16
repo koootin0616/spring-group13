@@ -226,11 +226,21 @@ body{
 	width:450px;
 	height:200px;
 }
+
 #main{
 	position: absolute;
 	top: 89%;
 	left: 82%;
 	font-size:20px;
+	font-weight:  bold;
+	color:white;
+}
+
+#percent{
+	position: absolute;
+	top: 15%;
+	left: 44.5%;
+	font-size:50px;
 	font-weight:  bold;
 	color:white;
 }

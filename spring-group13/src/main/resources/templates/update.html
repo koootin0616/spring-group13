@@ -11,14 +11,16 @@
 <a id="add7">時間：<input type="time" name="jikan" min="00:00" max="24:00" required th:value="${schedule.jikan}"></a>
 <a id="add2">カテゴリー:
 <select name="category">
-<option th:each="category:${category}" th:text="${category.name}"></option>
+<option th:each="category:${session.category}" th:text="${category.name}"></option>
 </select>
 </a>
 <br>
 <a id="add3">重要度：
-<input type="radio" name="importance" value="高" th:checked="${schedule.importance}=='高'">高
-<input type="radio" name="importance" value="中" th:checked="${schedule.importance}=='中'">中
-<input type="radio" name="importance" value="低" th:checked="${schedule.importance}=='低'">低<br>
+	<select name="importance">
+		<option th:selected="${schedule.importance}=='高'">高</option>
+		<option th:selected="${schedule.importance}=='中'">中</option>
+		<option th:selected="${schedule.importance}=='低'">低</option>
+	</select>
 </a>
 
 <a id=add6>予定：</a>

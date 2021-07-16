@@ -39,10 +39,6 @@ public class MainController {
 	public ModelAndView addschedule(
 			ModelAndView mv) {
 
-		List<Category> category = categoryRepository.findAll();
-
-		mv.addObject("category", category);
-
 		mv.setViewName("addSchedule");
 
 		return mv;
@@ -63,14 +59,12 @@ public class MainController {
 		Schedule schedule = null;
 
 		Optional<Schedule> detail = scheduleRepository.findById(code);
-		List<Category> category = categoryRepository.findAll();
 
 		if (detail.isEmpty() == false) { //レコードがあれば
 			schedule = detail.get(); //レコードを取得する
 		}
 
 		mv.addObject("schedule", schedule);
-		mv.addObject("category", category);
 
 		mv.setViewName("update");
 
