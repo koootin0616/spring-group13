@@ -101,6 +101,7 @@ public class ScheduleController {
 
 		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
 
+		mv.addObject("message","更新しました");
 		mv.addObject("schedule", list);
 		mv.setViewName("main");
 
@@ -113,9 +114,54 @@ public class ScheduleController {
 			ModelAndView mv) {
 		User user = (User) session.getAttribute("userInfo");
 		scheduleRepository.deleteById(code);
+		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
+		int todayCounter = (Integer) session.getAttribute("todayCounter");
+		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
+		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule = new ArrayList<>();
 
+		if (categoryCounter == 10) {
+			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
+			schedule = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(), categorySortCode);
+		} else if (todayCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) == 0) {
+					schedule.add(sche);
+				}
+			}
+		} else if (tomorrowCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
+					schedule.add(sche);
+				}
+			}
+		} else if (weekCounter == 10) {
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
+		} else {
+			schedule = scheduleRepository.findByUsercode(user.getCode());
+		}
+		mv.addObject("message","削除しました");
 		mv.addObject("schedule", schedule);
 		mv.setViewName("main");
 

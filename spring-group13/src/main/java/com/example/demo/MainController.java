@@ -259,34 +259,5 @@ public class MainController {
 
 		return mv;
 	}
-//	@RequestMapping("/alert")
-//	public ModelAndView alert(ModelAndView mv) {
-//		User user= (User)session.getAttribute("userInfo");
-//		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
-//		LocalDate today = LocalDate.now();
-//		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
-//
-//	    Date date = new Date();
-//
-//	        ZoneId timeZone = ZoneId.systemDefault();
-//	        LocalDate getLocalDate = date.toInstant().atZone(timeZone).toLocalDate();
-//		long datetime_date = 0;
-//
-//
-//		List<Schedule> list = new ArrayList<>();
-//
-//		for (Schedule sche : schedule) {
-//			date = sche.getYmd();
-//			datetime_date = date.getTime();
-//			if ((datetime_date -  ) / nowFullYear == 1) {
-//				list.add(sche);
-//			}
-//		}
-//
-//		mv.addObject("schedule", list);
-//		mv.setViewName("main");
-//
-//		return mv;
-//	}
 
 }
