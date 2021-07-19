@@ -48,12 +48,9 @@ public class CategoryContoroller {
 
 		list = categoryRepository.findAll();
 
-		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
+		session.setAttribute("list", list);
 
-		session.setAttribute("category", list);
-
-		mv.addObject("schedule", schedule);
-		mv.setViewName("main");
+		mv.setViewName("deleteCategory");
 
 		return mv;
 	}
@@ -74,10 +71,24 @@ public class CategoryContoroller {
 	public ModelAndView deleteCategory(
 			@RequestParam("code")int code,
 			ModelAndView mv) {
+		List<Schedule> schedule = scheduleRepository.findAll();
+		int flag = 0;
+		for(Schedule sche:schedule) {
+			if(sche.getCategorycode()==code) {
+				flag=1;
+			}
+		}
 
-		categoryRepository.deleteById(code);
+		if(flag==0) {
+			categoryRepository.deleteById(code);
+			mv.addObject("message","削除しました");
+		}else {
+			mv.addObject("message", "予定が登録されているため、削除できません");
+		}
+
 
 		List<Category> list = categoryRepository.findAll();
+
 
 		mv.addObject("list",list);
 		mv.setViewName("deleteCategory");
