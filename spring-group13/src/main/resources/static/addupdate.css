@@ -28,7 +28,7 @@
 }
 #add4  {
 	position: absolute;
-	top: 79%;
+	top: 81%;
 	left: 72%;
 	font-size:20px;
 	color:white;
@@ -117,29 +117,4 @@ body {
   background-repeat: repeat;
 }
 
-body {
-  background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0;
-  background-color: skyblue;
-  background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
-  background-repeat: repeat;
-}
 
-.button {
-	display: inline-block;
-	border-radius: 7%; /* 角丸       */
-	font-size: 22pt; /* 文字サイズ */
-	text-align: center; /* 文字位置   */
-	cursor: pointer; /* カーソル   */
-	padding: 5px 5px; /* 余白       */
-	background: #3498db; /* 背景色     */
-	color: #ffffff; /* 文字色     */
-	line-height: 1em; /* 1行の高さ  */
-	transition: .3s; /* なめらか変化 */
-	box-shadow: 6px 6px 12px #666666; /* 影の設定 */
-	border: 2px solid #ffffff; /* 枠の指定 */
-}
-
-.button:hover {
-	color: #ffffff; /* 背景色     */
-	background: #3498db; /* 文字色     */
-}
