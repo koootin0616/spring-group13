@@ -29,20 +29,13 @@
 	font-weight:  bold;
 }
 
-#addCategory{
-	display: inline-block;
-	_display: inline;
-	position: absolute;
-	top:40px;
-	left:150px;
-	z-index:10000;
-}
+
 #deleteCategory{
 	display: inline-block;
 	_display: inline;
 	position: absolute;
 	top:40px;
-	left:450px;
+	left:150px;
 	z-index:10000;
 }
 
