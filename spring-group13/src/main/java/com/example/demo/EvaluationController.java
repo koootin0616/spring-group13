@@ -28,8 +28,8 @@ public class EvaluationController {
 	@RequestMapping("/fillo")
 	public ModelAndView update(
 			@RequestParam(name ="ymd") String ymd,
-			@RequestParam(name="achieved", defaultValue="-1") int achieved,
-			@RequestParam(name="notachieved", defaultValue="-1") int notachieved,
+			@RequestParam(name="achieved") int achieved,
+			@RequestParam(name="notachieved") int notachieved,
 			@RequestParam("reflection") String reflection,
 			@RequestParam("improvement") String improvement,
 			ModelAndView mv) {
@@ -48,7 +48,7 @@ public class EvaluationController {
 			}
 		}
 
-		if(achieved==-1||notachieved==-1||reflection.equals("")||improvement.equals("")){
+		if(reflection.equals("")||improvement.equals("")){
 			List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
 			mv.addObject("schedule",list);
 			mv.addObject("ymd",ymd);
@@ -112,6 +112,7 @@ public class EvaluationController {
 			ModelAndView mv) {
 		long miliseconds = System.currentTimeMillis();
 		Date date = new Date(miliseconds);
+		int count = 0;
 		if (ymd.equals("")) {
 			mv.addObject("message", "日付を選択してください");
 			mv.setViewName("fillout1st");
@@ -123,9 +124,12 @@ public class EvaluationController {
 
 		List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
 
-
+		for(Schedule sche:list) {
+			count++;
+		}
 
 		mv.addObject("schedule",list);
+		mv.addObject("count",count);
 
 		mv.addObject("ymd",ymd);
 		mv.setViewName("fillout");

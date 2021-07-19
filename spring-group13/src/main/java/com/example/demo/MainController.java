@@ -60,6 +60,7 @@ public class MainController {
 		long datetime_now = now.getTime();
 		long datetime_date = 0;
 		List<Schedule> list = new ArrayList<>();
+		int count = 0;
 
 		for (Schedule sche : schedule) {
 			date = sche.getYmd();
@@ -67,12 +68,14 @@ public class MainController {
 			if ((datetime_date - datetime_now) == 0) {
 				list.add(sche);
 				mv.addObject("ymd",sche.getYmd());
+				count++;
 			}
 		}
 		if(list.isEmpty()) {
 			mv.addObject("message", "日付を選択してください");
 			mv.setViewName("fillout1st");
 		}else {
+			mv.addObject("count",count);
 			mv.addObject("schedule",list);
 			mv.setViewName("fillout");
 		}

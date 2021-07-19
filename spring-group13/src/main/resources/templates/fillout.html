@@ -5,6 +5,7 @@
 <title>todoリスト</title>
 <link href="fillout.css" rel="stylesheet">
 </head>
+
 <body>
 <form action="fillmain">
 <a id="fillout1">
@@ -27,9 +28,29 @@
 <input type="hidden" name="ymd" th:value="${ymd}">
 <div id="per">
 <a>達成数</a><br>
-<input type="text" name="achieved"><br>
+<select name="achieved">
+<script>
+/*<![CDATA[*/
+var i;
+
+for(i=0; i<=[[${count}]]; i+=1){
+document.write('<option value="'+i+'">'+i+'</option>');
+}
+/*]]>*/
+</script>
+</select><br>
 <a>未達成数</a><br>
-<input type="text" name="notachieved">
+<select name="notachieved">
+<script>
+/*<![CDATA[*/
+var i;
+
+for(i=0; i<=[[${count}]]; i+=1){
+document.write('<option value="'+i+'">'+i+'</option>');
+}
+/*]]>*/
+</script>
+</select>
 </div>
 <a id="fillout5">反省点</a>
 <div id="fillout6">
