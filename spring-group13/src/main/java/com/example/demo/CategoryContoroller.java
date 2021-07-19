@@ -26,7 +26,6 @@ public class CategoryContoroller {
 			@RequestParam(name = "addCategory") String name,
 			ModelAndView mv) {
 		List<Category> list = categoryRepository.findAll();
-		User user = (User)session.getAttribute("userInfo");
 		int count = 0;
 
 		if (name.equals("")) {
@@ -48,7 +47,7 @@ public class CategoryContoroller {
 
 		list = categoryRepository.findAll();
 
-		session.setAttribute("list", list);
+		mv.addObject("list", list);
 
 		mv.setViewName("deleteCategory");
 
