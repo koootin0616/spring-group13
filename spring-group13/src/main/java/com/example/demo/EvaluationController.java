@@ -29,7 +29,7 @@ public class EvaluationController {
 	public ModelAndView update(
 			@RequestParam(name ="ymd") String ymd,
 			@RequestParam(name="achieved", defaultValue="-1") int achieved,
-			@RequestParam(name="achieved", defaultValue="-1") int notachieved,
+			@RequestParam(name="notachieved", defaultValue="-1") int notachieved,
 			@RequestParam("reflection") String reflection,
 			@RequestParam("improvement") String improvement,
 			ModelAndView mv) {
