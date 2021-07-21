@@ -23,8 +23,8 @@
 }
 #RealtimeClockArea2{
 	position: absolute;
-	top: 8%;
-	left: 77%;
+	top: 1%;
+	left: 63%;
 	color:white;
 	font-weight:  bold;
 }
@@ -88,7 +88,7 @@
 	color:red;
 }
 
-#table{
+.table{
 	background:white;
 	color:black;
 	position: absolute;
@@ -121,21 +121,21 @@
 #button1{
 	position: absolute;
 	top: 180px;
-	left: 619px;
+	left: 440px;
 	z-index:10000;
 }
 
 #button2{
 	position: absolute;
 	top: 180px;
-	left: 802px;
+	left: 625px;
 	z-index:10000;
 }
 
 #button3{
 	position: absolute;
 	top: 180px;
-	left: 985px;
+	left: 810px;
 	z-index:10000;
 }
 
@@ -209,33 +209,36 @@ body{
   opacity:0.4;
 }
 .wrapper{
+
     max-width: 600px;
     margin: 0 auto;
     color: #666;
 }
 #header {
-    text-align: center;
-    font-size: 24px;
-    width: 100%;
-    margin: 1rem 0 0;
-}
+  position: absolute;
+  left:66%;
+  top:5%;
+  font-size:20px;
+
+    }
 
 /*カレンダー*/
 #calendar {
     text-align: center;
     width: 100%;
 }
-table {
+.table1 {
+	position:  absolute;
     outline: 2px solid #ddd;
     border-collapse: collapse;
-
-    left:20%;
-    top:45%;
+    background-color:white;
+    left:65%;
+    top:11%;
 }
-th {
+.thcalender {
     color: #000;
 }
-th, td {
+.thcalender disabled today{
     outline: 1px solid #ddd;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -260,29 +263,41 @@ td.today {
 }
 
 /*ボタン*/
-#next-prev-button {
-    position: relative;
-}
+
 #next-prev-button button{
+	position:absolute;
     cursor: pointer;
     background: #B78D4A;
     color: #fff;
     border: 1px solid #B78D4A;
     border-radius: 4px;
     font-size: 1rem;
-    padding: 0.5rem 2rem;
+    padding: 0.1rem 0.6rem;
     margin: 1rem 0;
+
+
 }
 #next-prev-button button:hover{
     background-color: #D4BB92;
     border-color: #D4BB92;
+
 }
 #prev {
+	 position: absolute;
+     left:63%;
+     top:5%;
     float: left;
+    z-index:10000;
+
 }
 #next {
+	position: absolute;
+     left:75%;
+     top:5%;
     float: right;
+     z-index:10000;
 }
+
 
 
  /*雨の初期位置とアニメーション指定、leftはx座標での基準位置、topは開始位置、アニメーション時間は揺らぎ*/

@@ -89,7 +89,7 @@ st.in(true)
 		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
 		<form action="/ev" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div >
-		<table id="table" border="1">
+		<table class="table" border="1">
 			<tr>
 				<th class="th1">予定</th>
 				<th class="th1">年月日</th>
@@ -157,9 +157,9 @@ function showProcess(date) {
 // カレンダー作成
 function createProcess(year, month) {
     // 曜日
-    var calendar = "<table ><tr class='dayOfWeek'>";
+    var calendar = "<table class='table1'><tr class='dayOfWeek'>";
     for (var i = 0; i < week.length; i++) {
-        calendar += "<th>" + week[i] + "</th>";
+        calendar += "<th class='thcalender'>" + week[i] + "</th>";
     }
     calendar += "</tr>";
 
@@ -212,5 +212,6 @@ function createProcess(year, month) {
     <!-- カレンダー -->
     <div id="calendar"></div>
 </div>
+<div id="dish"></div>
 </body>
 </html>
