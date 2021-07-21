@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,29 +27,43 @@ public class CategoryContoroller {
 	public ModelAndView addCategory(
 			@RequestParam(name = "addCategory") String name,
 			ModelAndView mv) {
-		List<Category> list = categoryRepository.findAll();
+		User user = (User)session.getAttribute("userInfo");
+		List<Category> list0 = categoryRepository.findByUsercode(0);
+		List<Category> list1 = categoryRepository.findByUsercode(user.getCode());
+		List<Category> category = new ArrayList<>();
 		int count = 0;
 
 		if (name.equals("")) {
 			mv.addObject("message","カテゴリー名を入力してください");
 		} else {
-			for(Category cate : list) {
-				if(name.equals(cate.getName())) {
+			for(Category cate0 : list0) {
+				if(name.equals(cate0.getName())) {
 					count = 1;
-				}else {
-
+				}
+			}
+			for(Category cate1 : list1) {
+				if(name.equals(cate1.getName())) {
+					count = 1;
 				}
 			}
 			if(count==0) {
-				Category category = new Category(name);
-				categoryRepository.saveAndFlush(category);
+				Category category_detail = new Category(user.getCode(),name);
+				categoryRepository.saveAndFlush(category_detail);
+				list1 = categoryRepository.findByUsercode(user.getCode());
 				mv.addObject("message","カテゴリーを追加しました");
+			}else {
+				mv.addObject("message","登録済みのカテゴリーです");
 			}
 		}
 
-		list = categoryRepository.findAll();
+		for(Category category0 : list0) {
+			category.add(category0);
+		}
+		for(Category category1 : list1) {
+			category.add(category1);
+		}
 
-		mv.addObject("list", list);
+		session.setAttribute("category", category);
 
 		mv.setViewName("deleteCategory");
 
@@ -56,7 +72,7 @@ public class CategoryContoroller {
 
 	//削除一覧
 	@RequestMapping("/deleteCate")
-	public ModelAndView delete(	ModelAndView mv) {
+	public ModelAndView delete(ModelAndView mv) {
 
 		List<Category> category = categoryRepository.findAll();
 
@@ -65,35 +81,48 @@ public class CategoryContoroller {
 
 		return mv;
 	}
+
 	//削除一覧から削除
 	@RequestMapping("/deleteCatego")
 	public ModelAndView deleteCategory(
-			@RequestParam("code")int code,
+			@RequestParam("code") int code,
 			ModelAndView mv) {
 		List<Schedule> schedule = scheduleRepository.findAll();
+		User user = (User)session.getAttribute("userInfo");
+		List<Category> list0 = categoryRepository.findByUsercode(0);
+		List<Category> list1 = new ArrayList<>();
+		List<Category> category = new ArrayList<>();
 		int flag = 0;
-		for(Schedule sche:schedule) {
-			if(sche.getCategorycode()==code) {
-				flag=1;
+		Optional<Category> cate = categoryRepository.findById(code);
+		Category category_detail=cate.get();
+		for (Schedule sche : schedule) {
+			if (sche.getCategorycode() == code) {
+				flag = 1;
 			}
 		}
 
-		if(flag==0) {
+		if (flag == 0) {
 			categoryRepository.deleteById(code);
-			mv.addObject("message","削除しました");
-		}else {
+			list1 = categoryRepository.findByUsercode(user.getCode());
+			mv.addObject("message", "削除しました");
+		} else {
 			mv.addObject("message", "予定が登録されているため、削除できません");
+			if(category_detail.getUsercode()==0) {
+				mv.addObject("message","削除できないカテゴリーです");
+			}
 		}
 
+		for(Category category0 : list0) {
+			category.add(category0);
+		}
+		for(Category category1 : list1) {
+			category.add(category1);
+		}
 
-		List<Category> list = categoryRepository.findAll();
-
-
-		mv.addObject("list",list);
+		session.setAttribute("category", category);
 		mv.setViewName("deleteCategory");
 
 		return mv;
 	}
-
 
 }

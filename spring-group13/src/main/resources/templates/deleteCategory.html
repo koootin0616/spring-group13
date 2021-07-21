@@ -14,7 +14,7 @@
 				<th>カテゴリ名</th>
 				<th>削除</th>
 			</tr>
-			<tr th:each="category:${list}">
+			<tr th:each="category:${session.category}">
 			<td th:text="${category.code}"></td>
 			<td th:text="${category.name}"></td>
 				<td>

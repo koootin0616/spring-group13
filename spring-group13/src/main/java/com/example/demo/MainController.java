@@ -35,7 +35,6 @@ public class MainController {
 			ModelAndView mv) {
 		User user = (User)session.getAttribute("userInfo");
 
-		List<Category> category = categoryRepository.findAll();
 		List<Schedule> schedule = new ArrayList<>();
 		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
 		long now = (Long) session.getAttribute("now");
@@ -49,7 +48,6 @@ public class MainController {
 			}
 		}
 
-		session.setAttribute("category", category);
 		session.setAttribute("userInfo", user);
 		session.setAttribute("categoryCounter", 1);
 		session.setAttribute("todayCounter", 1);

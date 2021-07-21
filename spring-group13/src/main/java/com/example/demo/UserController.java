@@ -35,7 +35,9 @@ public class UserController {
 		User user = null;
 		Optional<User> detail = userRepository.findById(id);
 
-		List<Category> category_detail = categoryRepository.findAll();
+		List<Category> list0 = categoryRepository.findByUsercode(0);
+		List<Category> list1 = new ArrayList<>();
+		List<Category> category = new ArrayList<>();
 		List<Schedule> schedule = new ArrayList<>();
 
 
@@ -68,8 +70,15 @@ public class UserController {
 					schedule.add(sche);
 				}
 			}
+			list1 = categoryRepository.findByUsercode(user.getCode());
+			for(Category category0 : list0) {
+				category.add(category0);
+			}
+			for(Category category1 : list1) {
+				category.add(category1);
+			}
 			session.setAttribute("userInfo", user);
-			session.setAttribute("category",category_detail);
+			session.setAttribute("category",category);
 			session.setAttribute("categoryCounter", 1);
 			session.setAttribute("todayCounter", 1);
 			session.setAttribute("tomorrowCounter", 1);
