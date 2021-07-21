@@ -74,9 +74,12 @@ st.in(true)
 /*]]>*/
 </script>
 	<div id="week">
-		<a href="/today" class="hr">本日の予定</a><br>
-		<a href="/tomorrow" class="hr">明日の予定</a><br>
-		<a href="/week" class="hr">1週間の予定</a><br>
+		<a href="/today" class="hr">本日の予定　</a>
+
+		<a href="/tomorrow" class="hr">明日の予定　</a><br>
+
+		<a href="/week" class="hr">1週間の予定　</a>
+
 		<a href="/mainreturn" class="hr">すべての予定</a>
 	</div>
 	<div id="headline">
@@ -98,9 +101,9 @@ st.in(true)
 			</tr>
 			<tr th:each="schedule:${schedule}">
 				<td th:text="${schedule.name}"></td>
-				<td th:text="${schedule.ymd}"></td>
-				<td th:text="${schedule.jikan}"></td>
-				<td th:text="${schedule.importance}"></td>
+				<td class="ymd" th:text="${schedule.ymd}"></td>
+				<td class="jikan" th:text="${schedule.jikan}"></td>
+				<td class="importance"th:text="${schedule.importance}"></td>
 				<td th:text="${schedule.contents}"></td>
 				<td class=button2>
 					<form action="update" method="post">
@@ -118,5 +121,6 @@ st.in(true)
 		</table>
 	</div>
 	<div id="dish"></div>
+	
 </body>
 </html>
