@@ -57,9 +57,20 @@ public class ScheduleController {
 		//ItemエンティティをItemテーブルに登録
 		scheduleRepository.saveAndFlush(schedule);
 
-		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule_list = new ArrayList<>();
+		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+		long now = (Long) session.getAttribute("now");
+		Date date1 = null;
+		long datetime_date = 0;
+		for (Schedule sche : list) {
+			date1 = sche.getYmd();
+			datetime_date = date1.getTime();
+			if ((datetime_date - now) >= 0) {
+				schedule_list.add(sche);
+			}
+		}
 		mv.addObject("message","予定を追加しました");
-		mv.addObject("schedule", list);
+		mv.addObject("schedule", schedule_list);
 		mv.setViewName("main");
 
 		return mv;
@@ -99,10 +110,21 @@ public class ScheduleController {
 
 		scheduleRepository.saveAndFlush(schedule);
 
-		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule_list = new ArrayList<>();
+		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+		long now = (Long) session.getAttribute("now");
+		Date date1 = null;
+		long datetime_date = 0;
+		for (Schedule sche : list) {
+			date1 = sche.getYmd();
+			datetime_date = date1.getTime();
+			if ((datetime_date - now) >= 0) {
+				schedule_list.add(sche);
+			}
+		}
 
 		mv.addObject("message","更新しました");
-		mv.addObject("schedule", list);
+		mv.addObject("schedule", schedule_list);
 		mv.setViewName("main");
 
 		return mv;
@@ -119,7 +141,7 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
 		List<Schedule> schedule = new ArrayList<>();
 
 		if (categoryCounter == 10) {
@@ -159,7 +181,16 @@ public class ScheduleController {
 				}
 			}
 		} else {
-			schedule = scheduleRepository.findByUsercode(user.getCode());
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
 		}
 		mv.addObject("message","削除しました");
 		mv.addObject("schedule", schedule);
@@ -168,236 +199,7 @@ public class ScheduleController {
 		return mv;
 	}
 
-	@RequestMapping("/sortDescYmd")
-	public ModelAndView sortDescYmd(ModelAndView mv) {
-		User user = (User) session.getAttribute("userInfo");
-		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
-		int todayCounter = (Integer) session.getAttribute("todayCounter");
-		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
-		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdDesc(user.getCode());
-		List<Schedule> schedule = new ArrayList<>();
-
-		if (categoryCounter == 10) {
-			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdDesc(user.getCode(), categorySortCode);
-		} else if (todayCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) == 0) {
-					schedule.add(sche);
-				}
-			}
-		} else if (tomorrowCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
-					schedule.add(sche);
-				}
-			}
-		} else if (weekCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
-					schedule.add(sche);
-				}
-			}
-		} else {
-			schedule = scheduleRepository.findByUsercodeOrderByYmdDesc(user.getCode());
-		}
-
-		mv.addObject("schedule", schedule);
-		mv.setViewName("main");
-
-		return mv;
-	}
-
-	@RequestMapping("/sortAscYmd")
-	public ModelAndView sortAscYmd(ModelAndView mv) {
-		User user = (User) session.getAttribute("userInfo");
-		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
-		int todayCounter = (Integer) session.getAttribute("todayCounter");
-		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
-		int weekCounter = (Integer) session.getAttribute("weekCounter");
-
-		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAsc(user.getCode());
-		List<Schedule> schedule = new ArrayList<>();
-
-		if (categoryCounter == 10) {
-			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdAsc(user.getCode(), categorySortCode);
-		} else if (todayCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) == 0) {
-					schedule.add(sche);
-				}
-			}
-		} else if (tomorrowCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
-					schedule.add(sche);
-				}
-			}
-		} else if (weekCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
-					schedule.add(sche);
-				}
-			}
-		} else {
-			schedule = scheduleRepository.findByUsercodeOrderByYmdAsc(user.getCode());
-		}
-		mv.addObject("schedule", schedule);
-		mv.setViewName("main");
-
-		return mv;
-	}
-
-	@RequestMapping("/sortDescJikan")
-	public ModelAndView sortDescJikan(ModelAndView mv) {
-		User user = (User) session.getAttribute("userInfo");
-		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
-		int todayCounter = (Integer) session.getAttribute("todayCounter");
-		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
-		int weekCounter = (Integer) session.getAttribute("weekCounter");
-
-		List<Schedule> list = scheduleRepository.findByUsercodeOrderByJikanDesc(user.getCode());
-		List<Schedule> schedule = new ArrayList<>();
-
-		if (categoryCounter == 10) {
-			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByJikanDesc(user.getCode(),
-					categorySortCode);
-		} else if (todayCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) == 0) {
-					schedule.add(sche);
-				}
-			}
-		} else if (tomorrowCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
-					schedule.add(sche);
-				}
-			}
-		} else if (weekCounter == 10) {
-			list = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
-					schedule.add(sche);
-				}
-			}
-		} else {
-			schedule = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
-		}
-
-		mv.addObject("schedule", schedule);
-		mv.setViewName("main");
-
-		return mv;
-	}
-
-	@RequestMapping("/sortAscJikan")
-	public ModelAndView sortAscJikan(ModelAndView mv) {
-		User user = (User) session.getAttribute("userInfo");
-		int categoryCounter = (Integer) session.getAttribute("categoryCounter");
-		int todayCounter = (Integer) session.getAttribute("todayCounter");
-		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
-		int weekCounter = (Integer) session.getAttribute("weekCounter");
-
-		List<Schedule> list = scheduleRepository.findByUsercodeOrderByJikanAsc(user.getCode());
-		List<Schedule> schedule = new ArrayList<>();
-
-		if (categoryCounter == 10) {
-			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			schedule = scheduleRepository.findByUsercodeAndCategorycodeOrderByJikanAsc(user.getCode(),
-					categorySortCode);
-		} else if (todayCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) == 0) {
-					schedule.add(sche);
-				}
-			}
-		} else if (tomorrowCounter == 10) {
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) == 1) {
-					schedule.add(sche);
-				}
-			}
-		} else if (weekCounter == 10) {
-			list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
-			long now = (Long) session.getAttribute("now");
-			Date date = null;
-			long datetime_date = 0;
-			for (Schedule sche : list) {
-				date = sche.getYmd();
-				datetime_date = date.getTime();
-				if ((datetime_date - now) / (1000 * 60 * 60 * 24) < 7 && (datetime_date - now) >= 0) {
-					schedule.add(sche);
-				}
-			}
-		} else {
-			schedule = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
-		}
-
-		mv.addObject("schedule", schedule);
-		mv.setViewName("main");
-
-		return mv;
-	}
 	@RequestMapping("/sortAscImportance")
 	public ModelAndView sortAscImportance(ModelAndView mv) {
 		User user = (User) session.getAttribute("userInfo");
@@ -481,7 +283,16 @@ public class ScheduleController {
 				}
 			}
 		} else {
-			schedule = list;
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
 		}
 
 		mv.addObject("schedule", schedule);
@@ -498,7 +309,7 @@ public class ScheduleController {
 		int tomorrowCounter = (Integer) session.getAttribute("tomorrowCounter");
 		int weekCounter = (Integer) session.getAttribute("weekCounter");
 
-		List<Schedule> list1 = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
+		List<Schedule> list1 = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
 		List<Schedule> list2 = new ArrayList<>();
 		List<Schedule> list = new ArrayList<>();
 		List<Schedule> schedule = new ArrayList<>();
@@ -521,7 +332,7 @@ public class ScheduleController {
 
 		if (categoryCounter == 10) {
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
-			list1 = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdDescJikanDesc(user.getCode(),categorySortCode);
+			list1 = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdAscJikanAsc(user.getCode(),categorySortCode);
 			for(Schedule sche1:list1) {
 				if(sche1.getImportance().equals("高")) {
 					list2.add(sche1);
@@ -561,7 +372,6 @@ public class ScheduleController {
 				}
 			}
 		} else if (weekCounter == 10) {
-			list = scheduleRepository.findByUsercodeOrderByYmdDescJikanDesc(user.getCode());
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;
@@ -573,7 +383,16 @@ public class ScheduleController {
 				}
 			}
 		} else {
-			schedule = list;
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
 		}
 
 		mv.addObject("schedule", schedule);

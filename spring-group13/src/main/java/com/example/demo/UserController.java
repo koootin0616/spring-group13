@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +36,8 @@ public class UserController {
 		Optional<User> detail = userRepository.findById(id);
 
 		List<Category> category_detail = categoryRepository.findAll();
+		List<Schedule> schedule = new ArrayList<>();
+
 
 		if (id.equals("") || password.equals("")) {
 			mv.addObject("message", "IDとパスワードを入力してください");
@@ -42,7 +46,7 @@ public class UserController {
 		}
 
 		if (detail.isEmpty()) {
-			mv.addObject("message", "入力されたIDは登録されていません");
+			mv.addObject("message", "IDかパスワードが間違っています");
 			mv.setViewName("login");
 			return mv;
 		} else {
@@ -50,17 +54,27 @@ public class UserController {
 		}
 
 		if (!(password.equals(user.getPassword()))) {
-			mv.addObject("message", "入力されたパスワードは間違えています");
+			mv.addObject("message", "IDかパスワードが間違っています");
 			mv.setViewName("login");
 		} else {
-			List<Schedule> schedule_detail = scheduleRepository.findByUsercode(user.getCode());
+			List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
 			session.setAttribute("userInfo", user);
 			session.setAttribute("category",category_detail);
 			session.setAttribute("categoryCounter", 1);
 			session.setAttribute("todayCounter", 1);
 			session.setAttribute("tomorrowCounter", 1);
 			session.setAttribute("weekCounter", 1);
-			mv.addObject("schedule",schedule_detail);
+			mv.addObject("schedule",schedule);
 			mv.setViewName("main");
 		}
 

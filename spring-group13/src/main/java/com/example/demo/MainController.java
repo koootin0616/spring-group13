@@ -36,7 +36,18 @@ public class MainController {
 		User user = (User)session.getAttribute("userInfo");
 
 		List<Category> category = categoryRepository.findAll();
-		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule = new ArrayList<>();
+		List<Schedule> list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+		long now = (Long) session.getAttribute("now");
+		Date date = null;
+		long datetime_date = 0;
+		for (Schedule sche : list) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - now) >= 0) {
+				schedule.add(sche);
+			}
+		}
 
 		session.setAttribute("category", category);
 		session.setAttribute("userInfo", user);
@@ -44,7 +55,7 @@ public class MainController {
 		session.setAttribute("todayCounter", 1);
 		session.setAttribute("tomorrowCounter", 1);
 		session.setAttribute("weekCounter", 1);
-		mv.addObject("schedule",list);
+		mv.addObject("schedule",schedule);
 		mv.setViewName("main");
 
 		return mv;
@@ -157,7 +168,18 @@ public class MainController {
 		if (detail.isEmpty() == false) { //レコードがあれば
 			category = detail.get(); //レコードを取得する
 		}
-		List<Schedule> schedule = scheduleRepository.findByUsercodeAndCategorycode(user.getCode(), category.getCode());
+		List<Schedule> list = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdAscJikanAsc(user.getCode(), category.getCode());
+		List<Schedule> schedule = new ArrayList<>();
+		long now = (Long) session.getAttribute("now");
+		Date date = null;
+		long datetime_date = 0;
+		for (Schedule sche : list) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - now) >= 0) {
+				schedule.add(sche);
+			}
+		}
 
 		mv.addObject("schedule", schedule);
 		session.setAttribute("categoryCounter", 10);
@@ -173,21 +195,20 @@ public class MainController {
 	@RequestMapping("/week")
 	public ModelAndView week(ModelAndView mv) {
 		User user= (User)session.getAttribute("userInfo");
-		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
-		LocalDate today = LocalDate.now();
-		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		List<Schedule> schedule = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+
 		Date date = null;
-		long datetime_now = now.getTime();
+
 		long datetime_date = 0;
 		long one_date_time = 1000 * 60 * 60 * 24;
-
+		long now = (Long) session.getAttribute("now");
 		List<Schedule> list = new ArrayList<>();
 
 		for (Schedule sche : schedule) {
 			date = sche.getYmd();
 			datetime_date = date.getTime();
-			if ((datetime_date - datetime_now) / one_date_time < 7
-					&& (datetime_date - datetime_now) >= 0) {
+			if ((datetime_date - now) / one_date_time < 7
+					&& (datetime_date - now) >= 0) {
 				list.add(sche);
 			}
 		}
@@ -195,7 +216,6 @@ public class MainController {
 		session.setAttribute("todayCounter", 1);
 		session.setAttribute("tomorrowCounter", 1);
 		session.setAttribute("weekCounter", 10);
-		session.setAttribute("now", datetime_now);
 		mv.addObject("schedule", list);
 		mv.setViewName("main");
 
@@ -205,7 +225,7 @@ public class MainController {
 	@RequestMapping("/today")
 	public ModelAndView today(ModelAndView mv) {
 		User user= (User)session.getAttribute("userInfo");
-		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule = scheduleRepository.findByUsercodeOrderByJikanAsc(user.getCode());
 		LocalDate today = LocalDate.now();
 		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date date = null;
@@ -235,7 +255,7 @@ public class MainController {
 	@RequestMapping("/tomorrow")
 	public ModelAndView tomorrow(ModelAndView mv) {
 		User user= (User)session.getAttribute("userInfo");
-		List<Schedule> schedule = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule = scheduleRepository.findByUsercodeOrderByJikanAsc(user.getCode());
 		LocalDate today = LocalDate.now();
 		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 

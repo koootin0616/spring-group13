@@ -3,6 +3,7 @@ package com.example.demo;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,9 +37,10 @@ public class EvaluationController {
 		long miliseconds = System.currentTimeMillis();
 		Date date = new Date(miliseconds);
 		date = Date.valueOf(ymd);
-		int per = achieved * 100 / (achieved + notachieved);
+		int per = 0;
 		User user = (User)session.getAttribute("userInfo");
 		List<Evaluation> eva_list=evaluationRepository.findAll();
+		List<Schedule> list = new ArrayList<>();
 		for(Evaluation detail:eva_list) {
 
 			if(date.equals(detail.getYmd())){
@@ -48,8 +50,20 @@ public class EvaluationController {
 			}
 		}
 
+		if(achieved==0&&notachieved==00) {
+			list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
+			mv.addObject("schedule",list);
+			mv.addObject("ymd",ymd);
+			mv.addObject("message","未記入項目があります");
+			mv.setViewName("fillout");
+			return mv;
+		}else {
+			per = achieved * 100 / (achieved + notachieved);
+		}
+
+
 		if(reflection.equals("")||improvement.equals("")){
-			List<Schedule> list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
+			list = scheduleRepository.findByUsercodeAndYmd(user.getCode(),date);
 			mv.addObject("schedule",list);
 			mv.addObject("ymd",ymd);
 			mv.addObject("message","未記入項目があります");
@@ -61,9 +75,19 @@ public class EvaluationController {
 			evaluationRepository.saveAndFlush(evaluation);
 			mv.addObject("message","自己評価を登録しました");
 		}
-		List<Schedule> list = scheduleRepository.findByUsercode(user.getCode());
+		List<Schedule> schedule = new ArrayList<>();
+		list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
+		long now = (Long) session.getAttribute("now");
+		long datetime_date = 0;
+		for (Schedule sche : list) {
+			date = sche.getYmd();
+			datetime_date = date.getTime();
+			if ((datetime_date - now) >= 0) {
+				schedule.add(sche);
+			}
+		}
 
-		mv.addObject("schedule",list);
+		mv.addObject("schedule",schedule);
 		mv.setViewName("main");
 
 
