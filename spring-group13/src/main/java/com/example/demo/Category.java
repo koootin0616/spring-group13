@@ -12,11 +12,11 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int code;
+	private int usercode;
 	private String name;
 
-
-	public Category(int code, String name) {
-		this.code = code;
+	public Category(int usercode, String name) {
+		this.usercode = usercode;
 		this.name = name;
 	}
 
@@ -34,6 +34,14 @@ public class Category {
 
 	public void setCode(int code) {
 		this.code = code;
+	}
+
+	public int getUsercode() {
+		return usercode;
+	}
+
+	public void setUsercode(int usercode) {
+		this.usercode = usercode;
 	}
 
 	public String getName() {
