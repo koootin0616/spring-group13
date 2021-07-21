@@ -283,7 +283,16 @@ public class ScheduleController {
 				}
 			}
 		} else {
-			schedule = list;
+			long now = (Long) session.getAttribute("now");
+			Date date = null;
+			long datetime_date = 0;
+			for (Schedule sche : list) {
+				date = sche.getYmd();
+				datetime_date = date.getTime();
+				if ((datetime_date - now) >= 0) {
+					schedule.add(sche);
+				}
+			}
 		}
 
 		mv.addObject("schedule", schedule);
