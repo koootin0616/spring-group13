@@ -1,5 +1,9 @@
 package com.example.demo;
 
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +35,9 @@ public class TopController {
 
 	@RequestMapping("/login")
 	public ModelAndView login(ModelAndView mv) {
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		long datetime_now = now.getTime();
 
 		User user = (User)session.getAttribute("userInfo");
 
@@ -40,7 +47,7 @@ public class TopController {
 			mv.setViewName("main");
 			return mv;
 		}
-
+		session.setAttribute("now", datetime_now);
 		mv.setViewName("login");
 
 		return mv;
@@ -48,34 +55,15 @@ public class TopController {
 
 	@RequestMapping("/signup")
 	public ModelAndView signup(ModelAndView mv) {
+		LocalDate today = LocalDate.now();
+		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		long datetime_now = now.getTime();
 
+
+		session.setAttribute("now", datetime_now);
 		mv.setViewName("signup");
 
 		return mv;
 	}
-	@RequestMapping("/addplan")
-	public ModelAndView addplan(ModelAndView mv) {
-
-		mv.setViewName("addplan");
-
-		return mv;
-	}
-	@RequestMapping("/update")
-	public ModelAndView update(ModelAndView mv) {
-
-		mv.setViewName("update");
-
-		return mv;
-	}
-
-	@RequestMapping("/evaluation")
-	public ModelAndView evaluation(ModelAndView mv) {
-
-		mv.setViewName("evaluation");
-
-		return mv;
-	}
-
-
 
 }
