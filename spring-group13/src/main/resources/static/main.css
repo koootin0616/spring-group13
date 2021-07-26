@@ -352,14 +352,13 @@ td.today {
 h2 {
 	float: left;
 	padding: 6px 0;
-	 background:#00BFFF;
 }
 	h2 a {
 		display: block;
 		width: 64px;
-		height: 69px;
+		height: 72px;
 		font-size: 0;
-		background: url(./logo.jpg) left top/64px auto no-repeat;
+		background: url(./logo.png) left top/64px auto no-repeat;
 	}
 
 

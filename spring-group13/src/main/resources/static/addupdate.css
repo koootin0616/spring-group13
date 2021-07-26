@@ -94,11 +94,11 @@
 }
 #title  {
 	position: absolute;
-	top: 11%;
+	top: 9%;
 	left: 39%;
 	font-size:60px;
 	color:white;
-	 font-weight:  bold;
+	font-weight:  bold;
 
 }
 #title1  {
@@ -118,8 +118,7 @@ h2 {
 		display: block;
 		width: 64px;
 		height: 69px;
-		font-size: 0;
-		background: url(./logo.jpg) left top/64px auto no-repeat;
+		background: url(./logo.png) left top/64px auto no-repeat;
 	}
 body {
   background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0;
