@@ -24,6 +24,8 @@
 		</div>
 	</form>
 
+	<h2><a href="mainreturn"></a></h2>
+
 	<div id="deleteCategory">
 	<form action="/deleteCate">
 	<input  type="submit" value="カテゴリーの編集">
@@ -57,7 +59,7 @@ function showClock2() {
    var msg = nowFullYear + "年"+ nowMonth + "月" + nowDate + "日" +  nowHour + ":" + nowMin + ":" + nowSec  ;
    document.getElementById("RealtimeClockArea2").innerHTML = msg;
 }
-setInterval('showClock2()',1000);
+setInterval('showClock2()',1);
 
 var st = new SelfTimer(new Date());
 

@@ -32,6 +32,18 @@ table{
 	left:600px;
 	z-index:10000;
 }
+h2 {
+	float: left;
+	padding: 6px 0;
+}
+	h2 a {
+		display: block;
+		width: 64px;
+		height: 69px;
+		font-size: 0;
+		background: url(./logo.jpg) left top/64px auto no-repeat;
+	}
+
 body {
   background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0;
   background-color: skyblue;

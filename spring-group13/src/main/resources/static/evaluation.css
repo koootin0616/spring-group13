@@ -222,6 +222,20 @@ body{
 	font-weight:  bold;
 
 }
+h2 {
+	float: left;
+	padding: 6px 0;
+	z-index:200000;
+}
+	h2 a {
+		display: block;
+		width: 64px;
+		height: 69px;
+		font-size: 0;
+		background: url(./logo.jpg) left top/64px auto no-repeat;
+		z-index:200000;
+	}
+
 
 .contents{
 	background:white;
