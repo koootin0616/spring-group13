@@ -22,10 +22,11 @@ public class TopController {
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
-	//http://localhost:8080/addplan
+	//http://localhost:8080/
+	//トップ画面へ遷移
 	@RequestMapping("/")
 	public ModelAndView top(ModelAndView mv) {
-		//Userテーブルから全ての全レコードを獲得
+
 
 
 		mv.setViewName("top");
@@ -33,28 +34,36 @@ public class TopController {
 		return mv;
 	}
 
+	//http://localhost:8080/login
+	//ログイン画面への遷移
 	@RequestMapping("/login")
 	public ModelAndView login(ModelAndView mv) {
+		//今日の日付の取得
 		LocalDate today = LocalDate.now();
 		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		long datetime_now = now.getTime();
 
 		User user = (User)session.getAttribute("userInfo");
 
+		//Userのセッションオブジェクトがあるとき、メイン画面へ遷移
 		if(user!=null) {
 			List<Schedule> schedule=scheduleRepository.findByUsercode(user.getCode());
 			mv.addObject("schedule", schedule);
 			mv.setViewName("main");
 			return mv;
 		}
+
 		session.setAttribute("now", datetime_now);
 		mv.setViewName("login");
 
 		return mv;
 	}
 
+	//http://localhost:8080/signup
+	//ユーザの新規登録画面への遷移
 	@RequestMapping("/signup")
 	public ModelAndView signup(ModelAndView mv) {
+		//今日の日付の取得
 		LocalDate today = LocalDate.now();
 		Date now = Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		long datetime_now = now.getTime();

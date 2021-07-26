@@ -1,5 +1,5 @@
 @charset "UTF-8";
-#add1  {
+#date {
 	position: absolute;
 	top: 32%;
 	left: 32%;
@@ -9,7 +9,7 @@
 
 
 }
-#add2  {
+#category {
 	position: absolute;
 	top: 41%;
 	left: 32%;
@@ -18,7 +18,7 @@
 	font-weight:  bold;
 
 }
-#add3  {
+#importance {
 	position: absolute;
 	top: 41%;
 	left: 50%;
@@ -26,7 +26,7 @@
 	color:white;
 	font-weight:  bold;
 }
-#add4  {
+#submit {
 	position: absolute;
 	top: 81%;
 	left: 72%;
@@ -35,7 +35,7 @@
 	 font-weight:  bold;
 
 }
-#add5{
+#detail {
 	position: absolute;
 	top: 55%;
 	left: 32%;
@@ -44,7 +44,7 @@
 	 font-weight:  bold;
 
 }
-#add6{
+#schedule {
 	position: absolute;
 	top: 48%;
 	left: 32%;
@@ -52,7 +52,7 @@
 	color:white;
 	font-weight:  bold;
 }
-#add7{
+#time{
 	position: absolute;
 	top: 32%;
 	left: 57%;

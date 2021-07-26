@@ -26,7 +26,9 @@ public class ScheduleController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@PostMapping("/addsche")
+	//http://localhost:8080/add
+	//メイン画面へ遷移
+	@PostMapping("/add")
 	public ModelAndView add(
 			@RequestParam("category") String categoryname,
 			@RequestParam("name") String name,
@@ -49,12 +51,11 @@ public class ScheduleController {
 		Category category = null;
 		Optional<Category> categoryDetail = categoryRepository.findByName(categoryname);
 		category = categoryDetail.get();
-		//登録するエンティティのインスタンスを生成
 
 		Schedule schedule = new Schedule(user.getCode(), category.getCode(), name, date, time, importance,
 				contents);
 
-		//ItemエンティティをItemテーブルに登録
+
 		scheduleRepository.saveAndFlush(schedule);
 
 		List<Schedule> schedule_list = new ArrayList<>();
@@ -76,6 +77,8 @@ public class ScheduleController {
 		return mv;
 	}
 
+	//http://localhost:8080/updateSchedule
+	//メイン画面へ遷移
 	@RequestMapping("/updateSchedule")
 	public ModelAndView update(
 			@RequestParam("code") int code,
@@ -130,6 +133,8 @@ public class ScheduleController {
 		return mv;
 	}
 
+	//http://localhost:8080/delete
+	//メイン画面へ遷移
 	@RequestMapping("/delete")
 	public ModelAndView delete(
 			@RequestParam("code") int code,
@@ -199,7 +204,8 @@ public class ScheduleController {
 		return mv;
 	}
 
-
+	//http://localhost:8080/sortAscImportance
+	//メイン画面へ遷移
 	@RequestMapping("/sortAscImportance")
 	public ModelAndView sortAscImportance(ModelAndView mv) {
 		User user = (User) session.getAttribute("userInfo");
@@ -301,6 +307,8 @@ public class ScheduleController {
 		return mv;
 	}
 
+	//http://localhost:8080/sortDescImportance
+	//メイン画面へ遷移
 	@RequestMapping("/sortDescImportance")
 	public ModelAndView sortDescImportance(ModelAndView mv) {
 		User user = (User) session.getAttribute("userInfo");

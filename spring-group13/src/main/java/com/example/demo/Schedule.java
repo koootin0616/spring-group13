@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="schedule")
 public class Schedule {
+	//フィールド
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer code;
@@ -23,12 +24,10 @@ public class Schedule {
 	private String importance;
 	private String contents;
 
-
+	//コンストラクタ
 	public Schedule() {
 
 	}
-
-
 
 	public Schedule(Integer code, int usercode, int categorycode, String name, Date ymd, Time jikan,
 			String importance, String contents) {
@@ -42,8 +41,6 @@ public class Schedule {
 		this.contents = contents;
 	}
 
-
-
 	public Schedule(int usercode, int categorycode, String name, Date ymd, Time jikan, String importance,
 			String contents) {
 		this.usercode = usercode;
@@ -55,8 +52,7 @@ public class Schedule {
 		this.contents = contents;
 	}
 
-
-
+	//アクセッサ・メソッド
 	public Integer getCode() {
 		return code;
 	}

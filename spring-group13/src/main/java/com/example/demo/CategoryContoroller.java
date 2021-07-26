@@ -71,7 +71,7 @@ public class CategoryContoroller {
 	}
 
 	//削除一覧
-	@RequestMapping("/deleteCate")
+	@RequestMapping("/categoryEdit")
 	public ModelAndView delete(ModelAndView mv) {
 
 		List<Category> category = categoryRepository.findAll();
@@ -83,7 +83,7 @@ public class CategoryContoroller {
 	}
 
 	//削除一覧から削除
-	@RequestMapping("/deleteCatego")
+	@RequestMapping("/deleteCategory")
 	public ModelAndView deleteCategory(
 			@RequestParam("code") int code,
 			ModelAndView mv) {

@@ -18,7 +18,7 @@
 			<td th:text="${category.code}"></td>
 			<td th:text="${category.name}"></td>
 				<td>
-				<form action="deleteCatego" method="post">
+				<form action="categoryEdit" method="post">
 				<input class="button" type="submit" value="削除">
 				<input type="hidden" name="code" th:value="${category.code}">
 				</form>

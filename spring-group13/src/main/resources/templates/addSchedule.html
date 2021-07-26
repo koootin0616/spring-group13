@@ -3,32 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>todoリスト</title>
-<link href="addupdate.css" rel="stylesheet">
+<link href="add_update.css" rel="stylesheet">
 </head>
 
 <body>
-	<form action="/addsche" method="post">
-		<a id="add1">期限:<input type="date" name="ymd" max="9999-12-31"></a>
-		<a id="add7">時間：<input type="time" name="jikan" min="00:00" max="24:00"></a> <a id="add2">カテゴリー:
+	<form action="/add" method="post">
+		<a id="date">期限:<input type="date" name="ymd" max="9999-12-31"></a>
+		<a id="time">時間：<input type="time" name="jikan" min="00:00" max="24:00"></a>
+		<a id="category">カテゴリー:
 		<select name="category">
 				<option th:each="category:${session.category}" th:text="${category.name}"></option>
 		</select>
-		</a> <br> <a id="add3">重要度：
+		</a> <br> <a id="importance">重要度：
 		<select name="importance">
 				<option>高</option>
 				<option>中</option>
 				<option>低</option>
 		</select>
-		</a> <a id=add6>予定：</a>
+		</a>
+		<a id="schedule">予定：</a>
 		<div id="text">
 			<input type="text" name="name">
 		</div>
 		<a id="message" th:text="${message}"></a>
-		<a id="add5">詳細内容</a>
+		<a id="detail">詳細内容</a>
 		<div id="textarea">
 			<textarea name="contents" cols="60" rows="15"></textarea>
 		</div>
-		<br> <a id="add4"><input type="submit" class="button" value="追加"></a>
+		<br> <a id="submit"><input type="submit" class="button" value="追加"></a>
 	</form>
 	<a id="main" href="mainreturn">メインページへ</a>
 

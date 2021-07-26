@@ -9,7 +9,7 @@ body {
 
 }
 
-.bg {
+.background {
 	animation: slide 3s ease-in-out infinite alternate;
 	background-image: linear-gradient(-60deg, #0040FF 50%, #09f 50%);
 	bottom: 0;
@@ -21,12 +21,12 @@ body {
 	z-index: -1;
 }
 
-.bg2 {
+.background2 {
 	animation-direction: alternate-reverse;
 	animation-duration: 4s;
 }
 
-.bg3 {
+.background3 {
 	animation-duration: 5s;
 }
 
@@ -70,14 +70,7 @@ h1 {
   animation: appear 2s 2.5s forwards;
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+@keyframes appear {0% {opacity: 0;}100% {opacity: 1;}}
 
 div.drop-container:before,
 div.drop-container:after {
@@ -114,10 +107,23 @@ div.drop-container:after {
 
 @keyframes dripple {0% {width: 150px; height: 150px;}25% {opacity: 1;}100% {width: 500px; height: 500px; top: -20%; opacity: 0;}}
 
-@keyframes slide { 0% {transform: translateX(-25%);}100%{transform:translateX(25%);}}
+@keyframes slide {0% {transform: translateX(-25%);}100% {transform:translateX(25%);}}
 
-
-#top1 {
+.submit {
+	display: inline-block;
+	border-radius: 44%;
+	font-size: 22pt;
+	text-align: center;
+	cursor: pointer;
+	padding: 0.2px 4px;
+	background: #ff0000;
+	color: #ffffff;
+	line-height: 1em;
+	transition: .3s;
+	box-shadow: 6px 6px 12px #666666;
+	border: 2px solid #ff0000;
+}
+.submit1 {
 	left: 50%;
 	padding: 5vmin;
 	position: fixed;
@@ -126,7 +132,7 @@ div.drop-container:after {
 	transform: translate(-50%, -50%);
 }
 
-#top2 {
+.submit2 {
 	left: 50%;
 	padding: 5vmin;
 	position: fixed;
@@ -135,22 +141,7 @@ div.drop-container:after {
 	transform: translate(-50%, -50%);
 }
 
-.button {
-	display: inline-block;
-	border-radius: 44%; /* 角丸       */
-	font-size: 22pt; /* 文字サイズ */
-	text-align: center; /* 文字位置   */
-	cursor: pointer; /* カーソル   */
-	padding: 0.2px 4px; /* 余白       */
-	background: #ff0000; /* 背景色     */
-	color: #ffffff; /* 文字色     */
-	line-height: 1em; /* 1行の高さ  */
-	transition: .3s; /* なめらか変化 */
-	box-shadow: 6px 6px 12px #666666; /* 影の設定 */
-	border: 2px solid #ff0000; /* 枠の指定 */
-}
-
-.button:hover {
-	color: #ff0000; /* 背景色     */
-	background: #ffffff; /* 文字色     */
+.submit:hover {
+	color: #ff0000;
+	background: #ffffff;
 }
