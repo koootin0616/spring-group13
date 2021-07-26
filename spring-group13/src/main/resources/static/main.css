@@ -23,8 +23,8 @@
 }
 #RealtimeClockArea2{
 	position: absolute;
-	top: 8%;
-	left: 77%;
+	top: 1%;
+	left: 63%;
 	color:white;
 	font-weight:  bold;
 }
@@ -88,11 +88,13 @@
 	color:red;
 }
 
+
 table{
 	background:white;
 }
 
-#table{
+
+.table{
 	background:white;
 	color:black;
 	position: absolute;
@@ -174,21 +176,21 @@ table{
 #button1{
 	position: absolute;
 	top: 180px;
-	left: 619px;
+	left: 440px;
 	z-index:10000;
 }
 
 #button2{
 	position: absolute;
 	top: 180px;
-	left: 802px;
+	left: 625px;
 	z-index:10000;
 }
 
 #button3{
 	position: absolute;
 	top: 180px;
-	left: 985px;
+	left: 810px;
 	z-index:10000;
 }
 
@@ -260,6 +262,95 @@ body{
   height:180px;
   background:#FFF;
   opacity:0.4;
+}
+.wrapper{
+	position:relative;
+	top:65px;
+	left:140px;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+#header {
+  position: absolute;
+  left:66%;
+  top:5%;
+  font-size:20px;
+
+    }
+
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+.table1 {
+	position:  absolute;
+    outline: 2px solid #ddd;
+    border-collapse: collapse;
+    background-color:white;
+    left:65%;
+    top:11%;
+}
+.thcalender {
+    color: #000;
+}
+.thcalender disabled today{
+    outline: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+td:first-child {
+    color: red;
+}
+/*土曜日*/
+td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+    color: #ccc;
+}
+/*本日*/
+td.today {
+    background-color: #D65E72;
+    color: #fff;
+}
+
+/*ボタン*/
+
+#next-prev-button button{
+	position:absolute;
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.1rem 0.6rem;
+    margin: 1rem 0;
+}
+#next-prev-button button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+
+}
+#prev {
+	 position: relative;
+     left:400px;
+     top:-45px;
+    float: left;
+    z-index:10000;
+
+}
+#next {
+	position: relative;
+     left:500px;
+     top:-45px;
+    float: right;
+     z-index:10000;
 }
 
 
