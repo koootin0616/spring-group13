@@ -1,5 +1,5 @@
 @charset "UTF-8";
-#fillout1  {
+#date{
 	position: absolute;
 	top: 11.5%;
 	left: 34%;
@@ -8,7 +8,7 @@
 	color:white;
 }
 
-#fillout4  {
+#txt1{
 	position: absolute;
 	top: 12%;
 	left: 46%;
@@ -16,7 +16,8 @@
 	font-weight:  bold;
 	color:white;
 }
-#fillout5  {
+
+#txt2{
 	position: absolute;
 	top: 62%;
 	left: 30%;
@@ -24,7 +25,8 @@
 	font-weight:  bold;
 	color:white;
 }
-#fillout6  {
+
+#reflection{
 	position: absolute;
 	top: 66%;
 	left:18%;
@@ -32,7 +34,8 @@
 	font-weight:  bold;
 	color:white;
 }
-#fillout7 {
+
+#txt3{
 	position: absolute;
 	top: 62%;
 	left: 62%;
@@ -40,7 +43,8 @@
 	font-weight:  bold;
 	color:white;
 }
-#fillout8{
+
+#improvement{
 	position: absolute;
 	top: 66%;
 	left: 50%;
@@ -48,15 +52,8 @@
 	font-weight:  bold;
 	color:white;
 }
-#fillout9{
-	position: absolute;
-	top: 86%;
-	left: 84%;
-	font-size:20px;
-	font-weight:  bold;
-	color:white;
-}
-#fillout10 {
+
+#submit1{
 	position: absolute;
 	top: 12%;
 	left: 56%;
@@ -65,7 +62,17 @@
 	font-weight:  bold;
 	color:white;
 }
-#message {
+
+#submit2{
+	position: absolute;
+	top: 86%;
+	left: 84%;
+	font-size:20px;
+	font-weight:  bold;
+	color:white;
+}
+
+#message{
 	position: absolute;
 	top: 12%;
 	left: 58%;
@@ -75,7 +82,7 @@
 	color:white;
 }
 
-#fillout11{
+#table{
 	position: absolute;
 	top: 22%;
 	left: 25%;

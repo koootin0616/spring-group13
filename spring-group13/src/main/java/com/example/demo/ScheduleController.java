@@ -126,7 +126,7 @@ public class ScheduleController {
 			}
 		}
 
-		mv.addObject("message","更新しました");
+		mv.addObject("message","予定を変更しました");
 		mv.addObject("schedule", schedule_list);
 		mv.setViewName("main");
 
@@ -219,6 +219,7 @@ public class ScheduleController {
 		List<Schedule> list = new ArrayList<>();
 		List<Schedule> schedule = new ArrayList<>();
 
+		//重要度のソート
 		for(Schedule sche1:list1) {
 			if(sche1.getImportance().equals("低")) {
 				list.add(sche1);
@@ -235,7 +236,7 @@ public class ScheduleController {
 			}
 		}
 
-		if (categoryCounter == 10) {
+		if (categoryCounter == 10) { //カテゴリー検索時のソート
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
 			list1 = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdAscJikanAsc(user.getCode(),categorySortCode);
 			for(Schedule sche1:list1) {
@@ -254,7 +255,7 @@ public class ScheduleController {
 				}
 			}
 			schedule=list2;
-		} else if (todayCounter == 10) {
+		} else if (todayCounter == 10) { //今日の予定表示時のソート
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;
@@ -265,7 +266,7 @@ public class ScheduleController {
 					schedule.add(sche);
 				}
 			}
-		} else if (tomorrowCounter == 10) {
+		} else if (tomorrowCounter == 10) { //明日の予定表示時のソート
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;
@@ -276,7 +277,7 @@ public class ScheduleController {
 					schedule.add(sche);
 				}
 			}
-		} else if (weekCounter == 10) {
+		} else if (weekCounter == 10) { //今週の予定表示時のソート
 			list = scheduleRepository.findByUsercodeOrderByYmdAscJikanAsc(user.getCode());
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
@@ -322,6 +323,7 @@ public class ScheduleController {
 		List<Schedule> list = new ArrayList<>();
 		List<Schedule> schedule = new ArrayList<>();
 
+		//重要度のソート
 		for(Schedule sche1:list1) {
 			if(sche1.getImportance().equals("高")) {
 				list.add(sche1);
@@ -338,7 +340,7 @@ public class ScheduleController {
 			}
 		}
 
-		if (categoryCounter == 10) {
+		if (categoryCounter == 10) { //カテゴリー検索時のソート
 			int categorySortCode = (Integer) session.getAttribute("categorySortCode");
 			list1 = scheduleRepository.findByUsercodeAndCategorycodeOrderByYmdAscJikanAsc(user.getCode(),categorySortCode);
 			for(Schedule sche1:list1) {
@@ -357,7 +359,7 @@ public class ScheduleController {
 				}
 			}
 			schedule=list2;
-		} else if (todayCounter == 10) {
+		} else if (todayCounter == 10) { //今日の予定表示時のソート
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;
@@ -368,7 +370,7 @@ public class ScheduleController {
 					schedule.add(sche);
 				}
 			}
-		} else if (tomorrowCounter == 10) {
+		} else if (tomorrowCounter == 10) { //明日の予定表示時のソート
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;
@@ -379,7 +381,7 @@ public class ScheduleController {
 					schedule.add(sche);
 				}
 			}
-		} else if (weekCounter == 10) {
+		} else if (weekCounter == 10) { //今週の予定表示時のソート
 			long now = (Long) session.getAttribute("now");
 			Date date = null;
 			long datetime_date = 0;

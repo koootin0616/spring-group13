@@ -9,21 +9,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name="category")
 public class Category {
+	//フィールド
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int code;
 	private int usercode;
 	private String name;
 
+	//コンストラクタ
+	public Category() {
+
+	}
+
 	public Category(int usercode, String name) {
 		this.usercode = usercode;
 		this.name = name;
 	}
 
-	Category() {
-
-	}
-
+	//アクセッサ・メソッド
 	public Category(String name) {
 		this.name = name;
 	}

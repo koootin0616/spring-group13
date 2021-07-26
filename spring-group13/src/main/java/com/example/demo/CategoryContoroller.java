@@ -23,9 +23,11 @@ public class CategoryContoroller {
 	@Autowired
 	HttpSession session;
 
+	//http://localhost:8080/addCategory
+	//メイン画面へ遷移
 	@RequestMapping("/addCategory")
 	public ModelAndView addCategory(
-			@RequestParam(name = "addCategory") String name,
+			@RequestParam(name = "categoryName") String name,
 			ModelAndView mv) {
 		User user = (User)session.getAttribute("userInfo");
 		List<Category> list0 = categoryRepository.findByUsercode(0);
@@ -65,7 +67,7 @@ public class CategoryContoroller {
 
 		session.setAttribute("category", category);
 
-		mv.setViewName("deleteCategory");
+		mv.setViewName("Category");
 
 		return mv;
 	}
@@ -77,7 +79,7 @@ public class CategoryContoroller {
 		List<Category> category = categoryRepository.findAll();
 
 		mv.addObject("list", category);
-		mv.setViewName("deleteCategory");
+		mv.setViewName("Category");
 
 		return mv;
 	}
@@ -120,7 +122,7 @@ public class CategoryContoroller {
 		}
 
 		session.setAttribute("category", category);
-		mv.setViewName("deleteCategory");
+		mv.setViewName("Category");
 
 		return mv;
 	}

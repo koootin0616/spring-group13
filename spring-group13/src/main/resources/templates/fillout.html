@@ -8,13 +8,13 @@
 
 <body>
 <form action="fillmain">
-<a id="fillout1">
+<a id="date">
 <input type="date" name="ymd" max="9999-12-31"th:value="${ymd}">
 </a>
-<a id="fillout4">の自己評価</a>
-<a id="fillout10"><input type="submit" value="表示"></a>
+<a id="txt1">の自己評価</a>
+<a id="submit1"><input type="submit" value="表示"></a>
 </form>
-<table border="1" id="fillout11">
+<table border="1" id="table">
 <tr>
 <th>予定</th><th>時間</th><th>詳細</th>
 </tr>
@@ -24,7 +24,7 @@
 	<td th:text="${schedule.contents}"></td>
 	</tr>
 </table>
-<form action="fillo" method="post">
+<form action="filledOut" method="post">
 <input type="hidden" name="ymd" th:value="${ymd}">
 <div id="per">
 <a>達成数</a><br>
@@ -52,16 +52,16 @@ document.write('<option value="'+i+'">'+i+'</option>');
 </script>
 </select>
 </div>
-<a id="fillout5">反省点</a>
-<div id="fillout6">
+<a id="txt2">反省点</a>
+<div id="reflection">
 <textarea name="reflection" cols="60" rows="15"></textarea>
 </div>
-<a id="fillout7">改善点</a>
-<div id="fillout8">
+<a id="txt3">改善点</a>
+<div id="improvement">
 <textarea name="improvement" cols="60" rows="15"></textarea>
 </div>
 
-<a id="fillout9"><input type="submit" value="登録"></a>
+<a id="submit2"><input type="submit" value="登録"></a>
 </form>
 <a id="message" th:text="${message}"></a>
 <a id="main" href="mainreturn">メインページへ</a>

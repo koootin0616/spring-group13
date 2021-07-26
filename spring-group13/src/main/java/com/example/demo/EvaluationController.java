@@ -26,7 +26,7 @@ public class EvaluationController {
 	@Autowired
 	private EvaluationRepository evaluationRepository;
 
-	@RequestMapping("/fillo")
+	@RequestMapping("/filledOut")
 	public ModelAndView update(
 			@RequestParam(name ="ymd") String ymd,
 			@RequestParam(name="achieved") int achieved,

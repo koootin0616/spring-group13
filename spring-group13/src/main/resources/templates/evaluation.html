@@ -63,18 +63,18 @@ window.onload = function(){
 	<a th:text="${list.per}"></a>％
 	</div>
 	<form action="evaluationmain">
-	<a id="fillout1"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}"> の自己評価</a>
+	<a id="date"><input type="date" name="ymd" max="9999-12-31" th:value="${ymd}"> の自己評価</a>
 	<div id="disp"><input type="submit"value="表示"></div>
 	</form>
-	<a id="fillout5">反省点</a>
-	<div id="fillout6">
+	<a id="txt1">反省点</a>
+	<div id="reflection">
 		<textarea name="reflection" cols="60" rows="15" th:text="${list.reflection}"></textarea>
 	</div>
-	<a id="fillout7">改善点</a>
-	<a id="fillout8"><textarea name="improvement" cols="60" rows="15" th:text="${list.improvement}"></textarea>
+	<a id="txt2">改善点</a>
+	<a id="improvement"><textarea name="improvement" cols="60" rows="15" th:text="${list.improvement}"></textarea>
 	</a>
-	<a id="fillout9">予定</a>
-	<div id="fillout10">
+	<a id="txt3">予定</a>
+	<div id="table">
 		<table border="1">
 			<tr>
 				<th>予定</th>
