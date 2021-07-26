@@ -23,7 +23,7 @@
 }
 #RealtimeClockArea2{
 	position: absolute;
-	top: 1%;
+	top: 0%;
 	left: 63%;
 	color:white;
 	font-weight:  bold;
@@ -112,14 +112,11 @@ table{
 	top: 37.5%;
 	left: 43.65%;
 	transform: translate(-50%, 0%);
-	height:243px;
+	height:251px;
 	width:1020px;
 	z-index:10000;
 	overflow: auto;
 }
-
-
-
 
 .href{
 	text-decoration: none;
@@ -265,16 +262,16 @@ body{
 }
 .wrapper{
 	position:relative;
-	top:65px;
+	top:58px;
 	left:140px;
     max-width: 600px;
     margin: 0 auto;
     color: #666;
 }
 #header {
-  position: absolute;
-  left:66%;
-  top:5%;
+  position: relative;
+  left:405px;
+  top:-33px;
   font-size:20px;
 
     }
@@ -339,7 +336,7 @@ td.today {
 }
 #prev {
 	 position: relative;
-     left:400px;
+     left:370px;
      top:-45px;
     float: left;
     z-index:10000;
@@ -347,7 +344,7 @@ td.today {
 }
 #next {
 	position: relative;
-     left:500px;
+     left:530px;
      top:-45px;
     float: right;
      z-index:10000;
