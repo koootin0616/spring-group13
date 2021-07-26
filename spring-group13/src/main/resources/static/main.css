@@ -16,15 +16,15 @@
 }
 #message{
 	position: absolute;
-	top: 27%;
-	left: 25%;
+	top: 200px;
+	left:283px;
 	color:white;
 	font-weight:  bold;
 }
 #RealtimeClockArea2{
 	position: absolute;
-	top: 0%;
-	left: 63%;
+	top: 1px;
+	left: 973px;
 	color:white;
 	font-weight:  bold;
 }
@@ -98,8 +98,8 @@ table{
 	background:white;
 	color:black;
 	position: absolute;
-	top: 32.5%;
-	left: 43%;
+	top: 242px;
+	left: 660px;
 	transform: translate(-50%, 0%);
 	width:1000px;
 	z-index:10000;
@@ -109,8 +109,8 @@ table{
 	background:#00BFFF;
 	color:black;
 	position: absolute;
-	top: 40%;
-	left: 43.65%;
+	top: 300px;
+	left: 670px;
 	transform: translate(-50%, 0%);
 	height:216px;
 	width:1020px;
@@ -349,6 +349,18 @@ td.today {
     float: right;
      z-index:10000;
 }
+h2 {
+	float: left;
+	padding: 6px 0;
+}
+	h2 a {
+	position:absolute;
+		display: block;
+		width: 64px;
+		height: 72px;
+		font-size: 0;
+		background: url(./logo.png) left top/64px auto no-repeat;
+	}
 
 
 

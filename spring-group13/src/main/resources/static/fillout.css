@@ -114,6 +114,17 @@
 	font-weight:  bold;
 	font-size:18px;
 }
+h2 {
+	float: left;
+	padding: 6px 0;
+}
+	h2 a {
+		display: block;
+		width: 64px;
+		height: 69px;
+		font-size: 0;
+		background: url(./logo.png) left top/64px auto no-repeat;
+	}
 table {
 width: 650px;
 height: 40px;
