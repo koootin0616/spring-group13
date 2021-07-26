@@ -1,0 +1,120 @@
+@charset "UTF-8";
+#date {
+	position: absolute;
+	top: 32%;
+	left: 32%;
+	font-size:20px;
+	color:white;
+	font-weight:  bold;
+
+
+}
+#category {
+	position: absolute;
+	top: 41%;
+	left: 32%;
+	font-size:20px;
+	color:white;
+	font-weight:  bold;
+
+}
+#importance {
+	position: absolute;
+	top: 41%;
+	left: 50%;
+	font-size:20px;
+	color:white;
+	font-weight:  bold;
+}
+#submit {
+	position: absolute;
+	top: 81%;
+	left: 72%;
+	font-size:20px;
+	color:white;
+	 font-weight:  bold;
+
+}
+#detail {
+	position: absolute;
+	top: 55%;
+	left: 32%;
+	font-size:32px;
+	color:white;
+	 font-weight:  bold;
+
+}
+#schedule {
+	position: absolute;
+	top: 48%;
+	left: 32%;
+	font-size:32px;
+	color:white;
+	font-weight:  bold;
+}
+#time{
+	position: absolute;
+	top: 32%;
+	left: 57%;
+	font-size:20px;
+	color:white;
+	 font-weight:  bold;
+}
+#main{
+	position: absolute;
+	top: 81%;
+	left: 82%;
+	font-size:20px;
+	font-weight:  bold;
+	color:white;
+}
+
+
+#text {
+	position: absolute;
+	top: 48.7%;
+	left: 40%;
+	font-size:20px;
+
+}
+#message{
+	position: absolute;
+	top: 27%;
+	left: 32%;
+	color:white;
+	font-weight:  bold;
+}
+
+#textarea {
+	position: absolute;
+	top: 60%;
+	left: 32%;
+	font-size:20px;
+
+}
+#title  {
+	position: absolute;
+	top: 11%;
+	left: 39%;
+	font-size:60px;
+	color:white;
+	 font-weight:  bold;
+
+}
+#title1  {
+	position: absolute;
+	top: 11%;
+	left: 43%;
+	font-size:66px;
+	color:white;
+	 font-weight:  bold;
+
+}
+body {
+  background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0;
+  background-color: skyblue;
+  background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
+  background-repeat: repeat;
+}
+
+

@@ -30,7 +30,7 @@
 }
 
 
-#deleteCategory{
+#categoryEdit{
 	display: inline-block;
 	_display: inline;
 	position: absolute;
@@ -98,7 +98,7 @@ table{
 	background:white;
 	color:black;
 	position: absolute;
-	top: 30%;
+	top: 32.5%;
 	left: 43%;
 	transform: translate(-50%, 0%);
 	width:1000px;
@@ -109,10 +109,10 @@ table{
 	background:#00BFFF;
 	color:black;
 	position: absolute;
-	top: 37.5%;
+	top: 40%;
 	left: 43.65%;
 	transform: translate(-50%, 0%);
-	height:251px;
+	height:216px;
 	width:1020px;
 	z-index:10000;
 	overflow: auto;
@@ -262,7 +262,7 @@ body{
 }
 .wrapper{
 	position:relative;
-	top:58px;
+	top:56px;
 	left:140px;
     max-width: 600px;
     margin: 0 auto;
@@ -299,11 +299,11 @@ body{
     text-align: center;
 }
 /*日曜日*/
-td:first-child {
+.day:first-child {
     color: red;
 }
 /*土曜日*/
-td:last-child {
+.day:last-child {
     color: blue;
 }
 /*前後月の日付*/

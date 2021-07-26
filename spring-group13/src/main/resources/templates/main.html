@@ -24,10 +24,15 @@
 		</div>
 	</form>
 
+<<<<<<< HEAD
 	<h2><a href="mainreturn"></a></h2>
 
 	<div id="deleteCategory">
 	<form action="/deleteCate">
+=======
+	<div id="categoryEdit">
+	<form action="/categoryEdit">
+>>>>>>> branch 'master' of https://github.com/koootin0616/spring-group13.git
 	<input  type="submit" value="カテゴリーの編集">
 	</form>
 	</div>
@@ -87,9 +92,9 @@ st.in(true)
 	<div id="headline">
 		<h1>予定表</h1>
 	</div>
-		<form action="/addsche" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
-		<form action="/fill" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
-		<form action="/ev" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
+		<form action="/addSchedule" method="get"><input id="button1" class="buttons1" type="submit" value="予定の追加"></form>
+		<form action="/fillout" method="get"><input id="button2" class="buttons1" type="submit" value="評価の追加"></form>
+		<form action="/evaluation" method="get"><input id="button3" class="buttons1" type="submit" value="自己評価ページ"></form>
 	<div>
 		<table class="table" border="1">
 			<tr>
@@ -183,11 +188,11 @@ function createProcess(year, month) {
         for (var j = 0; j < week.length; j++) {
             if (i == 0 && j < startDayOfWeek) {
                 // 1行目で1日まで先月の日付を設定
-                calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
+                calendar += "<td class='disabled day'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
             } else if (count >= endDate) {
                 // 最終行で最終日以降、翌月の日付を設定
                 count++;
-                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+                calendar += "<td class='disabled day'>" + (count - endDate) + "</td>";
             } else {
                 // 当月の日付を曜日に照らし合わせて設定
                 count++;
@@ -196,7 +201,7 @@ function createProcess(year, month) {
                   && count == today.getDate()){
                     calendar += "<td class='today'>" + count + "</td>";
                 } else {
-                    calendar += "<td>" + count + "</td>";
+                    calendar += "<td class='day'>" + count + "</td>";
                 }
             }
         }
