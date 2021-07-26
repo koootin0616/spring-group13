@@ -94,24 +94,28 @@ st.in(true)
 				<th class="th1">予定</th>
 				<th class="th1">年月日</th>
 				<th class="th1">時間</th>
-				<th class="th2">重要度<a href="/sortDescImportance" class="href">↓</a><a href="sortAscImportance" class="href">↑</a></th>
+				<th class="th4">重要度<a href="/sortDescImportance" class="href">↓</a><a href="sortAscImportance" class="href">↑</a></th>
 				<th class="th3">詳細</th>
 				<th class="th2">変更</th>
 				<th class="th2">削除</th>
 			</tr>
+		</table>
+	</div>
+	<div id="table1">
+		<table border="1">
 			<tr th:each="schedule:${schedule}">
-				<td th:text="${schedule.name}"></td>
-				<td class="ymd" th:text="${schedule.ymd}"></td>
-				<td class="jikan" th:text="${schedule.jikan}"></td>
-				<td class="importance"th:text="${schedule.importance}"></td>
-				<td th:text="${schedule.contents}"></td>
-				<td class=button2>
+				<td th:text="${schedule.name}"class="td1"></td>
+				<td class="ymd td5" th:text="${schedule.ymd}"></td>
+				<td class="jikan td6" th:text="${schedule.jikan}"></td>
+				<td class="importance td4"th:text="${schedule.importance}"></td>
+				<td th:text="${schedule.contents}" class="td3"></td>
+				<td class="td2">
 					<form action="update" method="post">
 						<input class="buttons2" type="submit" value="変更">
 						<input type="hidden" name="code" th:value="${schedule.code}">
 					</form>
 				</td>
-				<td class=button2>
+				<td class="td2">
 					<form action="delete" method="post">
 						<input class="buttons2" type="submit" value="削除">
 						<input type="hidden" name="code" th:value="${schedule.code}">
@@ -121,6 +125,6 @@ st.in(true)
 		</table>
 	</div>
 	<div id="dish"></div>
-	
+
 </body>
 </html>

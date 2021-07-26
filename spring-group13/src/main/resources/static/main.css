@@ -88,16 +88,36 @@
 	color:red;
 }
 
+table{
+	background:white;
+}
+
 #table{
 	background:white;
 	color:black;
 	position: absolute;
-	top: 33%;
+	top: 30%;
 	left: 43%;
 	transform: translate(-50%, 0%);
 	width:1000px;
 	z-index:10000;
 }
+
+#table1{
+	background:#00BFFF;
+	color:black;
+	position: absolute;
+	top: 37.5%;
+	left: 43.65%;
+	transform: translate(-50%, 0%);
+	height:243px;
+	width:1020px;
+	z-index:10000;
+	overflow: auto;
+}
+
+
+
 
 .href{
 	text-decoration: none;
@@ -116,6 +136,39 @@
 .th3{
 	height:50px;
 	width:300px;
+}
+
+.th4{
+	height:50px;
+	width:120px;
+}
+
+.td1{
+	height:30px;
+	width:155.5px;
+}
+
+.td2{
+	height:30px;
+	width:80px;
+}
+
+.td3{
+	height:30px;
+	width:230.5px;
+}
+
+.td4{
+	height:30px;
+	width:99.5px;
+}
+.td5{
+	height:30px;
+	width:155.5px;
+}
+.td6{
+	height:30px;
+	width:156px;
 }
 
 #button1{
@@ -145,7 +198,7 @@
 }
 
 .buttons2{
-	width:100px;
+	width:80px;
 }
 
 
@@ -158,11 +211,11 @@ body{
 #dish{
 	border-radius: 50%;
 	width:1500px;
-	height:200px;
+	height:150px;
 	background:#00FFFF;
 	margin:auto;
 	position: absolute;
-	top:520px;
+	top:550px;
 	left:20px;
 }
 
