@@ -42,8 +42,9 @@
 	display: inline-block;
 	_display: inline;
 	position: absolute;
-	top: 50%;
-	left: 62.5%;
+	top: 382px;
+	left: 785px;
+	font-size:17px;
 	transform: translate(-50%, -50%);
 	font-weight:bold;
 	color:white;
@@ -51,8 +52,9 @@
 
 #message{
 	position: absolute;
-	top: 53%;
-	left: 50%;
+	top: 379px;
+	left: 767px;
+	font-size:17px;
 	transform: translate(-50%, -50%);
 	font-weight:bold;
 	color:red;
@@ -62,8 +64,8 @@
 	display: inline-block;
 	_display: inline;
 	position: absolute;
-	top: 60%;
-	left: 50%;
+	top: 379px;
+	left: 767px;
 	transform: translate(-50%, -50%);
 }
 

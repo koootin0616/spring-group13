@@ -180,6 +180,7 @@ h2 {
 	padding: 6px 0;
 }
 	h2 a {
+		position:absolute;
 		display: block;
 		width: 64px;
 		height: 69px;
