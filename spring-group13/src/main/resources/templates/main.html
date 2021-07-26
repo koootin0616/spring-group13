@@ -57,7 +57,7 @@ function showClock2() {
    var msg = nowFullYear + "年"+ nowMonth + "月" + nowDate + "日" +  nowHour + ":" + nowMin + ":" + nowSec  ;
    document.getElementById("RealtimeClockArea2").innerHTML = msg;
 }
-setInterval('showClock2()',1000);
+setInterval('showClock2()',1);
 
 var st = new SelfTimer(new Date());
 
@@ -181,11 +181,11 @@ function createProcess(year, month) {
         for (var j = 0; j < week.length; j++) {
             if (i == 0 && j < startDayOfWeek) {
                 // 1行目で1日まで先月の日付を設定
-                calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
+                calendar += "<td class='disabled day'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
             } else if (count >= endDate) {
                 // 最終行で最終日以降、翌月の日付を設定
                 count++;
-                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+                calendar += "<td class='disabled day'>" + (count - endDate) + "</td>";
             } else {
                 // 当月の日付を曜日に照らし合わせて設定
                 count++;
@@ -194,7 +194,7 @@ function createProcess(year, month) {
                   && count == today.getDate()){
                     calendar += "<td class='today'>" + count + "</td>";
                 } else {
-                    calendar += "<td>" + count + "</td>";
+                    calendar += "<td class='day'>" + count + "</td>";
                 }
             }
         }

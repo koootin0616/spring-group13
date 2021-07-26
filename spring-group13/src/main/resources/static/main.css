@@ -299,11 +299,11 @@ body{
     text-align: center;
 }
 /*日曜日*/
-td:first-child {
+.day:first-child {
     color: red;
 }
 /*土曜日*/
-td:last-child {
+.day:last-child {
     color: blue;
 }
 /*前後月の日付*/
